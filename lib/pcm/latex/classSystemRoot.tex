@@ -1,0 +1,46 @@
+\section{System\+Root Class Reference}
+\label{classSystemRoot}\index{System\+Root@{System\+Root}}
+Inheritance diagram for System\+Root\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSystemRoot}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classSystemRoot_a41932bf80f8fa1acedc3298a0bd8fcb3}} 
+{\bfseries System\+Root} (\textbf{ P\+CM} $\ast$p)
+\item 
+\mbox{\label{classSystemRoot_adcf0f53283651a42c89367f07391b02d}} 
+{\bfseries System\+Root} (\textbf{ System\+Root} const \&)=delete
+\item 
+\mbox{\label{classSystemRoot_ac611108c65d7c0deeb02d849a985dfdd}} 
+virtual void {\bfseries accept} (\textbf{ Visitor} \&v) override
+\item 
+\mbox{\label{classSystemRoot_ac4d0ee3296fdd74a455c9e28daf2f1b0}} 
+void {\bfseries add\+Socket} (int32 apic\+\_\+id, int32 logical\+\_\+id)
+\item 
+\mbox{\label{classSystemRoot_a718d51f036df54ff1de8850f4527ff11}} 
+void {\bfseries add\+Thread} (int32 os\+ID, \textbf{ Topology\+Entry} \&te)
+\item 
+\mbox{\label{classSystemRoot_a2f0f50d2f72c5d73d0207f6b205861cb}} 
+\textbf{ Hyper\+Thread} $\ast$ {\bfseries find\+Thread\+By\+O\+S\+ID} (int32 os\+ID)
+\item 
+\mbox{\label{classSystemRoot_a471431df3e061557de500c788e81f95a}} 
+void {\bfseries add\+M\+S\+R\+Handle\+To\+O\+S\+Thread} (std\+::shared\+\_\+ptr$<$ \textbf{ Safe\+Msr\+Handle} $>$ handle, uint32 os\+ID)
+\item 
+\mbox{\label{classSystemRoot_a4e0d1d1f77e3a51b5d463dbc40c1624f}} 
+\textbf{ System\+Counter\+State} {\bfseries system\+Counter\+State} () const
+\item 
+\mbox{\label{classSystemRoot_a5fce3de9bcca293a7413a681035a9e1b}} 
+std\+::vector$<$ \textbf{ Socket} $\ast$ $>$ const  \& {\bfseries sockets} (void) const
+\item 
+\mbox{\label{classSystemRoot_a23a38c2f9aa51406a1288b6a3d047f7f}} 
+std\+::vector$<$ \textbf{ Hyper\+Thread} $\ast$ $>$ const  \& {\bfseries offlined\+Threads\+At\+Start} (void) const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+topology.\+h\end{DoxyCompactItemize}

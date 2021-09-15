@@ -1,0 +1,143 @@
+/*
+ * Copyright (C) 2011-2020 Intel Corporation. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *   * Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *   * Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in
+ *     the documentation and/or other materials provided with the
+ *     distribution.
+ *   * Neither the name of Intel Corporation nor the names of its
+ *     contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+
+/* Enclave.edl - Top EDL file. */
+
+enclave {
+
+    from "sgx_tstdc.edl" import *;
+    from "sgx_pthread.edl" import *;
+
+    include "data-types.h"
+    include "definitions.h"
+
+    trusted {
+        public sgx_status_t total_init();
+
+        public uint32_t ecall_get_sealed_data_size([in] struct table_t * rel);
+
+        public sgx_status_t ecall_seal_data([in] struct table_t * rel,
+                                            [out, size=data_size] uint8_t* sealed_blob,
+                                            uint32_t data_size);
+
+        public uint32_t ecall_join_sealed_tables([in, size=size_r] const uint8_t *sealed_r,
+                                                 size_t size_r,
+                                                 [in, size=size_s] const uint8_t *sealed_s,
+                                                 size_t size_s,
+                                                 [in, size=128] char* algorithm,
+                                                 int nthreads,
+                                                 uint32_t seal_chunk_size);
+
+        public uint32_t ecall_three_way_join_sealed_tables([in, size=size_r] const uint8_t *sealed_r,
+                                                           size_t size_r,
+                                                           [in, size=size_s] const uint8_t *sealed_s,
+                                                           size_t size_s,
+                                                           [in, size=size_tt] const uint8_t *sealed_t,
+                                                           size_t size_tt,
+                                                           [in, size=128] char* algorithm,
+                                                           int nthreads,
+                                                           uint32_t seal_chunk_size);
+
+        public sgx_status_t ecall_get_sealed_data([out, size=data_size] uint8_t* sealed_blob,
+                                                  uint32_t data_size);
+
+        public result_t* ecall_join([in] struct table_t * relR,
+                                    [in] struct table_t * relS,
+                                    [in, size=128] char* algorithm,
+                                    int nthreads);
+};
+
+    untrusted {
+        /*
+        * ocall_print_string - invokes OCALL to display string buffer inside the enclave.
+        *  [in]: copy the string buffer to App outside.
+        *  [string]: specifies 'str' is a NULL terminated buffer.
+        */
+        void ocall_print_string([in, string] const char *str);
+
+        uint64_t ocall_get_system_micros();
+
+        void ocall_startTimer([in, out] uint64_t* t);
+
+        void ocall_stopTimer([in, out] uint64_t* t);
+
+        void ocall_exit(int exit_status);
+
+        void ocall_throw([in, string] const char* message);
+
+        int ocall_get_num_active_threads_in_numa(int numaregionid);
+
+        int ocall_get_thread_index_in_numa(int logicaltid);
+
+        int ocall_get_cpu_id(int thread_id);
+
+        int ocall_get_num_numa_regions();
+
+        void ocall_numa_thread_mark_active(int phytid);
+
+        void ocall_getrusage([in, out] struct rusage_reduced_t* usage_red,
+                             int print);
+
+        /*OCalls to support ObliDB code*/
+        void ocall_read_block(int structureId,
+                              int index,
+                              int blockSize,
+                              [out, size=blockSize] void *buffer); //read in to buffer
+
+        void ocall_write_block(int structureId,
+                               int index,
+                               int blockSize,
+                               [in, size=blockSize] void *buffer); //write out from buffer
+
+        void ocall_newStructure(int newId,
+                                Obliv_Type type,
+                                int size); //enclave asks app to allocate new structure
+
+        void ocall_deleteStructure(int structureId);
+
+        uint64_t ocall_get_total_ewb();
+
+
+        void ocall_get_system_counter_state([in, string] const char *message,
+                                            int start_to_end);
+
+        void ocall_get_system_custom_counter_state([in, string] const char *message);
+
+        void ocall_set_system_counter_state([in, string] const char *message);
+
+        void ocall_get_sgx_counters([in, string] const char *message);
+
+        void ocall_set_sgx_counters([in, string] const char *message);
+
+        uint64_t ocall_get_ewb();
+
+    };
+};

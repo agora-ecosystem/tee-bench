@@ -1,0 +1,119 @@
+\section{pcm-\/core.cpp File Reference}
+\label{pcm-core_8cpp}\index{pcm-\/core.\+cpp@{pcm-\/core.\+cpp}}
+
+
+Example of using C\+PU counters\+: implements a performance counter monitoring utility for Intel \doxyref{Core}{p.}{classCore}, Offcore events.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$bitset$>$}\newline
+{\ttfamily \#include \char`\"{}cpucounters.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ Core\+Event}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pcm-core_8cpp_ac4eeb11d89b0f517835a12a04443ebe4}} 
+\#define {\bfseries H\+A\+C\+K\+\_\+\+T\+O\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+D\+U\+P\+L\+I\+C\+A\+T\+E\+\_\+\+E\+R\+R\+OR}
+\item 
+\mbox{\label{pcm-core_8cpp_aa9ecc55c90c7a69729babc4f5f91ed96}} 
+\#define {\bfseries P\+C\+M\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+D\+E\+F\+A\+U\+LT}~1.\+0
+\item 
+\mbox{\label{pcm-core_8cpp_acccbe8441d6dd75bdc949f5f0ee126c5}} 
+\#define {\bfseries P\+C\+M\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+M\+IN}~0.\+015
+\item 
+\mbox{\label{pcm-core_8cpp_a433dde946b6713059756318598c9a6fe}} 
+\#define {\bfseries P\+C\+M\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+R\+V\+AL}~50
+\item 
+\mbox{\label{pcm-core_8cpp_a009855593b59738d24dbfc236edb3b14}} 
+\#define {\bfseries M\+A\+X\+\_\+\+C\+O\+R\+ES}~4096
+\item 
+\mbox{\label{pcm-core_8cpp_a228783873815e02b069a286af4512aba}} 
+\#define {\bfseries E\+V\+E\+N\+T\+\_\+\+S\+I\+ZE}~256
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pcm-core_8cpp_ac493787fd6910618e564b9af590d4a7e}} 
+void {\bfseries build\+\_\+event} (const char $\ast$argv, \textbf{ Event\+Select\+Register} $\ast$reg, int idx)
+\item 
+\mbox{\label{pcm-core_8cpp_adce02f8513e11c6d4de1f7ba60d30d8a}} 
+int {\bfseries pcm\+\_\+c\+\_\+build\+\_\+core\+\_\+event} (uint8\+\_\+t idx, const char $\ast$argv)
+\item 
+\mbox{\label{pcm-core_8cpp_af8a09843e89fa361b18ee1b60b473498}} 
+int {\bfseries pcm\+\_\+c\+\_\+init} ()
+\item 
+\mbox{\label{pcm-core_8cpp_a2122b419fa049eb159d6884f644b8fdd}} 
+void {\bfseries pcm\+\_\+c\+\_\+start} ()
+\item 
+\mbox{\label{pcm-core_8cpp_aa0f9769e2a0432139f64c892414dfd73}} 
+void {\bfseries pcm\+\_\+c\+\_\+stop} ()
+\item 
+\mbox{\label{pcm-core_8cpp_ad36e4ae6268a5e2f985cd4d77dc1c5ca}} 
+uint64\+\_\+t {\bfseries pcm\+\_\+c\+\_\+get\+\_\+cycles} (uint32\+\_\+t core\+\_\+id)
+\item 
+\mbox{\label{pcm-core_8cpp_a03babfb4f4942fe63bdb2a8f531c19e1}} 
+uint64\+\_\+t {\bfseries pcm\+\_\+c\+\_\+get\+\_\+instr} (uint32\+\_\+t core\+\_\+id)
+\item 
+\mbox{\label{pcm-core_8cpp_a4563dc923dd15f4217aec1393212dbee}} 
+uint64\+\_\+t {\bfseries pcm\+\_\+c\+\_\+get\+\_\+core\+\_\+event} (uint32\+\_\+t core\+\_\+id, uint32\+\_\+t event\+\_\+id)
+\item 
+\mbox{\label{pcm-core_8cpp_a4e43544978d9afb2faf08dce11cab70c}} 
+void {\bfseries print\+\_\+usage} (const string progname)
+\item 
+\mbox{\label{pcm-core_8cpp_a857456f644c2e58f064fa2f70accc4dd}} 
+{\footnotesize template$<$class State\+Type $>$ }\\void {\bfseries print\+\_\+custom\+\_\+stats} (const State\+Type \&Before\+State, const State\+Type \&After\+State, bool csv, uint64 txn\+\_\+rate)
+\item 
+\mbox{\label{pcm-core_8cpp_a85a63bb4533f6b95cdd9a2287323e50e}} 
+bool {\bfseries match} (const char $\ast$subtoken, const char $\ast$name, int $\ast$result)
+\item 
+\mbox{\label{pcm-core_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+int {\bfseries main} (int argc, char $\ast$argv[$\,$])
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pcm-core_8cpp_a734eeb13dff6c7954a0f96d1cf6f3749}} 
+struct \textbf{ Core\+Event} {\bfseries events} [P\+E\+R\+F\+\_\+\+M\+A\+X\+\_\+\+C\+U\+S\+T\+O\+M\+\_\+\+C\+O\+U\+N\+T\+E\+RS]
+\item 
+\mbox{\label{pcm-core_8cpp_aebedf92d2f6c0782ac32db194b19a5b8}} 
+\textbf{ System\+Counter\+State} {\bfseries Sys\+Before\+State}
+\item 
+\mbox{\label{pcm-core_8cpp_aa0eab8e3e3860274766705461599642f}} 
+\textbf{ System\+Counter\+State} {\bfseries Sys\+After\+State}
+\item 
+\mbox{\label{pcm-core_8cpp_a291977796d10cd87794df3cbf5e09406}} 
+std\+::vector$<$ \textbf{ Core\+Counter\+State} $>$ {\bfseries Before\+State}
+\item 
+\mbox{\label{pcm-core_8cpp_a7b363cbd24d048c42704650435b127c4}} 
+std\+::vector$<$ \textbf{ Core\+Counter\+State} $>$ {\bfseries After\+State}
+\item 
+\mbox{\label{pcm-core_8cpp_a1efdfab09d596110dd1d569538dc1a91}} 
+std\+::vector$<$ \textbf{ Socket\+Counter\+State} $>$ {\bfseries Dummy\+Socket\+States}
+\item 
+\mbox{\label{pcm-core_8cpp_a2bbe0c0511f87b730147df3452de6d2e}} 
+\textbf{ Event\+Select\+Register} {\bfseries regs} [P\+E\+R\+F\+\_\+\+M\+A\+X\+\_\+\+C\+O\+U\+N\+T\+E\+RS]
+\item 
+\mbox{\label{pcm-core_8cpp_a39619e6e2e5b320df1bd3761f65d45a6}} 
+\textbf{ P\+C\+M\+::\+Extended\+Custom\+Core\+Event\+Description} {\bfseries conf}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Example of using C\+PU counters\+: implements a performance counter monitoring utility for Intel \doxyref{Core}{p.}{classCore}, Offcore events. 
+

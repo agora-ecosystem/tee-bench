@@ -1,0 +1,70 @@
+\section{basic\+\_\+socketbuf$<$ S\+I\+ZE, CharT, Traits $>$ Class Template Reference}
+\label{classbasic__socketbuf}\index{basic\+\_\+socketbuf$<$ S\+I\+Z\+E, Char\+T, Traits $>$@{basic\+\_\+socketbuf$<$ S\+I\+Z\+E, Char\+T, Traits $>$}}
+Inheritance diagram for basic\+\_\+socketbuf$<$ S\+I\+ZE, CharT, Traits $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbasic__socketbuf}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classbasic__socketbuf_a5257f37280d2a2b454c7a104b644ab18}} 
+using {\bfseries Base} = std\+::basic\+\_\+streambuf$<$ CharT $>$
+\item 
+\mbox{\label{classbasic__socketbuf_a1ebf06a9987bf4438169b90a4e56c27a}} 
+using {\bfseries char\+\_\+type} = typename Base\+::char\+\_\+type
+\item 
+\mbox{\label{classbasic__socketbuf_a61723e7961ab74aa950f74f7f67afe19}} 
+using {\bfseries int\+\_\+type} = typename Base\+::int\+\_\+type
+\item 
+\mbox{\label{classbasic__socketbuf_a61c3a8165d2df95df43e9f66c92687a4}} 
+using {\bfseries traits\+\_\+type} = typename Base\+::traits\+\_\+type
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classbasic__socketbuf_acd14ae88bcf245e74cc2fef11df6a10f}} 
+int {\bfseries socket} ()
+\item 
+\mbox{\label{classbasic__socketbuf_a155a8afbba17c7c4cde6f49d1c959b1a}} 
+void {\bfseries set\+Socket} (int socket\+FD)
+\item 
+\mbox{\label{classbasic__socketbuf_a4b35911c6e2f02ac7752fdcf8efb9918}} 
+void {\bfseries set\+Timeout} (struct timeval t)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classbasic__socketbuf_a026bef7f8f15c3086287f4112ea001fe}} 
+int\+\_\+type {\bfseries write\+To\+Socket} ()
+\item 
+\mbox{\label{classbasic__socketbuf_a128b9e4f6b5e4f7532aa0ca7ac67803e}} 
+virtual int {\bfseries sync} ()
+\item 
+\mbox{\label{classbasic__socketbuf_a31d98bec7cb1c084d4ae08bd7a98b3d1}} 
+virtual int\+\_\+type {\bfseries overflow} (int\+\_\+type ch)
+\item 
+\mbox{\label{classbasic__socketbuf_af0883fea88b3f6061e8f338490ebda16}} 
+virtual int\+\_\+type {\bfseries underflow} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classbasic__socketbuf_a72290a4a57ba4e432903e713fd498733}} 
+CharT {\bfseries output\+Buffer\+\_\+} [S\+I\+ZE]
+\item 
+\mbox{\label{classbasic__socketbuf_a16ca6921ff4f87043be3242c0e6e74d6}} 
+CharT {\bfseries input\+Buffer\+\_\+} [S\+I\+ZE]
+\item 
+\mbox{\label{classbasic__socketbuf_a187d779f7cf00a3a7676b661696c7c96}} 
+int {\bfseries socket\+F\+D\+\_\+}
+\item 
+\mbox{\label{classbasic__socketbuf_a554b3f4a850663ed3f160cb7d7114c91}} 
+struct timeval {\bfseries timeout\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+pcm-\/sensor-\/server.\+cpp\end{DoxyCompactItemize}

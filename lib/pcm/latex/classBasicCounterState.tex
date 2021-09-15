@@ -1,0 +1,798 @@
+\section{Basic\+Counter\+State Class Reference}
+\label{classBasicCounterState}\index{Basic\+Counter\+State@{Basic\+Counter\+State}}
+
+
+Basic core counter state.  
+
+
+
+
+{\ttfamily \#include $<$cpucounters.\+h$>$}
+
+Inheritance diagram for Basic\+Counter\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classBasicCounterState}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classBasicCounterState_a7e7ac4f348561069929ac87bfb170b33}} 
+{\bfseries Basic\+Counter\+State} (const \textbf{ Basic\+Counter\+State} \&)=default
+\item 
+\mbox{\label{classBasicCounterState_a63a6159cbe7d3b07aede35c71691fc83}} 
+{\bfseries Basic\+Counter\+State} (\textbf{ Basic\+Counter\+State} \&\&)=default
+\item 
+\mbox{\label{classBasicCounterState_aecd15f5404ce5254eb60a1e6c8d5fec8}} 
+\textbf{ Basic\+Counter\+State} \& {\bfseries operator=} (\textbf{ Basic\+Counter\+State} \&\&)=default
+\item 
+\mbox{\label{classBasicCounterState_a448f898e8ff78336611db856aa1354db}} 
+\textbf{ Basic\+Counter\+State} \& {\bfseries operator+=} (const \textbf{ Basic\+Counter\+State} \&o)
+\item 
+\mbox{\label{classBasicCounterState_ae40030f6dc67badf91e4084397f998be}} 
+void {\bfseries read\+And\+Aggregate} (std\+::shared\+\_\+ptr$<$ \textbf{ Safe\+Msr\+Handle} $>$)
+\item 
+\mbox{\label{classBasicCounterState_acb3ee2eabe21674e7930b19ef7ab3183}} 
+void {\bfseries read\+And\+Aggregate\+T\+SC} (std\+::shared\+\_\+ptr$<$ \textbf{ Safe\+Msr\+Handle} $>$)
+\item 
+\mbox{\label{classBasicCounterState_a57d93ca07fed611468739280015a3448}} 
+int32 \textbf{ get\+Thermal\+Headroom} () const
+\begin{DoxyCompactList}\small\item\em Returns current thermal headroom below Tj\+Max. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classBasicCounterState_aaa00ab8b84d77b0091b38c42eb6d448b}} 
+uint64 $\ast$ {\bfseries get\+Events\+Ptr} ()
+\item 
+\mbox{\label{classBasicCounterState_a14ace0929b4d685c63ba48ce2d51fc9b}} 
+const uint64 $\ast$ {\bfseries get\+Events\+Ptr} () const
+\item 
+\mbox{\label{classBasicCounterState_a936c4900bec426c8d7a4fc4e15c72ca2}} 
+uint64 \& {\bfseries Event} (size\+\_\+t i)
+\item 
+\mbox{\label{classBasicCounterState_a8a059a0c3d881572ff4e9e6bd2dafc9b}} 
+const uint64 \& {\bfseries Event} (size\+\_\+t i) const
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classBasicCounterState_a32d89649ba3e48ad8d0cfe05b0e5e2fb}} 
+uint64 {\bfseries Inst\+Retired\+Any}
+\item 
+\mbox{\label{classBasicCounterState_aa55976b14e3f5d61eac958ea5f80f35c}} 
+uint64 {\bfseries Cpu\+Clk\+Unhalted\+Thread}
+\item 
+\mbox{\label{classBasicCounterState_a9c64ac8f2c735b0a693a066ff99b9bc1}} 
+uint64 {\bfseries Cpu\+Clk\+Unhalted\+Ref}
+\item 
+\mbox{\label{classBasicCounterState_a21d9f8b810e7625a425c469cd6fae52f}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>uint64 {\bfseries L3Miss}\\
+\>uint64 {\bfseries Event0}\\
+\>uint64 {\bfseries ArchLLCMiss}\\
+\}; \\
+
+\end{tabbing}\item 
+\mbox{\label{classBasicCounterState_a26f75e8ad60efecbdb155be81cc78ab8}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>uint64 {\bfseries L3UnsharedHit}\\
+\>uint64 {\bfseries Event1}\\
+\>uint64 {\bfseries ArchLLCRef}\\
+\>uint64 {\bfseries SKLL3Hit}\\
+\}; \\
+
+\end{tabbing}\item 
+\mbox{\label{classBasicCounterState_a4916830df8f468c47f33b7e9d66fdd22}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>uint64 {\bfseries L2HitM}\\
+\>uint64 {\bfseries Event2}\\
+\>uint64 {\bfseries SKLL2Miss}\\
+\}; \\
+
+\end{tabbing}\item 
+\mbox{\label{classBasicCounterState_a0f32ff172f3d99aa74296c6750f630a8}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>uint64 {\bfseries L2Hit}\\
+\>uint64 {\bfseries Event3}\\
+\}; \\
+
+\end{tabbing}\item 
+\mbox{\label{classBasicCounterState_ab70fc472616112455cf687226177e079}} 
+uint64 {\bfseries Event4}
+\item 
+\mbox{\label{classBasicCounterState_aa2dc9b03082eb9f99e40afee0318a7cc}} 
+uint64 {\bfseries Event5}
+\item 
+\mbox{\label{classBasicCounterState_a1e411e37235aa1315e5db22b1822192c}} 
+uint64 {\bfseries Event6}
+\item 
+\mbox{\label{classBasicCounterState_adb49779bbfbdf23fdeea7764ddeb01eb}} 
+uint64 {\bfseries Event7}
+\item 
+\mbox{\label{classBasicCounterState_af357162e5b43c6dfc0ce92fd56fa30a0}} 
+uint64 {\bfseries Invariant\+T\+SC}
+\item 
+\mbox{\label{classBasicCounterState_af9069c972052bac5ed648e519e03da9c}} 
+uint64 {\bfseries C\+State\+Residency} [P\+C\+M\+::\+M\+A\+X\+\_\+\+C\+\_\+\+S\+T\+A\+TE+1]
+\item 
+\mbox{\label{classBasicCounterState_a4950fe3761b2ac599a7ae64ec7bee973}} 
+int32 {\bfseries Thermal\+Headroom}
+\item 
+\mbox{\label{classBasicCounterState_a99dab23e20418b86be72dda1ecd8858c}} 
+uint64 {\bfseries L3\+Occupancy}
+\item 
+\mbox{\label{classBasicCounterState_a115320ce0518d55acd0db90c127419b8}} 
+uint64 {\bfseries Memory\+B\+W\+Local}
+\item 
+\mbox{\label{classBasicCounterState_a97a5bc9ad3dc45a876a34740537e54a8}} 
+uint64 {\bfseries Memory\+B\+W\+Total}
+\item 
+\mbox{\label{classBasicCounterState_a1776fe74136c0e204c68885f23989828}} 
+uint64 {\bfseries S\+M\+I\+Count}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classBasicCounterState_ab5f56d2e95ba3daf52c17b8a1d356d64}} 
+class {\bfseries P\+CM}
+\item 
+\mbox{\label{classBasicCounterState_a9dd7d40a5a10fa8976f8eb55a9889f38}} 
+class {\bfseries J\+S\+O\+N\+Printer}
+\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Exec\+Usage} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes average number of retired instructions per time intervall. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+I\+PC} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes average number of retired instructions per core cycle (I\+PC) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Average\+Frequency} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes average core frequency also taking Intel Turbo Boost technology into account. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Active\+Average\+Frequency} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes average core frequency when not in powersaving C0-\/state (also taking Intel Turbo Boost technology into account) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Relative\+Frequency} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes average core frequency also taking Intel Turbo Boost technology into account. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Active\+Relative\+Frequency} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes average core frequency when not in powersaving C0-\/state (also taking Intel Turbo Boost technology into account) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+L2\+Cache\+Hit\+Ratio} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes L2 cache hit ratio. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+L3\+Cache\+Hit\+Ratio} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes L3 cache hit ratio. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L3\+Cache\+Misses} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of L3 cache misses. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L2\+Cache\+Misses} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of L2 cache misses. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L2\+Cache\+Hits} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of L2 cache hits. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L3\+Cache\+Hits\+No\+Snoop} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of L3 cache hits where no snooping in sibling L2 caches had to be done. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L3\+Cache\+Hits\+Snoop} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of L3 cache hits where snooping in sibling L2 caches had to be done. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L3\+Cache\+Hits} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes total number of L3 cache hits. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L3\+Cache\+Occupancy} (const Counter\+State\+Type \&now)
+\begin{DoxyCompactList}\small\item\em Computes L3 Cache Occupancy. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Local\+Memory\+BW} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes Local Memory Bandwidth. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Remote\+Memory\+BW} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes Remote Memory Bandwidth. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Cycles} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes the number core clock cycles when signal on a specific core is running (not halted) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Instructions\+Retired} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes the number of retired instructions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Cycles} (const Counter\+State\+Type \&now)
+\begin{DoxyCompactList}\small\item\em Computes the number executed core clock cycles. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Instructions\+Retired} (const Counter\+State\+Type \&now)
+\begin{DoxyCompactList}\small\item\em Computes the number of retired instructions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Number\+Of\+Custom\+Events} (int32 event\+Counter\+Nr, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns the number of occured custom core events. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Invariant\+T\+SC} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of invariant time stamp counter ticks. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Ref\+Cycles} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes the number of reference clock cycles while clock signal on the core is running. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Core\+C\+State\+Residency} (int state, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes residency in the core C-\/state. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Core\+C\+State\+Residency} (int state, const Counter\+State\+Type \&now)
+\begin{DoxyCompactList}\small\item\em Reads raw residency counter for the core C-\/state. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+S\+M\+I\+Count} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns the number of occured system management interrupts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Basic core counter state. 
+
+Intended only for derivation, but not for the direct use 
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\label{classBasicCounterState_a963d78be64ccddb4f7686405ef4df9c1}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Active\+Average\+Frequency@{get\+Active\+Average\+Frequency}}
+\index{get\+Active\+Average\+Frequency@{get\+Active\+Average\+Frequency}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Active\+Average\+Frequency}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Active\+Average\+Frequency (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes average core frequency when not in powersaving C0-\/state (also taking Intel Turbo Boost technology into account) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+frequency in Hz 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a9a351e598b8af26131611ff37b592633}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Active\+Relative\+Frequency@{get\+Active\+Relative\+Frequency}}
+\index{get\+Active\+Relative\+Frequency@{get\+Active\+Relative\+Frequency}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Active\+Relative\+Frequency}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Active\+Relative\+Frequency (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes average core frequency when not in powersaving C0-\/state (also taking Intel Turbo Boost technology into account) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Fraction of nominal frequency (if $>$1.\+0 then Turbo was working during the measurement) 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_aa398facfd523b7dcdbf827a74970a88c}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Average\+Frequency@{get\+Average\+Frequency}}
+\index{get\+Average\+Frequency@{get\+Average\+Frequency}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Average\+Frequency}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Average\+Frequency (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes average core frequency also taking Intel Turbo Boost technology into account. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+frequency in Hz 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a98aa8d4eb21e8a992fc181d65018e5ce}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Core\+C\+State\+Residency@{get\+Core\+C\+State\+Residency}}
+\index{get\+Core\+C\+State\+Residency@{get\+Core\+C\+State\+Residency}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Core\+C\+State\+Residency\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Core\+C\+State\+Residency (\begin{DoxyParamCaption}\item[{int}]{state,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes residency in the core C-\/state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & C-\/state \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+residence ratio (0..1)\+: 0 -\/ 0\%, 1.\+0 -\/ 100\% 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a98f62d772883ce741ba7065bada41d11}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Core\+C\+State\+Residency@{get\+Core\+C\+State\+Residency}}
+\index{get\+Core\+C\+State\+Residency@{get\+Core\+C\+State\+Residency}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Core\+C\+State\+Residency\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Core\+C\+State\+Residency (\begin{DoxyParamCaption}\item[{int}]{state,  }\item[{const Counter\+State\+Type \&}]{now }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Reads raw residency counter for the core C-\/state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & C-\/state \# \\
+\hline
+{\em now} & C\+PU counter state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+raw residency value 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a5a3275c4f489a475f1658f4546567af4}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Cycles@{get\+Cycles}}
+\index{get\+Cycles@{get\+Cycles}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Cycles\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Cycles (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes the number core clock cycles when signal on a specific core is running (not halted) 
+
+Returns number of used cycles (halted cyles are not counted). The counter does not advance in the following conditions\+:
+\begin{DoxyItemize}
+\item an A\+C\+PI C-\/state is other than C0 for normal operation
+\item H\+LT
+\item S\+T\+P\+C\+L\+K+ pin is asserted
+\item being throttled by T\+M1
+\item during the frequency switching phase of a performance state transition
+\end{DoxyItemize}
+
+The performance counter for this event counts across performance state transitions using different core clock frequencies
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number core clock cycles 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_adc17d576ecaf02cf98cebc86329bf2a1}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Cycles@{get\+Cycles}}
+\index{get\+Cycles@{get\+Cycles}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Cycles\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Cycles (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{now }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes the number executed core clock cycles. 
+
+Returns number of used cycles (halted cyles are not counted).
+
+
+\begin{DoxyParams}{Parameters}
+{\em now} & Current C\+PU counter state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number core clock cycles 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a159a6896f5ef3626b88cdd27a3c15ac0}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Exec\+Usage@{get\+Exec\+Usage}}
+\index{get\+Exec\+Usage@{get\+Exec\+Usage}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Exec\+Usage}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Exec\+Usage (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes average number of retired instructions per time intervall. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+usage 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_af124718a7620c7bbca81232c2149f771}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Instructions\+Retired@{get\+Instructions\+Retired}}
+\index{get\+Instructions\+Retired@{get\+Instructions\+Retired}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Instructions\+Retired\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Instructions\+Retired (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes the number of retired instructions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of retired instructions 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_afced47e4bb3712da79dc64cb16ac335a}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Instructions\+Retired@{get\+Instructions\+Retired}}
+\index{get\+Instructions\+Retired@{get\+Instructions\+Retired}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Instructions\+Retired\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Instructions\+Retired (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{now }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes the number of retired instructions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em now} & Current C\+PU counter state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of retired instructions 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a45cf07a8d3ce2c48968842554a3854f9}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Invariant\+T\+SC@{get\+Invariant\+T\+SC}}
+\index{get\+Invariant\+T\+SC@{get\+Invariant\+T\+SC}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Invariant\+T\+SC}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Invariant\+T\+SC (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes number of invariant time stamp counter ticks. 
+
+This counter counts irrespectively of C-\/, P-\/ or T-\/states
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of time stamp counter ticks 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a7b0019d24a77dc05b7e47cb98192fd22}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+I\+PC@{get\+I\+PC}}
+\index{get\+I\+PC@{get\+I\+PC}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+I\+PC}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+I\+PC (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes average number of retired instructions per core cycle (I\+PC) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+I\+PC 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a5922acedeec3c1cc67d20670f8ef0518}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+L2\+Cache\+Hit\+Ratio@{get\+L2\+Cache\+Hit\+Ratio}}
+\index{get\+L2\+Cache\+Hit\+Ratio@{get\+L2\+Cache\+Hit\+Ratio}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+L2\+Cache\+Hit\+Ratio}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+L2\+Cache\+Hit\+Ratio (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes L2 cache hit ratio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+value between 0 and 1 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a459367d7877d09594c2ecd85e04cae61}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+L2\+Cache\+Hits@{get\+L2\+Cache\+Hits}}
+\index{get\+L2\+Cache\+Hits@{get\+L2\+Cache\+Hits}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+L2\+Cache\+Hits}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L2\+Cache\+Hits (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes number of L2 cache hits. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+number of hits 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a291eeab262fdb93de08cdfdf50dbad58}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+L2\+Cache\+Misses@{get\+L2\+Cache\+Misses}}
+\index{get\+L2\+Cache\+Misses@{get\+L2\+Cache\+Misses}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+L2\+Cache\+Misses}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L2\+Cache\+Misses (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes number of L2 cache misses. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+number of misses 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a7b03f0cd02862716d717e897032b7885}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+L3\+Cache\+Hit\+Ratio@{get\+L3\+Cache\+Hit\+Ratio}}
+\index{get\+L3\+Cache\+Hit\+Ratio@{get\+L3\+Cache\+Hit\+Ratio}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+L3\+Cache\+Hit\+Ratio}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+L3\+Cache\+Hit\+Ratio (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes L3 cache hit ratio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+value between 0 and 1 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a7ba16714ef7ed547ad8648cb5b9e52f6}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+L3\+Cache\+Hits@{get\+L3\+Cache\+Hits}}
+\index{get\+L3\+Cache\+Hits@{get\+L3\+Cache\+Hits}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+L3\+Cache\+Hits}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L3\+Cache\+Hits (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes total number of L3 cache hits. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+number of hits 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_ace0e3ffc23c20d0eda7663cb7e4899a2}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+L3\+Cache\+Hits\+No\+Snoop@{get\+L3\+Cache\+Hits\+No\+Snoop}}
+\index{get\+L3\+Cache\+Hits\+No\+Snoop@{get\+L3\+Cache\+Hits\+No\+Snoop}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+L3\+Cache\+Hits\+No\+Snoop}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L3\+Cache\+Hits\+No\+Snoop (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes number of L3 cache hits where no snooping in sibling L2 caches had to be done. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+number of hits 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a4b1050ca9ccdd66661df556bab70fd0f}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+L3\+Cache\+Hits\+Snoop@{get\+L3\+Cache\+Hits\+Snoop}}
+\index{get\+L3\+Cache\+Hits\+Snoop@{get\+L3\+Cache\+Hits\+Snoop}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+L3\+Cache\+Hits\+Snoop}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L3\+Cache\+Hits\+Snoop (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes number of L3 cache hits where snooping in sibling L2 caches had to be done. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+number of hits 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a94118e70266db2ed7fc6b8b7b4e2c343}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+L3\+Cache\+Misses@{get\+L3\+Cache\+Misses}}
+\index{get\+L3\+Cache\+Misses@{get\+L3\+Cache\+Misses}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+L3\+Cache\+Misses}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L3\+Cache\+Misses (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes number of L3 cache misses. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+number of misses 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a185f850a9a753d9cf4deb8299261fd4c}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+L3\+Cache\+Occupancy@{get\+L3\+Cache\+Occupancy}}
+\index{get\+L3\+Cache\+Occupancy@{get\+L3\+Cache\+Occupancy}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+L3\+Cache\+Occupancy}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L3\+Cache\+Occupancy (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{now }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes L3 Cache Occupancy. 
+
+\mbox{\label{classBasicCounterState_a3ba7c9267c6e0f338a59defc98ae0007}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Local\+Memory\+BW@{get\+Local\+Memory\+BW}}
+\index{get\+Local\+Memory\+BW@{get\+Local\+Memory\+BW}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Local\+Memory\+BW}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Local\+Memory\+BW (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes Local Memory Bandwidth. 
+
+\mbox{\label{classBasicCounterState_abaa9d828b52f41866bf7dc8ff491a62e}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Number\+Of\+Custom\+Events@{get\+Number\+Of\+Custom\+Events}}
+\index{get\+Number\+Of\+Custom\+Events@{get\+Number\+Of\+Custom\+Events}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Number\+Of\+Custom\+Events}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Number\+Of\+Custom\+Events (\begin{DoxyParamCaption}\item[{int32}]{event\+Counter\+Nr,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Returns the number of occured custom core events. 
+
+Read number of events programmed with the {\ttfamily C\+U\+S\+T\+O\+M\+\_\+\+C\+O\+R\+E\+\_\+\+E\+V\+E\+N\+TS} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event\+Counter\+Nr} & Event/counter number (value from 0 to 3) \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_aaa3691b803702deec828d0d8d8a8f326}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Ref\+Cycles@{get\+Ref\+Cycles}}
+\index{get\+Ref\+Cycles@{get\+Ref\+Cycles}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Ref\+Cycles}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Ref\+Cycles (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes the number of reference clock cycles while clock signal on the core is running. 
+
+The reference clock operates at a fixed frequency, irrespective of core frequency changes due to performance state transitions. See Intel(r) Software Developer\textquotesingle{}s Manual for more details
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number core clock cycles 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a806e72bc51f05acc4af0667ca3334242}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Relative\+Frequency@{get\+Relative\+Frequency}}
+\index{get\+Relative\+Frequency@{get\+Relative\+Frequency}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Relative\+Frequency}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Relative\+Frequency (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes average core frequency also taking Intel Turbo Boost technology into account. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Fraction of nominal frequency 
+\end{DoxyReturn}
+\mbox{\label{classBasicCounterState_a00c97b1a7d8a7125ce7fd129cddb52e8}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+Remote\+Memory\+BW@{get\+Remote\+Memory\+BW}}
+\index{get\+Remote\+Memory\+BW@{get\+Remote\+Memory\+BW}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+Remote\+Memory\+BW}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Remote\+Memory\+BW (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Computes Remote Memory Bandwidth. 
+
+\mbox{\label{classBasicCounterState_a5e245473e2297272a50ca054b33c8c86}} 
+\index{Basic\+Counter\+State@{Basic\+Counter\+State}!get\+S\+M\+I\+Count@{get\+S\+M\+I\+Count}}
+\index{get\+S\+M\+I\+Count@{get\+S\+M\+I\+Count}!Basic\+Counter\+State@{Basic\+Counter\+State}}
+\subsubsection{get\+S\+M\+I\+Count}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+S\+M\+I\+Count (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Returns the number of occured system management interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of S\+M\+Is (system manegement interrupts) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ cpucounters.\+h}\item 
+\textbf{ cpucounters.\+cpp}\end{DoxyCompactItemize}

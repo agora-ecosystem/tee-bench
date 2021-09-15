@@ -1,0 +1,53 @@
+\section{Uncore\+P\+MU Class Reference}
+\label{classUncorePMU}\index{Uncore\+P\+MU@{Uncore\+P\+MU}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classUncorePMU_a1f51f9b222f58ec16e6eacb1541cf0b4}} 
+{\bfseries Uncore\+P\+MU} (const H\+W\+Register\+Ptr \&unit\+Control\+\_\+, const H\+W\+Register\+Ptr \&counter\+Control0, const H\+W\+Register\+Ptr \&counter\+Control1, const H\+W\+Register\+Ptr \&counter\+Control2, const H\+W\+Register\+Ptr \&counter\+Control3, const H\+W\+Register\+Ptr \&counter\+Value0, const H\+W\+Register\+Ptr \&counter\+Value1, const H\+W\+Register\+Ptr \&counter\+Value2, const H\+W\+Register\+Ptr \&counter\+Value3, const H\+W\+Register\+Ptr \&fixed\+Counter\+Control\+\_\+=H\+W\+Register\+Ptr(), const H\+W\+Register\+Ptr \&fixed\+Counter\+Value\+\_\+=H\+W\+Register\+Ptr(), const H\+W\+Register\+Ptr \&filter0=H\+W\+Register\+Ptr(), const H\+W\+Register\+Ptr \&filter1=H\+W\+Register\+Ptr())
+\item 
+\mbox{\label{classUncorePMU_a3ba97d0e2240464ff5b54777b1c70e81}} 
+bool {\bfseries valid} () const
+\item 
+\mbox{\label{classUncorePMU_a62d1c768e2683c91aa0971b27e96c9b3}} 
+void {\bfseries write\+Unit\+Control} (const uint32 value)
+\item 
+\mbox{\label{classUncorePMU_ae869cf78f99095e20ee0b7d62d41e9fb}} 
+void {\bfseries cleanup} ()
+\item 
+\mbox{\label{classUncorePMU_aeb6b2d94bf3b9293c48a2b2f1b16be5f}} 
+void {\bfseries freeze} (const uint32 extra)
+\item 
+\mbox{\label{classUncorePMU_a8fbfb28dd06fffe613ad1aafc6c5ab22}} 
+bool {\bfseries init\+Freeze} (const uint32 extra, const char $\ast$x\+P\+I\+Check\+Msg=nullptr)
+\item 
+\mbox{\label{classUncorePMU_a9adba2c2498e44a3d312b2b4f13fbdd8}} 
+void {\bfseries unfreeze} (const uint32 extra)
+\item 
+\mbox{\label{classUncorePMU_a5ca4eebb1d1f1da1f3c5c84f55b0f125}} 
+void {\bfseries reset\+Unfreeze} (const uint32 extra)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classUncorePMU_a4170bbe061a36181da2322792c436984}} 
+H\+W\+Register\+Ptr {\bfseries counter\+Control} [4]
+\item 
+\mbox{\label{classUncorePMU_acc15d14db330e1bf089dbf2715804d52}} 
+H\+W\+Register\+Ptr {\bfseries counter\+Value} [4]
+\item 
+\mbox{\label{classUncorePMU_affe52ec3e8a195ff6ee259c85f29fc8b}} 
+H\+W\+Register\+Ptr {\bfseries fixed\+Counter\+Control}
+\item 
+\mbox{\label{classUncorePMU_aec56b0470ce6546765b8dc8bc1ec0b89}} 
+H\+W\+Register\+Ptr {\bfseries fixed\+Counter\+Value}
+\item 
+\mbox{\label{classUncorePMU_a24afbba3413021992445b27059cf1113}} 
+H\+W\+Register\+Ptr {\bfseries filter} [2]
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ cpucounters.\+h}\item 
+\textbf{ cpucounters.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,2022 @@
+\section{cpucounters.\+h File Reference}
+\label{cpucounters_8h}\index{cpucounters.\+h@{cpucounters.\+h}}
+
+
+Main C\+PU counters header.  
+
+
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}msr.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pci.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}client\+\_\+bw.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}width\+\_\+extender.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}exceptions/unsupported\+\_\+processor\+\_\+exception.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$semaphore.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$sys/syscall.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ Topology\+Entry}
+\item 
+class \textbf{ H\+W\+Register}
+\item 
+class \textbf{ P\+C\+I\+C\+F\+G\+Register64}
+\item 
+class \textbf{ P\+C\+I\+C\+F\+G\+Register32}
+\item 
+class \textbf{ M\+M\+I\+O\+Register64}
+\item 
+class \textbf{ M\+M\+I\+O\+Register32}
+\item 
+class \textbf{ M\+S\+R\+Register}
+\item 
+class \textbf{ Counter\+Width\+Extender\+Register}
+\item 
+class \textbf{ Uncore\+P\+MU}
+\item 
+class \textbf{ Server\+P\+C\+I\+C\+F\+G\+Uncore}
+\begin{DoxyCompactList}\small\item\em Object to access uncore counters in a socket/processor with microarchitecture codename Sandy\+Bridge-\/\+EP (Jaketown) or Ivytown-\/\+EP or Ivytown-\/\+EX. \end{DoxyCompactList}\item 
+class \textbf{ Simple\+Counter\+State}
+\item 
+class \textbf{ P\+CM}
+\begin{DoxyCompactList}\small\item\em C\+PU Performance Monitor. \end{DoxyCompactList}\item 
+struct \textbf{ P\+C\+M\+::\+Simple\+P\+C\+Ie\+Dev\+Info}
+\item 
+struct \textbf{ P\+C\+M\+::\+Custom\+Core\+Event\+Description}
+\begin{DoxyCompactList}\small\item\em Custom \doxyref{Core}{p.}{classCore} event description. \end{DoxyCompactList}\item 
+struct \textbf{ P\+C\+M\+::\+Extended\+Custom\+Core\+Event\+Description}
+\begin{DoxyCompactList}\small\item\em Extended custom core event description. \end{DoxyCompactList}\item 
+struct \textbf{ P\+C\+M\+::\+Custom\+I\+I\+O\+Event\+Description}
+\item 
+class \textbf{ Basic\+Counter\+State}
+\begin{DoxyCompactList}\small\item\em Basic core counter state. \end{DoxyCompactList}\item 
+class \textbf{ Uncore\+Counter\+State}
+\begin{DoxyCompactList}\small\item\em Basic uncore counter state. \end{DoxyCompactList}\item 
+class \textbf{ Server\+Uncore\+Counter\+State}
+\begin{DoxyCompactList}\small\item\em \doxyref{Server}{p.}{classServer} uncore power counter state. \end{DoxyCompactList}\item 
+class \textbf{ Core\+Counter\+State}
+\begin{DoxyCompactList}\small\item\em (Logical) core-\/wide counter state \end{DoxyCompactList}\item 
+class \textbf{ Socket\+Counter\+State}
+\begin{DoxyCompactList}\small\item\em Socket-\/wide counter state. \end{DoxyCompactList}\item 
+class \textbf{ System\+Counter\+State}
+\begin{DoxyCompactList}\small\item\em System-\/wide counter state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{cpucounters_8h_a01c6125180b6116c4e5ab1f614541317}} 
+\#define {\bfseries P\+C\+M\+\_\+\+V\+E\+R\+S\+I\+ON}~\char`\"{} (\$Format\+:\%ci ID=\%h\$)\char`\"{}
+\item 
+\mbox{\label{cpucounters_8h_aca4217adabed70dc64d89170075b23ff}} 
+\#define {\bfseries P\+C\+M\+\_\+\+A\+PI}
+\item 
+\mbox{\label{cpucounters_8h_a9f918755b601cf4bffca775992e6fb90}} 
+\#define {\bfseries N\+O\+M\+I\+N\+M\+AX}
+\item 
+\mbox{\label{cpucounters_8h_a1fb9bedbef5f1f8b39a20ab1f9ab6fec}} 
+\#define {\bfseries P\+C\+M\+\_\+\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+M\+E\+T\+R\+I\+C\+\_\+\+A\+V\+A\+I\+L\+A\+B\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON}(m)~bool is\#\#m() const \{ return m; \}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{cpucounters_8h_a5ad98223a805ff06c785faea775a66fa}} 
+typedef \textbf{ Simple\+Counter\+State} {\bfseries P\+C\+Ie\+Counter\+State}
+\item 
+\mbox{\label{cpucounters_8h_a60cbda56e8ff357ac8710cccac6bdc76}} 
+typedef \textbf{ Simple\+Counter\+State} {\bfseries I\+I\+O\+Counter\+State}
+\item 
+\mbox{\label{cpucounters_8h_a00f27668f7791bd5d4e9110ff31c4d86}} 
+typedef std\+::vector$<$ uint64 $>$ {\bfseries event\+Group\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{cpucounters_8h_a128dd9dcd2d631e26392a39e62a11d4e}} 
+uint64 {\bfseries R\+D\+T\+SC} ()
+\item 
+\mbox{\label{cpucounters_8h_aff7492112dbcf504ab1408c5f9ffba66}} 
+uint64 {\bfseries R\+D\+T\+S\+CP} ()
+\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Q\+P\+I\+Clocks} (uint32 port, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns Q\+PI LL clock ticks. \end{DoxyCompactList}\item 
+\mbox{\label{cpucounters_8h_a4e29bb6fe37d6d31e4132eb1d32b1451}} 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\int32 {\bfseries get\+Thermal\+Headroom} (const Counter\+State\+Type \&, const Counter\+State\+Type \&after)
+\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Q\+P\+I\+L0p\+Tx\+Cycles} (uint32 port, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns the number of Q\+PI cycles in power saving half-\/lane mode. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Q\+P\+I\+L1\+Cycles} (uint32 port, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns the number of Q\+PI cycles in power saving shutdown mode. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Normalized\+Q\+P\+I\+L0p\+Tx\+Cycles} (uint32 port, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns the ratio of Q\+PI cycles in power saving half-\/lane mode. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Normalized\+Q\+P\+I\+L1\+Cycles} (uint32 port, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns the ratio of Q\+PI cycles in power saving shutdown mode. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+D\+R\+A\+M\+Clocks} (uint32 channel, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns D\+R\+AM clock ticks. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+M\+C\+D\+R\+A\+M\+Clocks} (uint32 channel, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns M\+C\+D\+R\+AM clock ticks. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+M\+C\+Counter} (uint32 channel, uint32 \textbf{ counter}, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Direct read of memory controller P\+MU counter (counter meaning depends on the programming\+: power/performance/etc) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+M2\+M\+Counter} (uint32 controller, uint32 \textbf{ counter}, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Direct read of Memory2\+Mesh controller P\+MU counter (counter meaning depends on the programming\+: power/performance/etc) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+E\+D\+C\+Counter} (uint32 channel, uint32 \textbf{ counter}, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Direct read of embedded D\+R\+AM memory controller counter (counter meaning depends on the programming\+: power/performance/etc) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+P\+C\+U\+Counter} (uint32 \textbf{ counter}, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Direct read of power control unit P\+MU counter (counter meaning depends on the programming\+: power/performance/etc) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+P\+C\+U\+Clocks} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns clock ticks of power control unit. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Consumed\+Energy} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns energy consumed by processor, excluding D\+R\+AM (measured in internal units) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+D\+R\+A\+M\+Consumed\+Energy} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns energy consumed by D\+R\+AM (measured in internal units) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Consumed\+Joules} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns Joules consumed by processor (excluding D\+R\+AM) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+D\+R\+A\+M\+Consumed\+Joules} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns Joules consumed by D\+R\+AM. \end{DoxyCompactList}\item 
+P\+C\+M\+\_\+\+A\+PI \textbf{ System\+Counter\+State} \textbf{ get\+System\+Counter\+State} ()
+\begin{DoxyCompactList}\small\item\em Reads the counter state of the system. \end{DoxyCompactList}\item 
+P\+C\+M\+\_\+\+A\+PI \textbf{ Socket\+Counter\+State} \textbf{ get\+Socket\+Counter\+State} (uint32 socket)
+\begin{DoxyCompactList}\small\item\em Reads the counter state of a socket. \end{DoxyCompactList}\item 
+P\+C\+M\+\_\+\+A\+PI \textbf{ Core\+Counter\+State} \textbf{ get\+Core\+Counter\+State} (uint32 core)
+\begin{DoxyCompactList}\small\item\em Reads the counter state of a (logical) core. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+I\+PC} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes average number of retired instructions per core cycle (I\+PC) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Instructions\+Retired} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes the number of retired instructions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Exec\+Usage} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes average number of retired instructions per time intervall. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Instructions\+Retired} (const Counter\+State\+Type \&now)
+\begin{DoxyCompactList}\small\item\em Computes the number of retired instructions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Cycles} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes the number core clock cycles when signal on a specific core is running (not halted) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Ref\+Cycles} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes the number of reference clock cycles while clock signal on the core is running. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Cycles} (const Counter\+State\+Type \&now)
+\begin{DoxyCompactList}\small\item\em Computes the number executed core clock cycles. \end{DoxyCompactList}\item 
+double \textbf{ get\+Core\+I\+PC} (const \textbf{ System\+Counter\+State} \&before, const \textbf{ System\+Counter\+State} \&after)
+\begin{DoxyCompactList}\small\item\em Computes average number of retired instructions per core cycle for the entire system combining instruction counts from logical cores to corresponding physical cores. \end{DoxyCompactList}\item 
+double \textbf{ get\+Total\+Exec\+Usage} (const \textbf{ System\+Counter\+State} \&before, const \textbf{ System\+Counter\+State} \&after)
+\begin{DoxyCompactList}\small\item\em Computes average number of retired instructions per time intervall for the entire system combining instruction counts from logical cores to corresponding physical cores. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Average\+Frequency} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes average core frequency also taking Intel Turbo Boost technology into account. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Active\+Average\+Frequency} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes average core frequency when not in powersaving C0-\/state (also taking Intel Turbo Boost technology into account) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Relative\+Frequency} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes average core frequency also taking Intel Turbo Boost technology into account. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Active\+Relative\+Frequency} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes average core frequency when not in powersaving C0-\/state (also taking Intel Turbo Boost technology into account) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+L2\+Cache\+Hit\+Ratio} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes L2 cache hit ratio. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+L3\+Cache\+Hit\+Ratio} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes L3 cache hit ratio. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L3\+Cache\+Misses} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of L3 cache misses. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L2\+Cache\+Misses} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of L2 cache misses. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L2\+Cache\+Hits} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of L2 cache hits. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L3\+Cache\+Occupancy} (const Counter\+State\+Type \&now)
+\begin{DoxyCompactList}\small\item\em Computes L3 Cache Occupancy. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Local\+Memory\+BW} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes Local Memory Bandwidth. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Remote\+Memory\+BW} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes Remote Memory Bandwidth. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L3\+Cache\+Hits\+No\+Snoop} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of L3 cache hits where no snooping in sibling L2 caches had to be done. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L3\+Cache\+Hits\+Snoop} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of L3 cache hits where snooping in sibling L2 caches had to be done. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+L3\+Cache\+Hits} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes total number of L3 cache hits. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Invariant\+T\+SC} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of invariant time stamp counter ticks. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Core\+C\+State\+Residency} (int state, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes residency in the core C-\/state. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Core\+C\+State\+Residency} (int state, const Counter\+State\+Type \&now)
+\begin{DoxyCompactList}\small\item\em Reads raw residency counter for the core C-\/state. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Package\+C\+State\+Residency} (int state, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes residency in the package C-\/state. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Package\+C\+State\+Residency} (int state, const Counter\+State\+Type \&now)
+\begin{DoxyCompactList}\small\item\em Reads raw residency counter for the package C-\/state. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Bytes\+Read\+From\+MC} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of bytes read from D\+R\+AM memory controllers. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Bytes\+Written\+To\+MC} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of bytes written to D\+R\+AM memory controllers. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Bytes\+Read\+From\+P\+MM} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of bytes read from P\+MM memory. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Bytes\+Written\+To\+P\+MM} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of bytes written to P\+MM memory. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Bytes\+Read\+From\+E\+DC} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of bytes read from M\+C\+D\+R\+AM memory controllers. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Bytes\+Written\+To\+E\+DC} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of bytes written to M\+C\+D\+R\+AM memory controllers. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+I\+O\+Request\+Bytes\+From\+MC} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Computes number of bytes of read/write requests from all IO sources. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+S\+M\+I\+Count} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns the number of occured system management interrupts. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\uint64 \textbf{ get\+Number\+Of\+Custom\+Events} (int32 event\+Counter\+Nr, const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns the number of occured custom core events. \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+Incoming\+Q\+P\+I\+Link\+Bytes} (uint32 socket\+Nr, uint32 link\+Nr, const \textbf{ System\+Counter\+State} \&before, const \textbf{ System\+Counter\+State} \&after)
+\begin{DoxyCompactList}\small\item\em Get estimation of Q\+PI data traffic per incoming Q\+PI link. \end{DoxyCompactList}\item 
+double \textbf{ get\+Incoming\+Q\+P\+I\+Link\+Utilization} (uint32 socket\+Nr, uint32 link\+Nr, const \textbf{ System\+Counter\+State} \&before, const \textbf{ System\+Counter\+State} \&after)
+\begin{DoxyCompactList}\small\item\em Get data utilization of incoming Q\+PI link (0..1) \end{DoxyCompactList}\item 
+double \textbf{ get\+Outgoing\+Q\+P\+I\+Link\+Utilization} (uint32 socket\+Nr, uint32 link\+Nr, const \textbf{ System\+Counter\+State} \&before, const \textbf{ System\+Counter\+State} \&after)
+\begin{DoxyCompactList}\small\item\em Get utilization of outgoing Q\+PI link (0..1) \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+Outgoing\+Q\+P\+I\+Link\+Bytes} (uint32 socket\+Nr, uint32 link\+Nr, const \textbf{ System\+Counter\+State} \&before, const \textbf{ System\+Counter\+State} \&after)
+\begin{DoxyCompactList}\small\item\em Get estimation of Q\+PI (data+nondata) traffic per outgoing Q\+PI link. \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes} (const \textbf{ System\+Counter\+State} \&before, const \textbf{ System\+Counter\+State} \&after)
+\begin{DoxyCompactList}\small\item\em Get estimation of total Q\+PI data traffic. \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+All\+Outgoing\+Q\+P\+I\+Link\+Bytes} (const \textbf{ System\+Counter\+State} \&before, const \textbf{ System\+Counter\+State} \&after)
+\begin{DoxyCompactList}\small\item\em Get estimation of total Q\+PI data+nondata traffic. \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+Incoming\+Q\+P\+I\+Link\+Bytes} (uint32 socket\+Nr, uint32 link\+Nr, const \textbf{ System\+Counter\+State} \&now)
+\begin{DoxyCompactList}\small\item\em Return current value of the counter of Q\+PI data traffic per incoming Q\+PI link. \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+Socket\+Incoming\+Q\+P\+I\+Link\+Bytes} (uint32 socket\+Nr, const \textbf{ System\+Counter\+State} \&now)
+\begin{DoxyCompactList}\small\item\em Get estimation of total Q\+PI data traffic for this socket. \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes} (const \textbf{ System\+Counter\+State} \&now)
+\begin{DoxyCompactList}\small\item\em Get estimation of \doxyref{Socket}{p.}{classSocket} Q\+PI data traffic. \end{DoxyCompactList}\item 
+double \textbf{ get\+Q\+P\+Ito\+M\+C\+Traffic\+Ratio} (const \textbf{ System\+Counter\+State} \&before, const \textbf{ System\+Counter\+State} \&after)
+\begin{DoxyCompactList}\small\item\em Get Q\+PI data to Memory Controller traffic ratio. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+Local\+Memory\+Request\+Ratio} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Get local memory access ration measured in home agent. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Counter\+Type $>$ }\\uint64 \textbf{ get\+Number\+Of\+Events} (const Counter\+Type \&before, const Counter\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns the raw count of events. \end{DoxyCompactList}\item 
+\mbox{\label{cpucounters_8h_a6791e3fe842320171cbac393e55929f6}} 
+{\footnotesize template$<$class Counter\+State\+Type $>$ }\\double \textbf{ get\+L\+L\+C\+Read\+Miss\+Latency} (const Counter\+State\+Type \&before, const Counter\+State\+Type \&after)
+\begin{DoxyCompactList}\small\item\em Returns average last level cache read+prefetch miss latency in ns. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Main C\+PU counters header. 
+
+Include this header file if you want to access C\+PU counters (core and uncore -\/ including memory controller chips and Q\+PI) 
+
+\subsection{Function Documentation}
+\mbox{\label{cpucounters_8h_a963d78be64ccddb4f7686405ef4df9c1}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Active\+Average\+Frequency@{get\+Active\+Average\+Frequency}}
+\index{get\+Active\+Average\+Frequency@{get\+Active\+Average\+Frequency}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Active\+Average\+Frequency()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Active\+Average\+Frequency (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes average core frequency when not in powersaving C0-\/state (also taking Intel Turbo Boost technology into account) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+frequency in Hz 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), and P\+C\+M\+::get\+Nominal\+Frequency().
+
+\mbox{\label{cpucounters_8h_a9a351e598b8af26131611ff37b592633}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Active\+Relative\+Frequency@{get\+Active\+Relative\+Frequency}}
+\index{get\+Active\+Relative\+Frequency@{get\+Active\+Relative\+Frequency}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Active\+Relative\+Frequency()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Active\+Relative\+Frequency (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes average core frequency when not in powersaving C0-\/state (also taking Intel Turbo Boost technology into account) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Fraction of nominal frequency (if $>$1.\+0 then Turbo was working during the measurement) 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+\mbox{\label{cpucounters_8h_a1f83dc2b6cd3a1efcd850003e26c6404}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes@{get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes}}
+\index{get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes@{get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily uint64 get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes (\begin{DoxyParamCaption}\item[{const \textbf{ System\+Counter\+State} \&}]{before,  }\item[{const \textbf{ System\+Counter\+State} \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get estimation of total Q\+PI data traffic. 
+
+Returns an estimation of number of data bytes transferred to all sockets over all Intel(r) Quick Path Interconnect links
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & System C\+PU counter state before the experiment \\
+\hline
+{\em after} & System C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), and P\+C\+M\+::get\+Num\+Sockets().
+
+
+
+Referenced by get\+Q\+P\+Ito\+M\+C\+Traffic\+Ratio().
+
+\mbox{\label{cpucounters_8h_ad21f46c2ea28e3ca5c074fc7749b7395}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes@{get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes}}
+\index{get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes@{get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily uint64 get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes (\begin{DoxyParamCaption}\item[{const \textbf{ System\+Counter\+State} \&}]{now }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get estimation of \doxyref{Socket}{p.}{classSocket} Q\+PI data traffic. 
+
+Returns an estimation of number of data bytes transferred to all sockets over all Intel(r) Quick Path Interconnect links
+
+
+\begin{DoxyParams}{Parameters}
+{\em now} & System C\+PU counter state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), P\+C\+M\+::get\+Num\+Sockets(), and get\+Socket\+Incoming\+Q\+P\+I\+Link\+Bytes().
+
+\mbox{\label{cpucounters_8h_a0b914c4bffa783271c276b29be582370}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+All\+Outgoing\+Q\+P\+I\+Link\+Bytes@{get\+All\+Outgoing\+Q\+P\+I\+Link\+Bytes}}
+\index{get\+All\+Outgoing\+Q\+P\+I\+Link\+Bytes@{get\+All\+Outgoing\+Q\+P\+I\+Link\+Bytes}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+All\+Outgoing\+Q\+P\+I\+Link\+Bytes()}
+{\footnotesize\ttfamily uint64 get\+All\+Outgoing\+Q\+P\+I\+Link\+Bytes (\begin{DoxyParamCaption}\item[{const \textbf{ System\+Counter\+State} \&}]{before,  }\item[{const \textbf{ System\+Counter\+State} \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get estimation of total Q\+PI data+nondata traffic. 
+
+Returns an estimation of number of data and non-\/data bytes transferred from all sockets over all Intel(r) Quick Path Interconnect links
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & System C\+PU counter state before the experiment \\
+\hline
+{\em after} & System C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), and P\+C\+M\+::get\+Num\+Sockets().
+
+\mbox{\label{cpucounters_8h_aa398facfd523b7dcdbf827a74970a88c}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Average\+Frequency@{get\+Average\+Frequency}}
+\index{get\+Average\+Frequency@{get\+Average\+Frequency}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Average\+Frequency()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Average\+Frequency (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes average core frequency also taking Intel Turbo Boost technology into account. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+frequency in Hz 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), and P\+C\+M\+::get\+Nominal\+Frequency().
+
+\mbox{\label{cpucounters_8h_a8a7e839f24a02691d4b3509fc2adee51}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Bytes\+Read\+From\+E\+DC@{get\+Bytes\+Read\+From\+E\+DC}}
+\index{get\+Bytes\+Read\+From\+E\+DC@{get\+Bytes\+Read\+From\+E\+DC}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Bytes\+Read\+From\+E\+D\+C()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Bytes\+Read\+From\+E\+DC (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes number of bytes read from M\+C\+D\+R\+AM memory controllers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+\mbox{\label{cpucounters_8h_a0f28a32a3edeaecd916ba097aee99d7f}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Bytes\+Read\+From\+MC@{get\+Bytes\+Read\+From\+MC}}
+\index{get\+Bytes\+Read\+From\+MC@{get\+Bytes\+Read\+From\+MC}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Bytes\+Read\+From\+M\+C()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Bytes\+Read\+From\+MC (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes number of bytes read from D\+R\+AM memory controllers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by get\+Q\+P\+Ito\+M\+C\+Traffic\+Ratio().
+
+\mbox{\label{cpucounters_8h_afba35ab2fa127ac0af819a1134711722}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Bytes\+Read\+From\+P\+MM@{get\+Bytes\+Read\+From\+P\+MM}}
+\index{get\+Bytes\+Read\+From\+P\+MM@{get\+Bytes\+Read\+From\+P\+MM}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Bytes\+Read\+From\+P\+M\+M()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Bytes\+Read\+From\+P\+MM (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes number of bytes read from P\+MM memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by get\+Q\+P\+Ito\+M\+C\+Traffic\+Ratio().
+
+\mbox{\label{cpucounters_8h_aface6421f7c3e654bcf411abd7cea990}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Bytes\+Written\+To\+E\+DC@{get\+Bytes\+Written\+To\+E\+DC}}
+\index{get\+Bytes\+Written\+To\+E\+DC@{get\+Bytes\+Written\+To\+E\+DC}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Bytes\+Written\+To\+E\+D\+C()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Bytes\+Written\+To\+E\+DC (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes number of bytes written to M\+C\+D\+R\+AM memory controllers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+\mbox{\label{cpucounters_8h_a24fce7df2ee7140db18ecfcd74fe63d1}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Bytes\+Written\+To\+MC@{get\+Bytes\+Written\+To\+MC}}
+\index{get\+Bytes\+Written\+To\+MC@{get\+Bytes\+Written\+To\+MC}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Bytes\+Written\+To\+M\+C()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Bytes\+Written\+To\+MC (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes number of bytes written to D\+R\+AM memory controllers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by get\+Q\+P\+Ito\+M\+C\+Traffic\+Ratio().
+
+\mbox{\label{cpucounters_8h_ae86f464068c1f531fd40612fa9ae0c7a}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Bytes\+Written\+To\+P\+MM@{get\+Bytes\+Written\+To\+P\+MM}}
+\index{get\+Bytes\+Written\+To\+P\+MM@{get\+Bytes\+Written\+To\+P\+MM}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Bytes\+Written\+To\+P\+M\+M()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Bytes\+Written\+To\+P\+MM (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes number of bytes written to P\+MM memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by get\+Q\+P\+Ito\+M\+C\+Traffic\+Ratio().
+
+\mbox{\label{cpucounters_8h_a054b949f09283093e1923affa4e58ae8}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Consumed\+Energy@{get\+Consumed\+Energy}}
+\index{get\+Consumed\+Energy@{get\+Consumed\+Energy}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Consumed\+Energy()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Consumed\+Energy (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns energy consumed by processor, excluding D\+R\+AM (measured in internal units) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by get\+Consumed\+Joules().
+
+\mbox{\label{cpucounters_8h_af8f7dab111f6b8cbcfa0c1b81e1860fb}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Consumed\+Joules@{get\+Consumed\+Joules}}
+\index{get\+Consumed\+Joules@{get\+Consumed\+Joules}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Consumed\+Joules()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Consumed\+Joules (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns Joules consumed by processor (excluding D\+R\+AM) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+
+
+References get\+Consumed\+Energy(), P\+C\+M\+::get\+Instance(), and P\+C\+M\+::get\+Joules\+Per\+Energy\+Unit().
+
+\mbox{\label{cpucounters_8h_abc0a6dbd1fb8151d5095443c0916ce78}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Core\+Counter\+State@{get\+Core\+Counter\+State}}
+\index{get\+Core\+Counter\+State@{get\+Core\+Counter\+State}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Core\+Counter\+State()}
+{\footnotesize\ttfamily P\+C\+M\+\_\+\+A\+PI \textbf{ Core\+Counter\+State} get\+Core\+Counter\+State (\begin{DoxyParamCaption}\item[{uint32}]{core }\end{DoxyParamCaption})}
+
+
+
+Reads the counter state of a (logical) core. 
+
+Helper function. Uses \doxyref{P\+CM}{p.}{classPCM} object to access counters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em core} & core id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+State of counters in the core 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Core\+Counter\+State(), and P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by P\+C\+M\+::get\+Error\+Message().
+
+\mbox{\label{cpucounters_8h_a98aa8d4eb21e8a992fc181d65018e5ce}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Core\+C\+State\+Residency@{get\+Core\+C\+State\+Residency}}
+\index{get\+Core\+C\+State\+Residency@{get\+Core\+C\+State\+Residency}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Core\+C\+State\+Residency()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Core\+C\+State\+Residency (\begin{DoxyParamCaption}\item[{int}]{state,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes residency in the core C-\/state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & C-\/state \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+residence ratio (0..1)\+: 0 -\/ 0\%, 1.\+0 -\/ 100\% 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), get\+Invariant\+T\+S\+C(), get\+Ref\+Cycles(), and P\+C\+M\+::is\+Core\+C\+State\+Residency\+Supported().
+
+\mbox{\label{cpucounters_8h_a98f62d772883ce741ba7065bada41d11}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Core\+C\+State\+Residency@{get\+Core\+C\+State\+Residency}}
+\index{get\+Core\+C\+State\+Residency@{get\+Core\+C\+State\+Residency}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Core\+C\+State\+Residency()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Core\+C\+State\+Residency (\begin{DoxyParamCaption}\item[{int}]{state,  }\item[{const Counter\+State\+Type \&}]{now }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reads raw residency counter for the core C-\/state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & C-\/state \# \\
+\hline
+{\em now} & C\+PU counter state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+raw residency value 
+\end{DoxyReturn}
+\mbox{\label{cpucounters_8h_abaca7147e6334e13bbbc718e4a537568}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Core\+I\+PC@{get\+Core\+I\+PC}}
+\index{get\+Core\+I\+PC@{get\+Core\+I\+PC}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Core\+I\+P\+C()}
+{\footnotesize\ttfamily double get\+Core\+I\+PC (\begin{DoxyParamCaption}\item[{const \textbf{ System\+Counter\+State} \&}]{before,  }\item[{const \textbf{ System\+Counter\+State} \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes average number of retired instructions per core cycle for the entire system combining instruction counts from logical cores to corresponding physical cores. 
+
+Use this metric to evaluate I\+PC improvement between S\+M\+T(\+Hyperthreading) on and S\+MT off.
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+I\+PC 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), get\+I\+P\+C(), P\+C\+M\+::get\+Num\+Cores(), P\+C\+M\+::get\+Num\+Online\+Cores(), and P\+C\+M\+::get\+Threads\+Per\+Core().
+
+\mbox{\label{cpucounters_8h_a5a3275c4f489a475f1658f4546567af4}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Cycles@{get\+Cycles}}
+\index{get\+Cycles@{get\+Cycles}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Cycles()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Cycles (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes the number core clock cycles when signal on a specific core is running (not halted) 
+
+Returns number of used cycles (halted cyles are not counted). The counter does not advance in the following conditions\+:
+\begin{DoxyItemize}
+\item an A\+C\+PI C-\/state is other than C0 for normal operation
+\item H\+LT
+\item S\+T\+P\+C\+L\+K+ pin is asserted
+\item being throttled by T\+M1
+\item during the frequency switching phase of a performance state transition
+\end{DoxyItemize}
+
+The performance counter for this event counts across performance state transitions using different core clock frequencies
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number core clock cycles 
+\end{DoxyReturn}
+\mbox{\label{cpucounters_8h_adc17d576ecaf02cf98cebc86329bf2a1}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Cycles@{get\+Cycles}}
+\index{get\+Cycles@{get\+Cycles}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Cycles()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Cycles (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{now }\end{DoxyParamCaption})}
+
+
+
+Computes the number executed core clock cycles. 
+
+Returns number of used cycles (halted cyles are not counted).
+
+
+\begin{DoxyParams}{Parameters}
+{\em now} & Current C\+PU counter state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number core clock cycles 
+\end{DoxyReturn}
+\mbox{\label{cpucounters_8h_aeb1baf7feb391c0512dc378a9fd66a17}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+D\+R\+A\+M\+Clocks@{get\+D\+R\+A\+M\+Clocks}}
+\index{get\+D\+R\+A\+M\+Clocks@{get\+D\+R\+A\+M\+Clocks}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+D\+R\+A\+M\+Clocks()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+D\+R\+A\+M\+Clocks (\begin{DoxyParamCaption}\item[{uint32}]{channel,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns D\+R\+AM clock ticks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & D\+R\+AM channel number \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\mbox{\label{cpucounters_8h_a71af0766460ef7dd3d138ec0d0924eda}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+D\+R\+A\+M\+Consumed\+Energy@{get\+D\+R\+A\+M\+Consumed\+Energy}}
+\index{get\+D\+R\+A\+M\+Consumed\+Energy@{get\+D\+R\+A\+M\+Consumed\+Energy}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+D\+R\+A\+M\+Consumed\+Energy()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+D\+R\+A\+M\+Consumed\+Energy (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns energy consumed by D\+R\+AM (measured in internal units) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by get\+D\+R\+A\+M\+Consumed\+Joules().
+
+\mbox{\label{cpucounters_8h_ab6f97a3386ac2d35dfd61148acde0a53}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+D\+R\+A\+M\+Consumed\+Joules@{get\+D\+R\+A\+M\+Consumed\+Joules}}
+\index{get\+D\+R\+A\+M\+Consumed\+Joules@{get\+D\+R\+A\+M\+Consumed\+Joules}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+D\+R\+A\+M\+Consumed\+Joules()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+D\+R\+A\+M\+Consumed\+Joules (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns Joules consumed by D\+R\+AM. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+
+
+References P\+C\+M\+::get\+C\+P\+U\+Model(), get\+D\+R\+A\+M\+Consumed\+Energy(), P\+C\+M\+::get\+Instance(), and P\+C\+M\+::get\+Joules\+Per\+Energy\+Unit().
+
+\mbox{\label{cpucounters_8h_a996fd8a127111e06540302cf9ccb24a7}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+E\+D\+C\+Counter@{get\+E\+D\+C\+Counter}}
+\index{get\+E\+D\+C\+Counter@{get\+E\+D\+C\+Counter}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+E\+D\+C\+Counter()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+E\+D\+C\+Counter (\begin{DoxyParamCaption}\item[{uint32}]{channel,  }\item[{uint32}]{counter,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Direct read of embedded D\+R\+AM memory controller counter (counter meaning depends on the programming\+: power/performance/etc) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em counter} & counter number \\
+\hline
+{\em channel} & channel number \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+
+
+References P\+C\+M\+::get\+Instance().
+
+\mbox{\label{cpucounters_8h_a159a6896f5ef3626b88cdd27a3c15ac0}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Exec\+Usage@{get\+Exec\+Usage}}
+\index{get\+Exec\+Usage@{get\+Exec\+Usage}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Exec\+Usage()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Exec\+Usage (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes average number of retired instructions per time intervall. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+usage 
+\end{DoxyReturn}
+
+
+Referenced by get\+Total\+Exec\+Usage().
+
+\mbox{\label{cpucounters_8h_aca1b1d8ba1679c4a0c394c2647428fd3}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Incoming\+Q\+P\+I\+Link\+Bytes@{get\+Incoming\+Q\+P\+I\+Link\+Bytes}}
+\index{get\+Incoming\+Q\+P\+I\+Link\+Bytes@{get\+Incoming\+Q\+P\+I\+Link\+Bytes}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Incoming\+Q\+P\+I\+Link\+Bytes()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily uint64 get\+Incoming\+Q\+P\+I\+Link\+Bytes (\begin{DoxyParamCaption}\item[{uint32}]{socket\+Nr,  }\item[{uint32}]{link\+Nr,  }\item[{const \textbf{ System\+Counter\+State} \&}]{before,  }\item[{const \textbf{ System\+Counter\+State} \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get estimation of Q\+PI data traffic per incoming Q\+PI link. 
+
+Returns an estimation of number of data bytes transferred to a socket over Intel(r) Quick Path Interconnect
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+Nr} & socket identifier \\
+\hline
+{\em link\+Nr} & link\+Nr \\
+\hline
+{\em before} & System C\+PU counter state before the experiment \\
+\hline
+{\em after} & System C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by get\+Incoming\+Q\+P\+I\+Link\+Utilization().
+
+\mbox{\label{cpucounters_8h_a42d6a119a26ea41c40d5585356d832ca}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Incoming\+Q\+P\+I\+Link\+Bytes@{get\+Incoming\+Q\+P\+I\+Link\+Bytes}}
+\index{get\+Incoming\+Q\+P\+I\+Link\+Bytes@{get\+Incoming\+Q\+P\+I\+Link\+Bytes}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Incoming\+Q\+P\+I\+Link\+Bytes()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily uint64 get\+Incoming\+Q\+P\+I\+Link\+Bytes (\begin{DoxyParamCaption}\item[{uint32}]{socket\+Nr,  }\item[{uint32}]{link\+Nr,  }\item[{const \textbf{ System\+Counter\+State} \&}]{now }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return current value of the counter of Q\+PI data traffic per incoming Q\+PI link. 
+
+Returns the number of incoming data bytes to a socket over Intel(r) Quick Path Interconnect
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+Nr} & socket identifier \\
+\hline
+{\em link\+Nr} & link\+Nr \\
+\hline
+{\em now} & Current System C\+PU counter state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+\mbox{\label{cpucounters_8h_a0ba3a5b71b7dd6b84c345f8cbc795b1c}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Incoming\+Q\+P\+I\+Link\+Utilization@{get\+Incoming\+Q\+P\+I\+Link\+Utilization}}
+\index{get\+Incoming\+Q\+P\+I\+Link\+Utilization@{get\+Incoming\+Q\+P\+I\+Link\+Utilization}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Incoming\+Q\+P\+I\+Link\+Utilization()}
+{\footnotesize\ttfamily double get\+Incoming\+Q\+P\+I\+Link\+Utilization (\begin{DoxyParamCaption}\item[{uint32}]{socket\+Nr,  }\item[{uint32}]{link\+Nr,  }\item[{const \textbf{ System\+Counter\+State} \&}]{before,  }\item[{const \textbf{ System\+Counter\+State} \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get data utilization of incoming Q\+PI link (0..1) 
+
+Returns an estimation of utilization of Q\+PI link by data traffic transferred to a socket over Intel(r) Quick Path Interconnect
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+Nr} & socket identifier \\
+\hline
+{\em link\+Nr} & link\+Nr \\
+\hline
+{\em before} & System C\+PU counter state before the experiment \\
+\hline
+{\em after} & System C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+utilization (0..1) 
+\end{DoxyReturn}
+
+
+References get\+Incoming\+Q\+P\+I\+Link\+Bytes(), P\+C\+M\+::get\+Instance(), get\+Invariant\+T\+S\+C(), P\+C\+M\+::get\+Nominal\+Frequency(), P\+C\+M\+::get\+Num\+Cores(), and P\+C\+M\+::get\+Q\+P\+I\+Link\+Speed().
+
+\mbox{\label{cpucounters_8h_af124718a7620c7bbca81232c2149f771}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Instructions\+Retired@{get\+Instructions\+Retired}}
+\index{get\+Instructions\+Retired@{get\+Instructions\+Retired}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Instructions\+Retired()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Instructions\+Retired (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes the number of retired instructions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of retired instructions 
+\end{DoxyReturn}
+\mbox{\label{cpucounters_8h_afced47e4bb3712da79dc64cb16ac335a}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Instructions\+Retired@{get\+Instructions\+Retired}}
+\index{get\+Instructions\+Retired@{get\+Instructions\+Retired}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Instructions\+Retired()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Instructions\+Retired (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{now }\end{DoxyParamCaption})}
+
+
+
+Computes the number of retired instructions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em now} & Current C\+PU counter state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of retired instructions 
+\end{DoxyReturn}
+\mbox{\label{cpucounters_8h_a45cf07a8d3ce2c48968842554a3854f9}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Invariant\+T\+SC@{get\+Invariant\+T\+SC}}
+\index{get\+Invariant\+T\+SC@{get\+Invariant\+T\+SC}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Invariant\+T\+S\+C()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Invariant\+T\+SC (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes number of invariant time stamp counter ticks. 
+
+This counter counts irrespectively of C-\/, P-\/ or T-\/states
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of time stamp counter ticks 
+\end{DoxyReturn}
+
+
+Referenced by get\+Core\+C\+State\+Residency(), get\+Incoming\+Q\+P\+I\+Link\+Utilization(), get\+L\+L\+C\+Read\+Miss\+Latency(), get\+Outgoing\+Q\+P\+I\+Link\+Bytes(), get\+Outgoing\+Q\+P\+I\+Link\+Utilization(), get\+Package\+C\+State\+Residency(), and P\+C\+M\+::get\+Tick\+Count().
+
+\mbox{\label{cpucounters_8h_a7e5434dba3a810501f289329e52b889d}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+I\+O\+Request\+Bytes\+From\+MC@{get\+I\+O\+Request\+Bytes\+From\+MC}}
+\index{get\+I\+O\+Request\+Bytes\+From\+MC@{get\+I\+O\+Request\+Bytes\+From\+MC}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+I\+O\+Request\+Bytes\+From\+M\+C()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+I\+O\+Request\+Bytes\+From\+MC (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes number of bytes of read/write requests from all IO sources. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+\mbox{\label{cpucounters_8h_a7b0019d24a77dc05b7e47cb98192fd22}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+I\+PC@{get\+I\+PC}}
+\index{get\+I\+PC@{get\+I\+PC}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+I\+P\+C()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+I\+PC (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes average number of retired instructions per core cycle (I\+PC) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+I\+PC 
+\end{DoxyReturn}
+
+
+Referenced by get\+Core\+I\+P\+C().
+
+\mbox{\label{cpucounters_8h_a5922acedeec3c1cc67d20670f8ef0518}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+L2\+Cache\+Hit\+Ratio@{get\+L2\+Cache\+Hit\+Ratio}}
+\index{get\+L2\+Cache\+Hit\+Ratio@{get\+L2\+Cache\+Hit\+Ratio}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+L2\+Cache\+Hit\+Ratio()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+L2\+Cache\+Hit\+Ratio (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes L2 cache hit ratio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+value between 0 and 1 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), get\+L2\+Cache\+Hits(), and get\+L2\+Cache\+Misses().
+
+\mbox{\label{cpucounters_8h_a459367d7877d09594c2ecd85e04cae61}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+L2\+Cache\+Hits@{get\+L2\+Cache\+Hits}}
+\index{get\+L2\+Cache\+Hits@{get\+L2\+Cache\+Hits}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+L2\+Cache\+Hits()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L2\+Cache\+Hits (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes number of L2 cache hits. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+number of hits 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by get\+L2\+Cache\+Hit\+Ratio().
+
+\mbox{\label{cpucounters_8h_a291eeab262fdb93de08cdfdf50dbad58}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+L2\+Cache\+Misses@{get\+L2\+Cache\+Misses}}
+\index{get\+L2\+Cache\+Misses@{get\+L2\+Cache\+Misses}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+L2\+Cache\+Misses()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L2\+Cache\+Misses (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes number of L2 cache misses. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+number of misses 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by get\+L2\+Cache\+Hit\+Ratio().
+
+\mbox{\label{cpucounters_8h_a7b03f0cd02862716d717e897032b7885}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+L3\+Cache\+Hit\+Ratio@{get\+L3\+Cache\+Hit\+Ratio}}
+\index{get\+L3\+Cache\+Hit\+Ratio@{get\+L3\+Cache\+Hit\+Ratio}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+L3\+Cache\+Hit\+Ratio()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+L3\+Cache\+Hit\+Ratio (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes L3 cache hit ratio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+value between 0 and 1 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), get\+L3\+Cache\+Hits(), and get\+L3\+Cache\+Misses().
+
+\mbox{\label{cpucounters_8h_a7ba16714ef7ed547ad8648cb5b9e52f6}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+L3\+Cache\+Hits@{get\+L3\+Cache\+Hits}}
+\index{get\+L3\+Cache\+Hits@{get\+L3\+Cache\+Hits}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+L3\+Cache\+Hits()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L3\+Cache\+Hits (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes total number of L3 cache hits. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+number of hits 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), get\+L3\+Cache\+Hits\+No\+Snoop(), and get\+L3\+Cache\+Hits\+Snoop().
+
+
+
+Referenced by get\+L3\+Cache\+Hit\+Ratio().
+
+\mbox{\label{cpucounters_8h_ace0e3ffc23c20d0eda7663cb7e4899a2}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+L3\+Cache\+Hits\+No\+Snoop@{get\+L3\+Cache\+Hits\+No\+Snoop}}
+\index{get\+L3\+Cache\+Hits\+No\+Snoop@{get\+L3\+Cache\+Hits\+No\+Snoop}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+L3\+Cache\+Hits\+No\+Snoop()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L3\+Cache\+Hits\+No\+Snoop (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes number of L3 cache hits where no snooping in sibling L2 caches had to be done. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+number of hits 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by get\+L3\+Cache\+Hits().
+
+\mbox{\label{cpucounters_8h_a4b1050ca9ccdd66661df556bab70fd0f}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+L3\+Cache\+Hits\+Snoop@{get\+L3\+Cache\+Hits\+Snoop}}
+\index{get\+L3\+Cache\+Hits\+Snoop@{get\+L3\+Cache\+Hits\+Snoop}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+L3\+Cache\+Hits\+Snoop()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L3\+Cache\+Hits\+Snoop (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes number of L3 cache hits where snooping in sibling L2 caches had to be done. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+number of hits 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by get\+L3\+Cache\+Hits().
+
+\mbox{\label{cpucounters_8h_a94118e70266db2ed7fc6b8b7b4e2c343}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+L3\+Cache\+Misses@{get\+L3\+Cache\+Misses}}
+\index{get\+L3\+Cache\+Misses@{get\+L3\+Cache\+Misses}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+L3\+Cache\+Misses()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L3\+Cache\+Misses (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes number of L3 cache misses. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Works only in the D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+V\+E\+N\+TS programming mode (see program() method) 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+number of misses 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by get\+L3\+Cache\+Hit\+Ratio().
+
+\mbox{\label{cpucounters_8h_a185f850a9a753d9cf4deb8299261fd4c}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+L3\+Cache\+Occupancy@{get\+L3\+Cache\+Occupancy}}
+\index{get\+L3\+Cache\+Occupancy@{get\+L3\+Cache\+Occupancy}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+L3\+Cache\+Occupancy()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+L3\+Cache\+Occupancy (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{now }\end{DoxyParamCaption})}
+
+
+
+Computes L3 Cache Occupancy. 
+
+
+
+References P\+C\+M\+::get\+Instance(), and P\+C\+M\+::\+L3\+Cache\+Occupancy\+Metric\+Available().
+
+\mbox{\label{cpucounters_8h_a3ba7c9267c6e0f338a59defc98ae0007}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Local\+Memory\+BW@{get\+Local\+Memory\+BW}}
+\index{get\+Local\+Memory\+BW@{get\+Local\+Memory\+BW}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Local\+Memory\+B\+W()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Local\+Memory\+BW (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes Local Memory Bandwidth. 
+
+
+
+References P\+C\+M\+::\+Core\+Local\+Memory\+B\+W\+Metric\+Available(), and P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by get\+Remote\+Memory\+B\+W().
+
+\mbox{\label{cpucounters_8h_ab7b921e53cadd4e1504c90c400bd8b18}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Local\+Memory\+Request\+Ratio@{get\+Local\+Memory\+Request\+Ratio}}
+\index{get\+Local\+Memory\+Request\+Ratio@{get\+Local\+Memory\+Request\+Ratio}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Local\+Memory\+Request\+Ratio()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Local\+Memory\+Request\+Ratio (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get local memory access ration measured in home agent. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & System C\+PU counter state before the experiment \\
+\hline
+{\em after} & System C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ratio 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+\mbox{\label{cpucounters_8h_a7dc8446d1f6172bdac1401e5d3ec0a4d}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+M2\+M\+Counter@{get\+M2\+M\+Counter}}
+\index{get\+M2\+M\+Counter@{get\+M2\+M\+Counter}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+M2\+M\+Counter()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+M2\+M\+Counter (\begin{DoxyParamCaption}\item[{uint32}]{controller,  }\item[{uint32}]{counter,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Direct read of Memory2\+Mesh controller P\+MU counter (counter meaning depends on the programming\+: power/performance/etc) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em counter} & counter number \\
+\hline
+{\em controller} & controller number \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\mbox{\label{cpucounters_8h_aed082cc97dbad35e1633823e582afa0f}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+M\+C\+Counter@{get\+M\+C\+Counter}}
+\index{get\+M\+C\+Counter@{get\+M\+C\+Counter}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+M\+C\+Counter()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+M\+C\+Counter (\begin{DoxyParamCaption}\item[{uint32}]{channel,  }\item[{uint32}]{counter,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Direct read of memory controller P\+MU counter (counter meaning depends on the programming\+: power/performance/etc) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em counter} & counter number \\
+\hline
+{\em channel} & channel number \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\mbox{\label{cpucounters_8h_a1615063ac14cde3ace1a91bfb349f3f9}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+M\+C\+D\+R\+A\+M\+Clocks@{get\+M\+C\+D\+R\+A\+M\+Clocks}}
+\index{get\+M\+C\+D\+R\+A\+M\+Clocks@{get\+M\+C\+D\+R\+A\+M\+Clocks}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+M\+C\+D\+R\+A\+M\+Clocks()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+M\+C\+D\+R\+A\+M\+Clocks (\begin{DoxyParamCaption}\item[{uint32}]{channel,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns M\+C\+D\+R\+AM clock ticks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & M\+C\+D\+R\+AM channel number \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\mbox{\label{cpucounters_8h_aa5a7caff83891aafc6e9eb20501170cc}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Normalized\+Q\+P\+I\+L0p\+Tx\+Cycles@{get\+Normalized\+Q\+P\+I\+L0p\+Tx\+Cycles}}
+\index{get\+Normalized\+Q\+P\+I\+L0p\+Tx\+Cycles@{get\+Normalized\+Q\+P\+I\+L0p\+Tx\+Cycles}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Normalized\+Q\+P\+I\+L0p\+Tx\+Cycles()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Normalized\+Q\+P\+I\+L0p\+Tx\+Cycles (\begin{DoxyParamCaption}\item[{uint32}]{port,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns the ratio of Q\+PI cycles in power saving half-\/lane mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Q\+PI port number \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0..1 -\/ ratio of Q\+PI cycles in power saving half-\/lane mode 
+\end{DoxyReturn}
+
+
+References get\+Q\+P\+I\+Clocks(), and get\+Q\+P\+I\+L0p\+Tx\+Cycles().
+
+\mbox{\label{cpucounters_8h_a0ea54e2a783ce71cef06350aed099104}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Normalized\+Q\+P\+I\+L1\+Cycles@{get\+Normalized\+Q\+P\+I\+L1\+Cycles}}
+\index{get\+Normalized\+Q\+P\+I\+L1\+Cycles@{get\+Normalized\+Q\+P\+I\+L1\+Cycles}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Normalized\+Q\+P\+I\+L1\+Cycles()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Normalized\+Q\+P\+I\+L1\+Cycles (\begin{DoxyParamCaption}\item[{uint32}]{port,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns the ratio of Q\+PI cycles in power saving shutdown mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Q\+PI port number \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0..1 -\/ ratio of Q\+PI cycles in power saving shutdown mode 
+\end{DoxyReturn}
+
+
+References get\+Q\+P\+I\+Clocks(), and get\+Q\+P\+I\+L1\+Cycles().
+
+\mbox{\label{cpucounters_8h_abaa9d828b52f41866bf7dc8ff491a62e}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Number\+Of\+Custom\+Events@{get\+Number\+Of\+Custom\+Events}}
+\index{get\+Number\+Of\+Custom\+Events@{get\+Number\+Of\+Custom\+Events}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Number\+Of\+Custom\+Events()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Number\+Of\+Custom\+Events (\begin{DoxyParamCaption}\item[{int32}]{event\+Counter\+Nr,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns the number of occured custom core events. 
+
+Read number of events programmed with the {\ttfamily C\+U\+S\+T\+O\+M\+\_\+\+C\+O\+R\+E\+\_\+\+E\+V\+E\+N\+TS} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event\+Counter\+Nr} & Event/counter number (value from 0 to 3) \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+\mbox{\label{cpucounters_8h_a74fe887976e82116d27513e162a9a089}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Number\+Of\+Events@{get\+Number\+Of\+Events}}
+\index{get\+Number\+Of\+Events@{get\+Number\+Of\+Events}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Number\+Of\+Events()}
+{\footnotesize\ttfamily template$<$class Counter\+Type $>$ \\
+uint64 get\+Number\+Of\+Events (\begin{DoxyParamCaption}\item[{const Counter\+Type \&}]{before,  }\item[{const Counter\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the raw count of events. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & counter state before the experiment \\
+\hline
+{\em after} & counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\mbox{\label{cpucounters_8h_a6bdb34d102d7353421bd878da7b9ef23}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Outgoing\+Q\+P\+I\+Link\+Bytes@{get\+Outgoing\+Q\+P\+I\+Link\+Bytes}}
+\index{get\+Outgoing\+Q\+P\+I\+Link\+Bytes@{get\+Outgoing\+Q\+P\+I\+Link\+Bytes}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Outgoing\+Q\+P\+I\+Link\+Bytes()}
+{\footnotesize\ttfamily uint64 get\+Outgoing\+Q\+P\+I\+Link\+Bytes (\begin{DoxyParamCaption}\item[{uint32}]{socket\+Nr,  }\item[{uint32}]{link\+Nr,  }\item[{const \textbf{ System\+Counter\+State} \&}]{before,  }\item[{const \textbf{ System\+Counter\+State} \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get estimation of Q\+PI (data+nondata) traffic per outgoing Q\+PI link. 
+
+Returns an estimation of number of data bytes transferred from a socket over Intel(r) Quick Path Interconnect
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+Nr} & socket identifier \\
+\hline
+{\em link\+Nr} & link\+Nr \\
+\hline
+{\em before} & System C\+PU counter state before the experiment \\
+\hline
+{\em after} & System C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), get\+Invariant\+T\+S\+C(), P\+C\+M\+::get\+Nominal\+Frequency(), P\+C\+M\+::get\+Num\+Cores(), get\+Outgoing\+Q\+P\+I\+Link\+Utilization(), and P\+C\+M\+::get\+Q\+P\+I\+Link\+Speed().
+
+\mbox{\label{cpucounters_8h_ac7b1863133a9a711117fcb8b68d2d773}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Outgoing\+Q\+P\+I\+Link\+Utilization@{get\+Outgoing\+Q\+P\+I\+Link\+Utilization}}
+\index{get\+Outgoing\+Q\+P\+I\+Link\+Utilization@{get\+Outgoing\+Q\+P\+I\+Link\+Utilization}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Outgoing\+Q\+P\+I\+Link\+Utilization()}
+{\footnotesize\ttfamily double get\+Outgoing\+Q\+P\+I\+Link\+Utilization (\begin{DoxyParamCaption}\item[{uint32}]{socket\+Nr,  }\item[{uint32}]{link\+Nr,  }\item[{const \textbf{ System\+Counter\+State} \&}]{before,  }\item[{const \textbf{ System\+Counter\+State} \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get utilization of outgoing Q\+PI link (0..1) 
+
+Returns an estimation of utilization of Q\+PI link by (data+nondata) traffic transferred from a socket over Intel(r) Quick Path Interconnect
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+Nr} & socket identifier \\
+\hline
+{\em link\+Nr} & link\+Nr \\
+\hline
+{\em before} & System C\+PU counter state before the experiment \\
+\hline
+{\em after} & System C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+utilization (0..1) 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), get\+Invariant\+T\+S\+C(), P\+C\+M\+::get\+Nominal\+Frequency(), P\+C\+M\+::get\+Num\+Cores(), and P\+C\+M\+::get\+Q\+P\+I\+Link\+Speed().
+
+
+
+Referenced by get\+Outgoing\+Q\+P\+I\+Link\+Bytes().
+
+\mbox{\label{cpucounters_8h_a5e34f7b0326dda86b54fcb7bb84a0b38}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Package\+C\+State\+Residency@{get\+Package\+C\+State\+Residency}}
+\index{get\+Package\+C\+State\+Residency@{get\+Package\+C\+State\+Residency}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Package\+C\+State\+Residency()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Package\+C\+State\+Residency (\begin{DoxyParamCaption}\item[{int}]{state,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes residency in the package C-\/state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & C-\/state \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+residence ratio (0..1)\+: 0 -\/ 0\%, 1.\+0 -\/ 100\% 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), get\+Invariant\+T\+S\+C(), and P\+C\+M\+::is\+Package\+C\+State\+Residency\+Supported().
+
+\mbox{\label{cpucounters_8h_acc0bf1bfe515f9e6b7003ee87ba10eb0}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Package\+C\+State\+Residency@{get\+Package\+C\+State\+Residency}}
+\index{get\+Package\+C\+State\+Residency@{get\+Package\+C\+State\+Residency}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Package\+C\+State\+Residency()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Package\+C\+State\+Residency (\begin{DoxyParamCaption}\item[{int}]{state,  }\item[{const Counter\+State\+Type \&}]{now }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reads raw residency counter for the package C-\/state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & C-\/state \# \\
+\hline
+{\em now} & C\+PU counter state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+raw residency value 
+\end{DoxyReturn}
+\mbox{\label{cpucounters_8h_acd430f703c67fc7dc0829d624ba657af}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+P\+C\+U\+Clocks@{get\+P\+C\+U\+Clocks}}
+\index{get\+P\+C\+U\+Clocks@{get\+P\+C\+U\+Clocks}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+P\+C\+U\+Clocks()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+P\+C\+U\+Clocks (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns clock ticks of power control unit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+
+
+References get\+P\+C\+U\+Counter().
+
+\mbox{\label{cpucounters_8h_a3c424ad42d2439410d6ffc371335573d}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+P\+C\+U\+Counter@{get\+P\+C\+U\+Counter}}
+\index{get\+P\+C\+U\+Counter@{get\+P\+C\+U\+Counter}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+P\+C\+U\+Counter()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+P\+C\+U\+Counter (\begin{DoxyParamCaption}\item[{uint32}]{counter,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Direct read of power control unit P\+MU counter (counter meaning depends on the programming\+: power/performance/etc) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em counter} & counter number \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by get\+P\+C\+U\+Clocks().
+
+\mbox{\label{cpucounters_8h_af7d9ba0936d7c305d0cc6c2db296a336}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Q\+P\+I\+Clocks@{get\+Q\+P\+I\+Clocks}}
+\index{get\+Q\+P\+I\+Clocks@{get\+Q\+P\+I\+Clocks}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Q\+P\+I\+Clocks()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Q\+P\+I\+Clocks (\begin{DoxyParamCaption}\item[{uint32}]{port,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns Q\+PI LL clock ticks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Q\+PI port number \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by get\+Normalized\+Q\+P\+I\+L0p\+Tx\+Cycles(), and get\+Normalized\+Q\+P\+I\+L1\+Cycles().
+
+\mbox{\label{cpucounters_8h_acdac5d9d7a5a6496d90b0681badc26b3}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Q\+P\+I\+L0p\+Tx\+Cycles@{get\+Q\+P\+I\+L0p\+Tx\+Cycles}}
+\index{get\+Q\+P\+I\+L0p\+Tx\+Cycles@{get\+Q\+P\+I\+L0p\+Tx\+Cycles}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Q\+P\+I\+L0p\+Tx\+Cycles()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Q\+P\+I\+L0p\+Tx\+Cycles (\begin{DoxyParamCaption}\item[{uint32}]{port,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns the number of Q\+PI cycles in power saving half-\/lane mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Q\+PI port number \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by get\+Normalized\+Q\+P\+I\+L0p\+Tx\+Cycles().
+
+\mbox{\label{cpucounters_8h_a580ae4e465d0f8dd93935ad7af28c095}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Q\+P\+I\+L1\+Cycles@{get\+Q\+P\+I\+L1\+Cycles}}
+\index{get\+Q\+P\+I\+L1\+Cycles@{get\+Q\+P\+I\+L1\+Cycles}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Q\+P\+I\+L1\+Cycles()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Q\+P\+I\+L1\+Cycles (\begin{DoxyParamCaption}\item[{uint32}]{port,  }\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns the number of Q\+PI cycles in power saving shutdown mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Q\+PI port number \\
+\hline
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by get\+Normalized\+Q\+P\+I\+L1\+Cycles().
+
+\mbox{\label{cpucounters_8h_a17823150d51bdebdd203dfa00b0a5f49}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Q\+P\+Ito\+M\+C\+Traffic\+Ratio@{get\+Q\+P\+Ito\+M\+C\+Traffic\+Ratio}}
+\index{get\+Q\+P\+Ito\+M\+C\+Traffic\+Ratio@{get\+Q\+P\+Ito\+M\+C\+Traffic\+Ratio}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Q\+P\+Ito\+M\+C\+Traffic\+Ratio()}
+{\footnotesize\ttfamily double get\+Q\+P\+Ito\+M\+C\+Traffic\+Ratio (\begin{DoxyParamCaption}\item[{const \textbf{ System\+Counter\+State} \&}]{before,  }\item[{const \textbf{ System\+Counter\+State} \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get Q\+PI data to Memory Controller traffic ratio. 
+
+Ideally for N\+U\+M\+A-\/optmized programs the ratio should be close to 0.
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & System C\+PU counter state before the experiment \\
+\hline
+{\em after} & System C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ratio 
+\end{DoxyReturn}
+
+
+References get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes(), get\+Bytes\+Read\+From\+M\+C(), get\+Bytes\+Read\+From\+P\+M\+M(), get\+Bytes\+Written\+To\+M\+C(), get\+Bytes\+Written\+To\+P\+M\+M(), and P\+C\+M\+::get\+Instance().
+
+\mbox{\label{cpucounters_8h_aaa3691b803702deec828d0d8d8a8f326}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Ref\+Cycles@{get\+Ref\+Cycles}}
+\index{get\+Ref\+Cycles@{get\+Ref\+Cycles}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Ref\+Cycles()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Ref\+Cycles (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes the number of reference clock cycles while clock signal on the core is running. 
+
+The reference clock operates at a fixed frequency, irrespective of core frequency changes due to performance state transitions. See Intel(r) Software Developer\textquotesingle{}s Manual for more details
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number core clock cycles 
+\end{DoxyReturn}
+
+
+Referenced by get\+Core\+C\+State\+Residency().
+
+\mbox{\label{cpucounters_8h_a806e72bc51f05acc4af0667ca3334242}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Relative\+Frequency@{get\+Relative\+Frequency}}
+\index{get\+Relative\+Frequency@{get\+Relative\+Frequency}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Relative\+Frequency()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+double get\+Relative\+Frequency (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes average core frequency also taking Intel Turbo Boost technology into account. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Fraction of nominal frequency 
+\end{DoxyReturn}
+\mbox{\label{cpucounters_8h_a00c97b1a7d8a7125ce7fd129cddb52e8}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Remote\+Memory\+BW@{get\+Remote\+Memory\+BW}}
+\index{get\+Remote\+Memory\+BW@{get\+Remote\+Memory\+BW}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Remote\+Memory\+B\+W()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+Remote\+Memory\+BW (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Computes Remote Memory Bandwidth. 
+
+
+
+References P\+C\+M\+::\+Core\+Remote\+Memory\+B\+W\+Metric\+Available(), P\+C\+M\+::get\+Instance(), and get\+Local\+Memory\+B\+W().
+
+\mbox{\label{cpucounters_8h_a5e245473e2297272a50ca054b33c8c86}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+S\+M\+I\+Count@{get\+S\+M\+I\+Count}}
+\index{get\+S\+M\+I\+Count@{get\+S\+M\+I\+Count}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+S\+M\+I\+Count()}
+{\footnotesize\ttfamily template$<$class Counter\+State\+Type $>$ \\
+uint64 get\+S\+M\+I\+Count (\begin{DoxyParamCaption}\item[{const Counter\+State\+Type \&}]{before,  }\item[{const Counter\+State\+Type \&}]{after }\end{DoxyParamCaption})}
+
+
+
+Returns the number of occured system management interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of S\+M\+Is (system manegement interrupts) 
+\end{DoxyReturn}
+\mbox{\label{cpucounters_8h_ad3fd926e1850510a693196af34206483}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Socket\+Counter\+State@{get\+Socket\+Counter\+State}}
+\index{get\+Socket\+Counter\+State@{get\+Socket\+Counter\+State}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Socket\+Counter\+State()}
+{\footnotesize\ttfamily P\+C\+M\+\_\+\+A\+PI \textbf{ Socket\+Counter\+State} get\+Socket\+Counter\+State (\begin{DoxyParamCaption}\item[{uint32}]{socket }\end{DoxyParamCaption})}
+
+
+
+Reads the counter state of a socket. 
+
+Helper function. Uses \doxyref{P\+CM}{p.}{classPCM} object to access counters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket} & socket id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+State of counters in the socket 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), and P\+C\+M\+::get\+Socket\+Counter\+State().
+
+
+
+Referenced by P\+C\+M\+::get\+Error\+Message().
+
+\mbox{\label{cpucounters_8h_ae6e948c5ad7859e3760336aa02f466bd}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Socket\+Incoming\+Q\+P\+I\+Link\+Bytes@{get\+Socket\+Incoming\+Q\+P\+I\+Link\+Bytes}}
+\index{get\+Socket\+Incoming\+Q\+P\+I\+Link\+Bytes@{get\+Socket\+Incoming\+Q\+P\+I\+Link\+Bytes}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Socket\+Incoming\+Q\+P\+I\+Link\+Bytes()}
+{\footnotesize\ttfamily uint64 get\+Socket\+Incoming\+Q\+P\+I\+Link\+Bytes (\begin{DoxyParamCaption}\item[{uint32}]{socket\+Nr,  }\item[{const \textbf{ System\+Counter\+State} \&}]{now }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get estimation of total Q\+PI data traffic for this socket. 
+
+Returns an estimation of number of bytes transferred to this sockets over all Intel(r) Quick Path Interconnect links on this socket
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & System C\+PU counter state before the experiment \\
+\hline
+{\em after} & System C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by get\+All\+Incoming\+Q\+P\+I\+Link\+Bytes().
+
+\mbox{\label{cpucounters_8h_a7a00cd524240b3c46d07ef9be7a6cdea}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+System\+Counter\+State@{get\+System\+Counter\+State}}
+\index{get\+System\+Counter\+State@{get\+System\+Counter\+State}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+System\+Counter\+State()}
+{\footnotesize\ttfamily P\+C\+M\+\_\+\+A\+PI \textbf{ System\+Counter\+State} get\+System\+Counter\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads the counter state of the system. 
+
+Helper function. Uses \doxyref{P\+CM}{p.}{classPCM} object to access counters.
+
+System consists of several sockets (C\+P\+Us). \doxyref{Socket}{p.}{classSocket} has a C\+PU in it. \doxyref{Socket}{p.}{classSocket} (C\+PU) consists of several (logical) cores.
+
+\begin{DoxyReturn}{Returns}
+State of counters in the entire system 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), and P\+C\+M\+::get\+System\+Counter\+State().
+
+
+
+Referenced by P\+C\+M\+::get\+Error\+Message().
+
+\mbox{\label{cpucounters_8h_a546944a165ea621d77a524b15ccd6cf1}} 
+\index{cpucounters.\+h@{cpucounters.\+h}!get\+Total\+Exec\+Usage@{get\+Total\+Exec\+Usage}}
+\index{get\+Total\+Exec\+Usage@{get\+Total\+Exec\+Usage}!cpucounters.\+h@{cpucounters.\+h}}
+\subsubsection{get\+Total\+Exec\+Usage()}
+{\footnotesize\ttfamily double get\+Total\+Exec\+Usage (\begin{DoxyParamCaption}\item[{const \textbf{ System\+Counter\+State} \&}]{before,  }\item[{const \textbf{ System\+Counter\+State} \&}]{after }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes average number of retired instructions per time intervall for the entire system combining instruction counts from logical cores to corresponding physical cores. 
+
+Use this metric to evaluate cores utilization improvement between S\+M\+T(\+Hyperthreading) on and S\+MT off.
+
+
+\begin{DoxyParams}{Parameters}
+{\em before} & C\+PU counter state before the experiment \\
+\hline
+{\em after} & C\+PU counter state after the experiment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+usage 
+\end{DoxyReturn}
+
+
+References get\+Exec\+Usage(), P\+C\+M\+::get\+Instance(), P\+C\+M\+::get\+Num\+Cores(), P\+C\+M\+::get\+Num\+Online\+Cores(), and P\+C\+M\+::get\+Threads\+Per\+Core().
+

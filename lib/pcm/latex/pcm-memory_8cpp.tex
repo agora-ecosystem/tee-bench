@@ -1,0 +1,123 @@
+\section{pcm-\/memory.cpp File Reference}
+\label{pcm-memory_8cpp}\index{pcm-\/memory.\+cpp@{pcm-\/memory.\+cpp}}
+
+
+Example of using C\+PU counters\+: implements a performance counter monitoring utility for memory controller channels and D\+I\+M\+Ms (ranks) + P\+MM memory traffic.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}cpucounters.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ memdata}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pcm-memory_8cpp_ac4eeb11d89b0f517835a12a04443ebe4}} 
+\#define {\bfseries H\+A\+C\+K\+\_\+\+T\+O\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+D\+U\+P\+L\+I\+C\+A\+T\+E\+\_\+\+E\+R\+R\+OR}
+\item 
+\mbox{\label{pcm-memory_8cpp_aa9ecc55c90c7a69729babc4f5f91ed96}} 
+\#define {\bfseries P\+C\+M\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+D\+E\+F\+A\+U\+LT}~1.\+0
+\item 
+\mbox{\label{pcm-memory_8cpp_acccbe8441d6dd75bdc949f5f0ee126c5}} 
+\#define {\bfseries P\+C\+M\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+M\+IN}~0.\+015
+\item 
+\mbox{\label{pcm-memory_8cpp_a433dde946b6713059756318598c9a6fe}} 
+\#define {\bfseries P\+C\+M\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+R\+V\+AL}~50
+\item 
+\mbox{\label{pcm-memory_8cpp_ab5189406a4fa5221316460ceead91292}} 
+\#define {\bfseries D\+E\+F\+A\+U\+L\+T\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+C\+O\+L\+U\+M\+NS}~2
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pcm-memory_8cpp_a2bf815f628bb420ad49e0b50bd6ebd8d}} 
+typedef struct \textbf{ memdata} {\bfseries memdata\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pcm-memory_8cpp_afa2597d9b814fabdf0168d6fd0c52145}} 
+enum {\bfseries Csv\+Output\+Type} \{ {\bfseries Header1}, 
+{\bfseries Header2}, 
+{\bfseries Data}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pcm-memory_8cpp_aed15bac2c898efcc1f005764539f7970}} 
+void {\bfseries print\+\_\+help} (const string prog\+\_\+name)
+\item 
+\mbox{\label{pcm-memory_8cpp_a6670ccde5cf07eff1feca47d6f52495a}} 
+void {\bfseries print\+Socket\+B\+W\+Header} (uint32 no\+\_\+columns, uint32 skt, const bool show\+\_\+channel\+\_\+output)
+\item 
+\mbox{\label{pcm-memory_8cpp_a64347d4f792e8aa01f984c6205cfdb23}} 
+void {\bfseries print\+Socket\+Rank\+B\+W\+Header} (uint32 no\+\_\+columns, uint32 skt)
+\item 
+\mbox{\label{pcm-memory_8cpp_ae4e91d340ca286f4fcb49f65a8016e4c}} 
+void {\bfseries print\+Socket\+Channel\+BW} (\textbf{ P\+CM} $\ast$, \textbf{ memdata\+\_\+t} $\ast$md, uint32 no\+\_\+columns, uint32 skt)
+\item 
+\mbox{\label{pcm-memory_8cpp_a5513d4ffa4ff30563a2469fa2abb4247}} 
+void {\bfseries print\+Socket\+Channel\+BW} (uint32 no\+\_\+columns, uint32 skt, uint32 num\+\_\+imc\+\_\+channels, const \textbf{ Server\+Uncore\+Counter\+State} $\ast$unc\+State1, const \textbf{ Server\+Uncore\+Counter\+State} $\ast$unc\+State2, uint64 elapsed\+Time, int rankA, int rankB)
+\item 
+\mbox{\label{pcm-memory_8cpp_a0bd6ec5203333f7f22726db681f86b36}} 
+float {\bfseries A\+D\+\_\+\+BW} (const \textbf{ memdata\+\_\+t} $\ast$md, const uint32 skt)
+\item 
+\mbox{\label{pcm-memory_8cpp_a7934ceba3070d2d9abb0622b9fca6dc4}} 
+float {\bfseries P\+M\+M\+\_\+\+M\+M\+\_\+\+Ratio} (const \textbf{ memdata\+\_\+t} $\ast$md, const uint32 skt)
+\item 
+\mbox{\label{pcm-memory_8cpp_a647b83f926837f6d568125cefa4dc99b}} 
+void {\bfseries print\+Socket\+B\+W\+Footer} (uint32 no\+\_\+columns, uint32 skt, const \textbf{ memdata\+\_\+t} $\ast$md)
+\item 
+\mbox{\label{pcm-memory_8cpp_a26bfc03a155045b79523809b705657ab}} 
+void {\bfseries display\+\_\+bandwidth} (\textbf{ P\+CM} $\ast$m, \textbf{ memdata\+\_\+t} $\ast$md, const uint32 no\+\_\+columns, const bool show\+\_\+channel\+\_\+output)
+\item 
+\mbox{\label{pcm-memory_8cpp_a2d4fe7eebcd1e3d8f246aeadd4d2704f}} 
+{\footnotesize template$<$class H1 , class H2 , class D $>$ }\\void {\bfseries choose} (const Csv\+Output\+Type output\+Type, H1 h1\+Func, H2 h2\+Func, D data\+Func)
+\item 
+\mbox{\label{pcm-memory_8cpp_a5445e32b3826554ee75842e5ee42022a}} 
+void {\bfseries display\+\_\+bandwidth\+\_\+csv} (\textbf{ P\+CM} $\ast$m, \textbf{ memdata\+\_\+t} $\ast$md, uint64, const bool show\+\_\+channel\+\_\+output, const Csv\+Output\+Type output\+Type)
+\item 
+\mbox{\label{pcm-memory_8cpp_ad1b8139bcf754d554d286313e55a02e9}} 
+void {\bfseries calculate\+\_\+bandwidth} (\textbf{ P\+CM} $\ast$m, const \textbf{ Server\+Uncore\+Counter\+State} unc\+State1[$\,$], const \textbf{ Server\+Uncore\+Counter\+State} unc\+State2[$\,$], const uint64 elapsed\+Time, const bool csv, bool \&csvheader, uint32 no\+\_\+columns, const bool P\+MM, const bool show\+\_\+channel\+\_\+output, const bool P\+M\+M\+Mixed\+Mode)
+\item 
+\mbox{\label{pcm-memory_8cpp_a9f4af394a4e32fcada890d7e49d30de0}} 
+void {\bfseries calculate\+\_\+bandwidth\+\_\+rank} (\textbf{ P\+CM} $\ast$m, const \textbf{ Server\+Uncore\+Counter\+State} unc\+State1[$\,$], const \textbf{ Server\+Uncore\+Counter\+State} unc\+State2[$\,$], const uint64 elapsed\+Time, const bool, bool \&, const uint32 no\+\_\+columns, const int rankA, const int rankB)
+\item 
+\mbox{\label{pcm-memory_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+int {\bfseries main} (int argc, char $\ast$argv[$\,$])
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pcm-memory_8cpp_a7ef99323bd02eadd1f92faf654a892be}} 
+const uint32 {\bfseries max\+\_\+sockets} = 256
+\item 
+\mbox{\label{pcm-memory_8cpp_a2722bd2db68b8fa831786ce704a82bbb}} 
+const uint32 {\bfseries max\+\_\+imc\+\_\+channels} = Server\+Uncore\+Counter\+State\+::max\+Channels
+\item 
+\mbox{\label{pcm-memory_8cpp_af68e3f949d58c90477796d2e9e12cfcc}} 
+const uint32 {\bfseries max\+\_\+edc\+\_\+channels} = Server\+Uncore\+Counter\+State\+::max\+Channels
+\item 
+\mbox{\label{pcm-memory_8cpp_a28391e4324f1778377c0097955227f39}} 
+const uint32 {\bfseries max\+\_\+imc\+\_\+controllers} = Server\+Uncore\+Counter\+State\+::max\+Controllers
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Example of using C\+PU counters\+: implements a performance counter monitoring utility for memory controller channels and D\+I\+M\+Ms (ranks) + P\+MM memory traffic. 
+

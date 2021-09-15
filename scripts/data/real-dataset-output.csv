@@ -1,0 +1,17 @@
+mode,alg,threads,throughput
+native,CHT,4,108.55
+native,INL,4,34.99
+native,MWAY,4,29.01
+native,PHT,4,71.67
+native,PSM,4,10.13
+native,RHT,4,185.96
+native,RHO,4,215.15
+native,RSM,4,43.42
+sgx,CHT,4,17.07
+sgx,INL,4,0.18
+sgx,MWAY,4,4.19
+sgx,PHT,4,0.13
+sgx,PSM,4,6.38
+sgx,RHT,4,13.23
+sgx,RHO,4,14.73
+sgx,RSM,4,10.99

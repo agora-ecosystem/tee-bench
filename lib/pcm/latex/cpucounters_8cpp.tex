@@ -1,0 +1,352 @@
+\section{cpucounters.\+cpp File Reference}
+\label{cpucounters_8cpp}\index{cpucounters.\+cpp@{cpucounters.\+cpp}}
+
+
+The bulk of \doxyref{P\+CM}{p.}{classPCM} implementation.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}cpucounters.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}msr.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pci.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}topology.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$future$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$queue$>$}\newline
+{\ttfamily \#include $<$condition\+\_\+variable$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$atomic$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \textbf{ Instance\+Lock}
+\item 
+class \textbf{ Temporal\+Thread\+Affinity}
+\item 
+union \textbf{ P\+C\+M\+\_\+\+C\+P\+U\+I\+D\+\_\+\+I\+N\+FO}
+\item 
+class \textbf{ Core\+Task\+Queue}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{cpucounters_8cpp_a688a679ca6c13e1a60f7f8b70f496f31}} 
+\#define {\bfseries P\+C\+M\+\_\+\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+L\+O\+C\+K\+\_\+\+S\+E\+M\+A\+P\+H\+O\+R\+E\+\_\+\+N\+A\+ME}~\char`\"{}P\+CM inst lock\char`\"{}
+\item 
+\mbox{\label{cpucounters_8cpp_a590bccf5562984b1ed64fae24a6c0aa2}} 
+\#define {\bfseries P\+C\+M\+\_\+\+N\+U\+M\+\_\+\+I\+N\+S\+T\+A\+N\+C\+E\+S\+\_\+\+S\+E\+M\+A\+P\+H\+O\+R\+E\+\_\+\+N\+A\+ME}~\char`\"{}Num \textbf{ P\+CM} insts\char`\"{}
+\item 
+\mbox{\label{cpucounters_8cpp_a255a990db457975e935573f69b464561}} 
+\#define {\bfseries P\+C\+M\+\_\+\+P\+A\+R\+A\+M\+\_\+\+P\+R\+O\+T\+E\+CT}(...)~\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+
+\item 
+\#define {\bfseries P\+C\+M\+\_\+\+C\+S\+T\+A\+T\+E\+\_\+\+A\+R\+R\+AY}(array\+\_\+,  val)
+\item 
+\#define {\bfseries S\+A\+F\+E\+\_\+\+S\+Y\+S\+C\+T\+L\+B\+Y\+N\+A\+ME}(message,  ret\+\_\+value)
+\item 
+\#define {\bfseries C\+P\+U\+C\+N\+T\+\_\+\+I\+N\+I\+T\+\_\+\+T\+H\+E\+\_\+\+R\+E\+S\+T\+\_\+\+O\+F\+\_\+\+E\+V\+T\+C\+NT}
+\item 
+\#define {\bfseries P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M\+C\+\_\+\+I\+N\+IT}(controller,  channel,  arch)
+\item 
+\#define {\bfseries P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+Q\+P\+I\+\_\+\+I\+N\+IT}(port,  arch)
+\item 
+\#define {\bfseries P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+E\+D\+C\+\_\+\+I\+N\+IT}(controller,  clock,  arch)
+\item 
+\#define {\bfseries P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M2\+M\+\_\+\+I\+N\+IT}(x,  arch)
+\item 
+\#define {\bfseries P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+H\+A\+\_\+\+I\+N\+IT}(x,  arch)
+\item 
+\mbox{\label{cpucounters_8cpp_ae672ff82126936855ef028325ae79a61}} 
+\#define {\bfseries P\+C\+M\+\_\+\+M\+E\+M\+\_\+\+C\+A\+P\+A\+C\+I\+TY}~(1024\+U\+L\+L$\ast$1024\+U\+L\+L$\ast$64\+U\+L\+L)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{cpucounters_8cpp_ae057183147d0edfedb467f8883cbc294}} 
+uint32 {\bfseries build\+\_\+bit\+\_\+ui} (uint32 beg, uint32 end)
+\item 
+\mbox{\label{cpucounters_8cpp_a6a4de3b4cf5f22865407e49e1f7dadb3}} 
+uint32 {\bfseries extract\+\_\+bits\+\_\+ui} (uint32 myin, uint32 beg, uint32 end)
+\item 
+\mbox{\label{cpucounters_8cpp_a915a5c05fae57076a200f132fd92e4a1}} 
+uint64 {\bfseries build\+\_\+bit} (uint32 beg, uint32 end)
+\item 
+\mbox{\label{cpucounters_8cpp_a778f7613df95ee0c29aa6c38a6e58d26}} 
+uint64 {\bfseries extract\+\_\+bits} (uint64 myin, uint32 beg, uint32 end)
+\item 
+\mbox{\label{cpucounters_8cpp_a76936c54c9442220234b3fbf034ea953}} 
+int32 {\bfseries extract\+Thermal\+Headroom} (uint64 val)
+\item 
+\mbox{\label{cpucounters_8cpp_ae814b46662951bfaa885fb8b1b96f704}} 
+uint64 {\bfseries get\+\_\+frequency\+\_\+from\+\_\+cpuid} ()
+\item 
+\mbox{\label{cpucounters_8cpp_a0bdb1ac2e147f74396045cd83234d967}} 
+void {\bfseries pcm\+\_\+cpuid} (int leaf, \textbf{ P\+C\+M\+\_\+\+C\+P\+U\+I\+D\+\_\+\+I\+N\+FO} \&info)
+\item 
+\mbox{\label{cpucounters_8cpp_a6f0cc7fac55e80c071bd7d847922aca9}} 
+void {\bfseries pcm\+\_\+cpuid} (const unsigned leaf, const unsigned subleaf, \textbf{ P\+C\+M\+\_\+\+C\+P\+U\+I\+D\+\_\+\+I\+N\+FO} \&info)
+\item 
+\mbox{\label{cpucounters_8cpp_a128dd9dcd2d631e26392a39e62a11d4e}} 
+uint64 {\bfseries R\+D\+T\+SC} ()
+\item 
+\textbf{ System\+Counter\+State} \textbf{ get\+System\+Counter\+State} ()
+\begin{DoxyCompactList}\small\item\em Reads the counter state of the system. \end{DoxyCompactList}\item 
+\textbf{ Socket\+Counter\+State} \textbf{ get\+Socket\+Counter\+State} (uint32 socket)
+\begin{DoxyCompactList}\small\item\em Reads the counter state of a socket. \end{DoxyCompactList}\item 
+\textbf{ Core\+Counter\+State} \textbf{ get\+Core\+Counter\+State} (uint32 core)
+\begin{DoxyCompactList}\small\item\em Reads the counter state of a (logical) core. \end{DoxyCompactList}\item 
+\mbox{\label{cpucounters_8cpp_a60e1df5a76c1bc9c988a0e215c9f393a}} 
+void {\bfseries print\+\_\+mcfg} (const char $\ast$path)
+\item 
+\mbox{\label{cpucounters_8cpp_a7c714fe755ec0c2a86c81c0859ee03eb}} 
+int {\bfseries get\+Bus\+From\+Socket} (const uint32 socket)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{cpucounters_8cpp_a732a4ee639e13ce7f7178b33a2110c27}} 
+pthread\+\_\+mutex\+\_\+t {\bfseries process\+Intance\+Mutex} = P\+T\+H\+R\+E\+A\+D\+\_\+\+M\+U\+T\+E\+X\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ER
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The bulk of \doxyref{P\+CM}{p.}{classPCM} implementation. 
+
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\label{cpucounters_8cpp_ac05bc0ac55ad17671b06c301721224a7}} 
+\index{cpucounters.\+cpp@{cpucounters.\+cpp}!C\+P\+U\+C\+N\+T\+\_\+\+I\+N\+I\+T\+\_\+\+T\+H\+E\+\_\+\+R\+E\+S\+T\+\_\+\+O\+F\+\_\+\+E\+V\+T\+C\+NT@{C\+P\+U\+C\+N\+T\+\_\+\+I\+N\+I\+T\+\_\+\+T\+H\+E\+\_\+\+R\+E\+S\+T\+\_\+\+O\+F\+\_\+\+E\+V\+T\+C\+NT}}
+\index{C\+P\+U\+C\+N\+T\+\_\+\+I\+N\+I\+T\+\_\+\+T\+H\+E\+\_\+\+R\+E\+S\+T\+\_\+\+O\+F\+\_\+\+E\+V\+T\+C\+NT@{C\+P\+U\+C\+N\+T\+\_\+\+I\+N\+I\+T\+\_\+\+T\+H\+E\+\_\+\+R\+E\+S\+T\+\_\+\+O\+F\+\_\+\+E\+V\+T\+C\+NT}!cpucounters.\+cpp@{cpucounters.\+cpp}}
+\subsubsection{C\+P\+U\+C\+N\+T\+\_\+\+I\+N\+I\+T\+\_\+\+T\+H\+E\+\_\+\+R\+E\+S\+T\+\_\+\+O\+F\+\_\+\+E\+V\+T\+C\+NT}
+{\footnotesize\ttfamily \#define C\+P\+U\+C\+N\+T\+\_\+\+I\+N\+I\+T\+\_\+\+T\+H\+E\+\_\+\+R\+E\+S\+T\+\_\+\+O\+F\+\_\+\+E\+V\+T\+C\+NT}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+unc\_event\_select\_reg.fields.occ\_ctr\_rst = 1; \(\backslash\)
+    unc\_event\_select\_reg.fields.edge = 0; \(\backslash\)
+    unc\_event\_select\_reg.fields.enable\_pmi = 0; \(\backslash\)
+    unc\_event\_select\_reg.fields.enable = 1; \(\backslash\)
+    unc\_event\_select\_reg.fields.invert = 0; \(\backslash\)
+    unc\_event\_select\_reg.fields.cmask = 0;
+\end{DoxyCode}
+\mbox{\label{cpucounters_8cpp_adf6300b58c576b4c4f855cdecacbd7e3}} 
+\index{cpucounters.\+cpp@{cpucounters.\+cpp}!P\+C\+M\+\_\+\+C\+S\+T\+A\+T\+E\+\_\+\+A\+R\+R\+AY@{P\+C\+M\+\_\+\+C\+S\+T\+A\+T\+E\+\_\+\+A\+R\+R\+AY}}
+\index{P\+C\+M\+\_\+\+C\+S\+T\+A\+T\+E\+\_\+\+A\+R\+R\+AY@{P\+C\+M\+\_\+\+C\+S\+T\+A\+T\+E\+\_\+\+A\+R\+R\+AY}!cpucounters.\+cpp@{cpucounters.\+cpp}}
+\subsubsection{P\+C\+M\+\_\+\+C\+S\+T\+A\+T\+E\+\_\+\+A\+R\+R\+AY}
+{\footnotesize\ttfamily \#define P\+C\+M\+\_\+\+C\+S\+T\+A\+T\+E\+\_\+\+A\+R\+R\+AY(\begin{DoxyParamCaption}\item[{}]{array\+\_\+,  }\item[{}]{val }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{ \(\backslash\)
+        static uint64 tmp[] = val; \(\backslash\)
+        PCM\_COMPILE\_ASSERT(\textcolor{keyword}{sizeof}(tmp) / \textcolor{keyword}{sizeof}(uint64) == (static\_cast<int>(MAX\_C\_STATE)+1)); \(\backslash\)
+        array\_ = tmp; \(\backslash\)
+        break; \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\label{cpucounters_8cpp_a556d5305ae0ab91506a3a29bcae574a0}} 
+\index{cpucounters.\+cpp@{cpucounters.\+cpp}!P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+E\+D\+C\+\_\+\+I\+N\+IT@{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+E\+D\+C\+\_\+\+I\+N\+IT}}
+\index{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+E\+D\+C\+\_\+\+I\+N\+IT@{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+E\+D\+C\+\_\+\+I\+N\+IT}!cpucounters.\+cpp@{cpucounters.\+cpp}}
+\subsubsection{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+E\+D\+C\+\_\+\+I\+N\+IT}
+{\footnotesize\ttfamily \#define P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+E\+D\+C\+\_\+\+I\+N\+IT(\begin{DoxyParamCaption}\item[{}]{controller,  }\item[{}]{clock,  }\item[{}]{arch }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+EDCRegisterLocation.resize(controller + 1); \(\backslash\)
+    EDCRegisterLocation[controller] = std::make\_pair(arch##\_EDC##controller##\_##clock##\_REGISTER\_DEV\_ADDR, 
+      arch##\_EDC##controller##\_##clock##\_REGISTER\_FUNC\_ADDR);
+\end{DoxyCode}
+\mbox{\label{cpucounters_8cpp_ab7eb15329bd6fa39e4c8287a87673e09}} 
+\index{cpucounters.\+cpp@{cpucounters.\+cpp}!P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+H\+A\+\_\+\+I\+N\+IT@{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+H\+A\+\_\+\+I\+N\+IT}}
+\index{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+H\+A\+\_\+\+I\+N\+IT@{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+H\+A\+\_\+\+I\+N\+IT}!cpucounters.\+cpp@{cpucounters.\+cpp}}
+\subsubsection{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+H\+A\+\_\+\+I\+N\+IT}
+{\footnotesize\ttfamily \#define P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+H\+A\+\_\+\+I\+N\+IT(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{arch }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+HARegisterLocation.resize(x + 1); \(\backslash\)
+    HARegisterLocation[x] = std::make\_pair(arch##\_HA##x##\_REGISTER\_DEV\_ADDR, arch##\_HA##x##
+      \_REGISTER\_FUNC\_ADDR);
+\end{DoxyCode}
+\mbox{\label{cpucounters_8cpp_a036edbc9870a79fdbf42c8f0822acc45}} 
+\index{cpucounters.\+cpp@{cpucounters.\+cpp}!P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M2\+M\+\_\+\+I\+N\+IT@{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M2\+M\+\_\+\+I\+N\+IT}}
+\index{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M2\+M\+\_\+\+I\+N\+IT@{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M2\+M\+\_\+\+I\+N\+IT}!cpucounters.\+cpp@{cpucounters.\+cpp}}
+\subsubsection{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M2\+M\+\_\+\+I\+N\+IT}
+{\footnotesize\ttfamily \#define P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M2\+M\+\_\+\+I\+N\+IT(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{arch }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+M2MRegisterLocation.resize(x + 1); \(\backslash\)
+    M2MRegisterLocation[x] = std::make\_pair(arch##\_M2M\_##x##\_REGISTER\_DEV\_ADDR, arch##\_M2M\_##x##
+      \_REGISTER\_FUNC\_ADDR);
+\end{DoxyCode}
+\mbox{\label{cpucounters_8cpp_abdabf2d23640bca95fef73d19a9aec70}} 
+\index{cpucounters.\+cpp@{cpucounters.\+cpp}!P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M\+C\+\_\+\+I\+N\+IT@{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M\+C\+\_\+\+I\+N\+IT}}
+\index{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M\+C\+\_\+\+I\+N\+IT@{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M\+C\+\_\+\+I\+N\+IT}!cpucounters.\+cpp@{cpucounters.\+cpp}}
+\subsubsection{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M\+C\+\_\+\+I\+N\+IT}
+{\footnotesize\ttfamily \#define P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+M\+C\+\_\+\+I\+N\+IT(\begin{DoxyParamCaption}\item[{}]{controller,  }\item[{}]{channel,  }\item[{}]{arch }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+MCRegisterLocation.resize(controller + 1); \(\backslash\)
+    MCRegisterLocation[controller].resize(channel + 1); \(\backslash\)
+    MCRegisterLocation[controller][channel] =  \(\backslash\)
+        std::make\_pair(arch##\_MC##controller##\_CH##channel##\_REGISTER\_DEV\_ADDR, arch##\_MC##controller##\_CH#
+      #channel##\_REGISTER\_FUNC\_ADDR);
+\end{DoxyCode}
+\mbox{\label{cpucounters_8cpp_a2046ced52f6af86478aee23f451aa0fc}} 
+\index{cpucounters.\+cpp@{cpucounters.\+cpp}!P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+Q\+P\+I\+\_\+\+I\+N\+IT@{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+Q\+P\+I\+\_\+\+I\+N\+IT}}
+\index{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+Q\+P\+I\+\_\+\+I\+N\+IT@{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+Q\+P\+I\+\_\+\+I\+N\+IT}!cpucounters.\+cpp@{cpucounters.\+cpp}}
+\subsubsection{P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+Q\+P\+I\+\_\+\+I\+N\+IT}
+{\footnotesize\ttfamily \#define P\+C\+M\+\_\+\+P\+C\+I\+C\+F\+G\+\_\+\+Q\+P\+I\+\_\+\+I\+N\+IT(\begin{DoxyParamCaption}\item[{}]{port,  }\item[{}]{arch }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+XPIRegisterLocation.resize(port + 1); \(\backslash\)
+    XPIRegisterLocation[port] = std::make\_pair(arch##\_QPI\_PORT##port##\_REGISTER\_DEV\_ADDR, arch##\_QPI\_PORT##
+      port##\_REGISTER\_FUNC\_ADDR);
+\end{DoxyCode}
+\mbox{\label{cpucounters_8cpp_a9cfa14679932464c79a85af6aac4bb31}} 
+\index{cpucounters.\+cpp@{cpucounters.\+cpp}!S\+A\+F\+E\+\_\+\+S\+Y\+S\+C\+T\+L\+B\+Y\+N\+A\+ME@{S\+A\+F\+E\+\_\+\+S\+Y\+S\+C\+T\+L\+B\+Y\+N\+A\+ME}}
+\index{S\+A\+F\+E\+\_\+\+S\+Y\+S\+C\+T\+L\+B\+Y\+N\+A\+ME@{S\+A\+F\+E\+\_\+\+S\+Y\+S\+C\+T\+L\+B\+Y\+N\+A\+ME}!cpucounters.\+cpp@{cpucounters.\+cpp}}
+\subsubsection{S\+A\+F\+E\+\_\+\+S\+Y\+S\+C\+T\+L\+B\+Y\+N\+A\+ME}
+{\footnotesize\ttfamily \#define S\+A\+F\+E\+\_\+\+S\+Y\+S\+C\+T\+L\+B\+Y\+N\+A\+ME(\begin{DoxyParamCaption}\item[{}]{message,  }\item[{}]{ret\+\_\+value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{                                                                                                      \(\backslash\)
+        size\_t size;                                                                                       
+      \(\backslash\)
+        char *pParam;                                                                                      
+      \(\backslash\)
+        if(0 != sysctlbyname(message, NULL, &size, NULL, 0))                                               
+      \(\backslash\)
+        \{                                                                                                  
+      \(\backslash\)
+            std::cerr << \textcolor{stringliteral}{"Unable to determine size of "} << message << \textcolor{stringliteral}{" sysctl return type.\(\backslash\)n"};            
+      \(\backslash\)
+            return \textcolor{keyword}{false};                                                                                  
+      \(\backslash\)
+        \}                                                                                                  
+      \(\backslash\)
+        if(NULL == (pParam = (\textcolor{keywordtype}{char} *)malloc(size)))                                                        
+      \(\backslash\)
+        \{                                                                                                  
+      \(\backslash\)
+            std::cerr << \textcolor{stringliteral}{"Unable to allocate memory for "} << message << \textcolor{stringliteral}{"\(\backslash\)n"};                              
+      \(\backslash\)
+            return \textcolor{keyword}{false};                                                                                  
+      \(\backslash\)
+        \}                                                                                                  
+      \(\backslash\)
+        if(0 != sysctlbyname(message, (\textcolor{keywordtype}{void}*)pParam, &size, NULL, 0))                                      
+      \(\backslash\)
+        \{                                                                                                  
+      \(\backslash\)
+            std::cerr << \textcolor{stringliteral}{"Unable to get "} << message << \textcolor{stringliteral}{" from sysctl.\(\backslash\)n"};                                 
+      \(\backslash\)
+            return \textcolor{keyword}{false};                                                                                  
+      \(\backslash\)
+        \}                                                                                                  
+      \(\backslash\)
+        ret\_value = convertUnknownToInt(size, pParam);                                                     
+      \(\backslash\)
+        free(pParam);                                                                                      
+      \(\backslash\)
+    \}
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\label{cpucounters_8cpp_a9595f342396b50e58e8c6ed55df28d91}} 
+\index{cpucounters.\+cpp@{cpucounters.\+cpp}!get\+Core\+Counter\+State@{get\+Core\+Counter\+State}}
+\index{get\+Core\+Counter\+State@{get\+Core\+Counter\+State}!cpucounters.\+cpp@{cpucounters.\+cpp}}
+\subsubsection{get\+Core\+Counter\+State()}
+{\footnotesize\ttfamily \textbf{ Core\+Counter\+State} get\+Core\+Counter\+State (\begin{DoxyParamCaption}\item[{uint32}]{core }\end{DoxyParamCaption})}
+
+
+
+Reads the counter state of a (logical) core. 
+
+Helper function. Uses \doxyref{P\+CM}{p.}{classPCM} object to access counters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em core} & core id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+State of counters in the core 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Core\+Counter\+State(), and P\+C\+M\+::get\+Instance().
+
+
+
+Referenced by P\+C\+M\+::get\+Error\+Message().
+
+\mbox{\label{cpucounters_8cpp_acfb027332d50dce74ac3f979dffd479f}} 
+\index{cpucounters.\+cpp@{cpucounters.\+cpp}!get\+Socket\+Counter\+State@{get\+Socket\+Counter\+State}}
+\index{get\+Socket\+Counter\+State@{get\+Socket\+Counter\+State}!cpucounters.\+cpp@{cpucounters.\+cpp}}
+\subsubsection{get\+Socket\+Counter\+State()}
+{\footnotesize\ttfamily \textbf{ Socket\+Counter\+State} get\+Socket\+Counter\+State (\begin{DoxyParamCaption}\item[{uint32}]{socket }\end{DoxyParamCaption})}
+
+
+
+Reads the counter state of a socket. 
+
+Helper function. Uses \doxyref{P\+CM}{p.}{classPCM} object to access counters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket} & socket id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+State of counters in the socket 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), and P\+C\+M\+::get\+Socket\+Counter\+State().
+
+
+
+Referenced by P\+C\+M\+::get\+Error\+Message().
+
+\mbox{\label{cpucounters_8cpp_a826cae3aa621c32ecb5b03e0eba11950}} 
+\index{cpucounters.\+cpp@{cpucounters.\+cpp}!get\+System\+Counter\+State@{get\+System\+Counter\+State}}
+\index{get\+System\+Counter\+State@{get\+System\+Counter\+State}!cpucounters.\+cpp@{cpucounters.\+cpp}}
+\subsubsection{get\+System\+Counter\+State()}
+{\footnotesize\ttfamily \textbf{ System\+Counter\+State} get\+System\+Counter\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads the counter state of the system. 
+
+Helper function. Uses \doxyref{P\+CM}{p.}{classPCM} object to access counters.
+
+System consists of several sockets (C\+P\+Us). \doxyref{Socket}{p.}{classSocket} has a C\+PU in it. \doxyref{Socket}{p.}{classSocket} (C\+PU) consists of several (logical) cores.
+
+\begin{DoxyReturn}{Returns}
+State of counters in the entire system 
+\end{DoxyReturn}
+
+
+References P\+C\+M\+::get\+Instance(), and P\+C\+M\+::get\+System\+Counter\+State().
+
+
+
+Referenced by P\+C\+M\+::get\+Error\+Message().
+

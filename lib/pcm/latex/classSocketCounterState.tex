@@ -1,0 +1,59 @@
+\section{Socket\+Counter\+State Class Reference}
+\label{classSocketCounterState}\index{Socket\+Counter\+State@{Socket\+Counter\+State}}
+
+
+Socket-\/wide counter state.  
+
+
+
+
+{\ttfamily \#include $<$cpucounters.\+h$>$}
+
+Inheritance diagram for Socket\+Counter\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classSocketCounterState}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classSocketCounterState_a63321eab07e5e15613ef0ae353323fee}} 
+\textbf{ Socket\+Counter\+State} \& {\bfseries operator+=} (const \textbf{ Basic\+Counter\+State} \&ccs)
+\item 
+\mbox{\label{classSocketCounterState_a7add596cb461d0cf488917921b6c7a47}} 
+\textbf{ Socket\+Counter\+State} \& {\bfseries operator+=} (const \textbf{ Uncore\+Counter\+State} \&ucs)
+\item 
+\mbox{\label{classSocketCounterState_af34f21885498ab389ece2a334b2a00f2}} 
+{\bfseries Socket\+Counter\+State} (const \textbf{ Socket\+Counter\+State} \&)=default
+\item 
+\mbox{\label{classSocketCounterState_aca7766a67d25f38a141304e41837a976}} 
+{\bfseries Socket\+Counter\+State} (\textbf{ Socket\+Counter\+State} \&\&)=default
+\item 
+\mbox{\label{classSocketCounterState_a71bf9211cb66bc3b6d31dc8ff0b7ce90}} 
+\textbf{ Socket\+Counter\+State} \& {\bfseries operator=} (\textbf{ Socket\+Counter\+State} \&\&)=default
+\item 
+\mbox{\label{classSocketCounterState_ad16c195e19c2133f40bcf034527b5c29}} 
+\textbf{ Socket\+Counter\+State} \& {\bfseries operator=} (\textbf{ Uncore\+Counter\+State} \&\&ucs)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classSocketCounterState_a43ee7028fd4f9ae929ed5b575e60aadb}} 
+void {\bfseries read\+And\+Aggregate} (std\+::shared\+\_\+ptr$<$ \textbf{ Safe\+Msr\+Handle} $>$ handle)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classSocketCounterState_ab5f56d2e95ba3daf52c17b8a1d356d64}} 
+class {\bfseries P\+CM}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Socket-\/wide counter state. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ cpucounters.\+h}\end{DoxyCompactItemize}

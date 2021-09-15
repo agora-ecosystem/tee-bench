@@ -1,0 +1,89 @@
+\section{pcm-\/sensor.cpp File Reference}
+\label{pcm-sensor_8cpp}\index{pcm-\/sensor.\+cpp@{pcm-\/sensor.\+cpp}}
+
+
+Example of using C\+PU counters\+: implements a graphical plugin for K\+DE ksysguard.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include \char`\"{}cpuasynchcounter.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pcm-sensor_8cpp_ac4eeb11d89b0f517835a12a04443ebe4}} 
+\#define {\bfseries H\+A\+C\+K\+\_\+\+T\+O\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+D\+U\+P\+L\+I\+C\+A\+T\+E\+\_\+\+E\+R\+R\+OR}
+\item 
+\#define {\bfseries O\+U\+T\+P\+U\+T\+\_\+\+C\+O\+R\+E\+\_\+\+M\+E\+T\+R\+IC}(name,  function)
+\item 
+\#define {\bfseries O\+U\+T\+P\+U\+T\+\_\+\+S\+O\+C\+K\+E\+T\+\_\+\+M\+E\+T\+R\+IC}(name,  function)
+\item 
+\#define {\bfseries O\+U\+T\+P\+U\+T\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+M\+E\+T\+R\+IC}(name,  function)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pcm-sensor_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Example of using C\+PU counters\+: implements a graphical plugin for K\+DE ksysguard. 
+
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\label{pcm-sensor_8cpp_af87f81d4e36dbea17fda4544fedae80b}} 
+\index{pcm-\/sensor.\+cpp@{pcm-\/sensor.\+cpp}!O\+U\+T\+P\+U\+T\+\_\+\+C\+O\+R\+E\+\_\+\+M\+E\+T\+R\+IC@{O\+U\+T\+P\+U\+T\+\_\+\+C\+O\+R\+E\+\_\+\+M\+E\+T\+R\+IC}}
+\index{O\+U\+T\+P\+U\+T\+\_\+\+C\+O\+R\+E\+\_\+\+M\+E\+T\+R\+IC@{O\+U\+T\+P\+U\+T\+\_\+\+C\+O\+R\+E\+\_\+\+M\+E\+T\+R\+IC}!pcm-\/sensor.\+cpp@{pcm-\/sensor.\+cpp}}
+\subsubsection{O\+U\+T\+P\+U\+T\+\_\+\+C\+O\+R\+E\+\_\+\+M\+E\+T\+R\+IC}
+{\footnotesize\ttfamily \#define O\+U\+T\+P\+U\+T\+\_\+\+C\+O\+R\+E\+\_\+\+M\+E\+T\+R\+IC(\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{function }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} (uint32 i = 0; i<counters.getNumCores(); ++i) \{ \(\backslash\)
+                             for (uint32 a = 0; a<counters.getNumSockets(); ++a) \(\backslash\)
+                                                  \textcolor{keywordflow}{if} (a == counters.getSocketId(i)) \{ \(\backslash\)
+                                                      stringstream c; \(\backslash\)
+                                                      c << \textcolor{stringliteral}{"Socket"} << a << \textcolor{stringliteral}{"/CPU"} << i << name; \(\backslash\)
+                                                      if (s == c.str()) \{ \(\backslash\)
+                                                          cout << \textcolor{keyword}{function} << \textcolor{stringliteral}{"\(\backslash\)n"}; \(\backslash\)
+                                                      \} \(\backslash\)
+                                                  \} \(\backslash\)
+                                                  \}
+\end{DoxyCode}
+\mbox{\label{pcm-sensor_8cpp_abfcf6ac619060882e6abd536ac9541c4}} 
+\index{pcm-\/sensor.\+cpp@{pcm-\/sensor.\+cpp}!O\+U\+T\+P\+U\+T\+\_\+\+S\+O\+C\+K\+E\+T\+\_\+\+M\+E\+T\+R\+IC@{O\+U\+T\+P\+U\+T\+\_\+\+S\+O\+C\+K\+E\+T\+\_\+\+M\+E\+T\+R\+IC}}
+\index{O\+U\+T\+P\+U\+T\+\_\+\+S\+O\+C\+K\+E\+T\+\_\+\+M\+E\+T\+R\+IC@{O\+U\+T\+P\+U\+T\+\_\+\+S\+O\+C\+K\+E\+T\+\_\+\+M\+E\+T\+R\+IC}!pcm-\/sensor.\+cpp@{pcm-\/sensor.\+cpp}}
+\subsubsection{O\+U\+T\+P\+U\+T\+\_\+\+S\+O\+C\+K\+E\+T\+\_\+\+M\+E\+T\+R\+IC}
+{\footnotesize\ttfamily \#define O\+U\+T\+P\+U\+T\+\_\+\+S\+O\+C\+K\+E\+T\+\_\+\+M\+E\+T\+R\+IC(\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{function }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} (uint32 i = 0; i<counters.getNumSockets(); ++i) \{ \(\backslash\)
+                             stringstream c; \(\backslash\)
+                             c << \textcolor{stringliteral}{"Socket"} << i << name; \(\backslash\)
+                             if (s == c.str()) \{ \(\backslash\)
+                                 cout << \textcolor{keyword}{function} << \textcolor{stringliteral}{"\(\backslash\)n"}; \(\backslash\)
+                             \} \(\backslash\)
+                         \}
+\end{DoxyCode}
+\mbox{\label{pcm-sensor_8cpp_a726c566daab6b237bf1c8d3776efdd40}} 
+\index{pcm-\/sensor.\+cpp@{pcm-\/sensor.\+cpp}!O\+U\+T\+P\+U\+T\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+M\+E\+T\+R\+IC@{O\+U\+T\+P\+U\+T\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+M\+E\+T\+R\+IC}}
+\index{O\+U\+T\+P\+U\+T\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+M\+E\+T\+R\+IC@{O\+U\+T\+P\+U\+T\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+M\+E\+T\+R\+IC}!pcm-\/sensor.\+cpp@{pcm-\/sensor.\+cpp}}
+\subsubsection{O\+U\+T\+P\+U\+T\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+M\+E\+T\+R\+IC}
+{\footnotesize\ttfamily \#define O\+U\+T\+P\+U\+T\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+M\+E\+T\+R\+IC(\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{function }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{ \(\backslash\)
+        stringstream c; \(\backslash\)
+        c << name; \(\backslash\)
+        if (s == c.str()) \{ \(\backslash\)
+            cout << \textcolor{keyword}{function} << \textcolor{stringliteral}{"\(\backslash\)n"}; \(\backslash\)
+        \} \(\backslash\)
+    \}
+\end{DoxyCode}

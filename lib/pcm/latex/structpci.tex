@@ -1,0 +1,70 @@
+\section{pci Struct Reference}
+\label{structpci}\index{pci@{pci}}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{structpci_a4fbf5aef85cf6f114ef2c251d1d6c589}} 
+bool {\bfseries exist} = false
+\item 
+\mbox{\label{structpci_a7a1fb1574c140948cd9f7fae2f621e0b}} 
+struct \textbf{ bdf} {\bfseries bdf}
+\item 
+\mbox{\label{structpci_a2834e29859bf5fbad19d4a23c5aa51d8}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\mbox{\label{unionpci_1_1_0D13_a82f419dcc1fe1810804349324fab05ba}} 
+\>struct \{\\
+\>\>uint16\_t {\bfseries vendor\_id}\\
+\>\>uint16\_t {\bfseries device\_id}\\
+\>\} \\
+\>uint32\_t {\bfseries offset\_0}\\
+\}; \\
+
+\end{tabbing}\item 
+\mbox{\label{structpci_a12b405a6b3ed7846f1e45cd06709e794}} 
+int8\+\_\+t {\bfseries header\+\_\+type}
+\item 
+\mbox{\label{structpci_a50137b346b342d2ce39a58d0273ab6cd}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\mbox{\label{unionpci_1_1_0D15_a981d2ed9425eaf4db7fec65fbd0e979e}} 
+\>struct \{\\
+\>\>uint8\_t {\bfseries primary\_bus\_number}\\
+\>\>uint8\_t {\bfseries secondary\_bus\_number}\\
+\>\>uint8\_t {\bfseries subordinate\_bus\_number}\\
+\>\>uint8\_t {\bfseries junk}\\
+\>\} \\
+\>uint32\_t {\bfseries offset\_18}\\
+\}; \\
+
+\end{tabbing}\item 
+\mbox{\label{structpci_a004891641c045f642104bf72a9aed16a}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\mbox{\label{unionpci_1_1_0D17_a650dbdb02e5a5e15cdd1338fa140ad76}} 
+\>struct \{\\
+\>\>uint16\_t {\bfseries link\_ctrl}\\
+\mbox{\label{structpci_1_1_0D17_1_1_0D23_a72bd661dd07209faf38c4ddead0065ce}} 
+\>\>union \{\\
+\mbox{\label{unionpci_1_1_0D17_1_1_0D23_1_1_0D25_a46a146c7f80f9de4dd05d1ddc5af6891}} 
+\>\>\>struct \{\\
+\>\>\>\>uint16\_t {\bfseries link\_speed}: 4\\
+\>\>\>\>uint16\_t {\bfseries link\_width}: 6\\
+\>\>\>\>uint16\_t {\bfseries undefined}: 1\\
+\>\>\>\>uint16\_t {\bfseries link\_trained}: 1\\
+\>\>\>\} \\
+\>\>\>uint16\_t {\bfseries link\_sta}\\
+\>\>\} \\
+\>\} \\
+\>uint32\_t {\bfseries link\_info}\\
+\}; \\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lspci.\+h\end{DoxyCompactItemize}

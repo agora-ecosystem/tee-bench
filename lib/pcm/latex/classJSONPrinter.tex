@@ -1,0 +1,62 @@
+\section{J\+S\+O\+N\+Printer Class Reference}
+\label{classJSONPrinter}\index{J\+S\+O\+N\+Printer@{J\+S\+O\+N\+Printer}}
+Inheritance diagram for J\+S\+O\+N\+Printer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classJSONPrinter}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classJSONPrinter_afb4deda90309a782abb375e563580b32}} 
+enum {\bfseries Line\+End\+Action} \{ {\bfseries New\+Line\+Only} = 0, 
+{\bfseries Delimiter\+Only}, 
+{\bfseries Delimiter\+And\+New\+Line}, 
+{\bfseries Line\+End\+Action\+\_\+\+Spare} = 255
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classJSONPrinter_a2476ff15e6bbd00e81c222404d59e257}} 
+{\bfseries J\+S\+O\+N\+Printer} (std\+::pair$<$ std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$, std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$$>$ aggregator\+Pair)
+\item 
+\mbox{\label{classJSONPrinter_ad7d19174c7aa7dac06789398eccfdeb9}} 
+{\bfseries J\+S\+O\+N\+Printer} (\textbf{ J\+S\+O\+N\+Printer} const \&)=delete
+\item 
+\mbox{\label{classJSONPrinter_a86bafcd4de3fb9adcd5aa835a10b4d81}} 
+\textbf{ Core\+Counter\+State} const {\bfseries get\+Core\+Counter} (std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$ ag, uint32 tid) const
+\item 
+\mbox{\label{classJSONPrinter_a0e4fc58c8ad820006a0646977e0de7f8}} 
+\textbf{ Socket\+Counter\+State} const {\bfseries get\+Socket\+Counter} (std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$ ag, uint32 sid) const
+\item 
+\mbox{\label{classJSONPrinter_a278e7857f715d48431c63cb57b3c1dad}} 
+\textbf{ System\+Counter\+State} {\bfseries get\+System\+Counter} (std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$ ag) const
+\item 
+\mbox{\label{classJSONPrinter_a4e2cc8389ac3b97153c0be7bc65b2097}} 
+virtual void {\bfseries dispatch} (\textbf{ Hyper\+Thread} $\ast$ht) override
+\item 
+\mbox{\label{classJSONPrinter_a969e9b144e1c6ed4dcedbdf21e601ae1}} 
+virtual void {\bfseries dispatch} (\textbf{ Server\+Uncore} $\ast$su) override
+\item 
+\mbox{\label{classJSONPrinter_add94d9617aba2568922d46af6a4701f5}} 
+virtual void {\bfseries dispatch} (\textbf{ Client\+Uncore} $\ast$) override
+\item 
+\mbox{\label{classJSONPrinter_ae9891e829417f83f59ea15a41401b77d}} 
+virtual void {\bfseries dispatch} (\textbf{ Core} $\ast$c) override
+\item 
+\mbox{\label{classJSONPrinter_a24484a776374d68900a29ce9d8a949a7}} 
+virtual void {\bfseries dispatch} (\textbf{ System\+Root} const \&s) override
+\item 
+\mbox{\label{classJSONPrinter_af18d22846ea38cd6354aebb24fe4b333}} 
+virtual void {\bfseries dispatch} (\textbf{ Socket} $\ast$s) override
+\item 
+\mbox{\label{classJSONPrinter_aae7cd8d6fd4a1708233edacf62aac51d}} 
+std\+::string {\bfseries str} (void)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+pcm-\/sensor-\/server.\+cpp\end{DoxyCompactItemize}

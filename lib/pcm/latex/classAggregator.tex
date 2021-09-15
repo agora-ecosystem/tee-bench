@@ -1,0 +1,47 @@
+\section{Aggregator Class Reference}
+\label{classAggregator}\index{Aggregator@{Aggregator}}
+Inheritance diagram for Aggregator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAggregator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classAggregator_ad204fa900e5d33ff82606b6520528eb7}} 
+virtual void {\bfseries dispatch} (\textbf{ System\+Root} const \&syp)
+\item 
+\mbox{\label{classAggregator_a85ea89febb9c4e02c04c47251445be4f}} 
+virtual void {\bfseries dispatch} (\textbf{ Socket} $\ast$sop) override
+\item 
+\mbox{\label{classAggregator_a8bd2ccf67a0e2804d50570adf974f42b}} 
+virtual void {\bfseries dispatch} (\textbf{ Core} $\ast$cop) override
+\item 
+\mbox{\label{classAggregator_a09b5446fe42c6567f45c8d1088c58546}} 
+virtual void {\bfseries dispatch} (\textbf{ Hyper\+Thread} $\ast$htp) override
+\item 
+\mbox{\label{classAggregator_aef1f310caec6313125fea30beb90ae34}} 
+virtual void {\bfseries dispatch} (\textbf{ Server\+Uncore} $\ast$) override
+\item 
+\mbox{\label{classAggregator_a38765b88f36922d3f3e7e9ef86c16384}} 
+virtual void {\bfseries dispatch} (\textbf{ Client\+Uncore} $\ast$) override
+\item 
+\mbox{\label{classAggregator_af295e99c6741d4f49ad0c9778ae5a401}} 
+std\+::vector$<$ \textbf{ Core\+Counter\+State} $>$ const  \& {\bfseries core\+Counter\+States} (void) const
+\item 
+\mbox{\label{classAggregator_a8578a4a1074927a24e6954c195b77c3b}} 
+std\+::vector$<$ \textbf{ Socket\+Counter\+State} $>$ const  \& {\bfseries socket\+Counter\+States} (void) const
+\item 
+\mbox{\label{classAggregator_ab294f32eadbea1ad94fc2dfaac21a989}} 
+\textbf{ System\+Counter\+State} const  \& {\bfseries system\+Counter\+State} (void) const
+\item 
+\mbox{\label{classAggregator_a163e952301b1f9c7c645c080928a210c}} 
+std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point {\bfseries dispatched\+At} (void) const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+topology.\+h\item 
+topology.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,487 @@
+\section{Server\+P\+C\+I\+C\+F\+G\+Uncore Class Reference}
+\label{classServerPCICFGUncore}\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+
+
+Object to access uncore counters in a socket/processor with microarchitecture codename Sandy\+Bridge-\/\+EP (Jaketown) or Ivytown-\/\+EP or Ivytown-\/\+EX.  
+
+
+
+
+{\ttfamily \#include $<$cpucounters.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classServerPCICFGUncore_ac4b1be5a3fa6d2441de7b34861a71c7f}} 
+enum {\bfseries Event\+Position} \{ \newline
+{\bfseries R\+E\+AD} =0, 
+{\bfseries W\+R\+I\+TE} =1, 
+{\bfseries R\+E\+A\+D\+\_\+\+R\+A\+N\+K\+\_\+A} =0, 
+{\bfseries W\+R\+I\+T\+E\+\_\+\+R\+A\+N\+K\+\_\+A} =1, 
+\newline
+{\bfseries R\+E\+A\+D\+\_\+\+R\+A\+N\+K\+\_\+B} =2, 
+{\bfseries W\+R\+I\+T\+E\+\_\+\+R\+A\+N\+K\+\_\+B} =3, 
+{\bfseries P\+A\+R\+T\+I\+AL} =2, 
+{\bfseries P\+M\+M\+\_\+\+R\+E\+AD} =2, 
+\newline
+{\bfseries P\+M\+M\+\_\+\+W\+R\+I\+TE} =3, 
+{\bfseries P\+M\+M\+\_\+\+M\+M\+\_\+\+M\+I\+S\+S\+\_\+\+C\+L\+E\+AN} =2, 
+{\bfseries P\+M\+M\+\_\+\+M\+M\+\_\+\+M\+I\+S\+S\+\_\+\+D\+I\+R\+TY} =3, 
+{\bfseries N\+M\+\_\+\+H\+IT} =0, 
+\newline
+{\bfseries M2\+M\+\_\+\+C\+L\+O\+C\+K\+T\+I\+C\+KS} =1
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Server\+P\+C\+I\+C\+F\+G\+Uncore} (uint32 socket\+\_\+, const \textbf{ P\+CM} $\ast$pcm)
+\begin{DoxyCompactList}\small\item\em Initialize access data structures. \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_acd6e859dd5eaaadf97d2c59ae70ac4a7}} 
+void \textbf{ program} ()
+\begin{DoxyCompactList}\small\item\em Program performance counters (disables programming power counters) \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_a214de12b52f2d5a7c9c33701dfc8eb85}} 
+uint64 \textbf{ get\+Imc\+Reads} ()
+\begin{DoxyCompactList}\small\item\em Get the number of integrated controller reads (in cache lines) \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+Imc\+Reads\+For\+Controller} (uint32 controller)
+\begin{DoxyCompactList}\small\item\em Get the number of integrated controller reads for given controller (in cache lines) \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+Imc\+Reads\+For\+Channels} (uint32 begin\+Channel, uint32 end\+Channel)
+\begin{DoxyCompactList}\small\item\em Get the number of integrated controller reads for given channels (in cache lines) \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_a089f11fc46ab836884cc31b5b4ac08e3}} 
+uint64 \textbf{ get\+Imc\+Writes} ()
+\begin{DoxyCompactList}\small\item\em Get the number of integrated controller writes (in cache lines) \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_a209e5d1f1b05672c6ec7c16e692416c9}} 
+uint64 \textbf{ get\+H\+A\+Local\+Requests} ()
+\begin{DoxyCompactList}\small\item\em Get the number of requests to home agent (B\+D\+X/\+H\+SX only) \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_acae29717e08634ef607e1a56b75c0fde}} 
+uint64 \textbf{ get\+H\+A\+Requests} ()
+\begin{DoxyCompactList}\small\item\em Get the number of local requests to home agent (B\+D\+X/\+H\+SX only) \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_a43809d79fbc3c6a2052876610059250f}} 
+uint64 \textbf{ get\+P\+M\+M\+Reads} ()
+\begin{DoxyCompactList}\small\item\em Get the number of P\+MM memory reads (in cache lines) \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_a9c4110576cd4d9c83e69371f3330c22a}} 
+uint64 \textbf{ get\+P\+M\+M\+Writes} ()
+\begin{DoxyCompactList}\small\item\em Get the number of P\+MM memory writes (in cache lines) \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_a7a1fdecee105080d104bc7763d2fc06a}} 
+uint64 \textbf{ get\+Edc\+Reads} ()
+\begin{DoxyCompactList}\small\item\em Get the number of cache lines read by E\+DC (embedded D\+R\+AM controller) \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_a1cdc322032c84f2eaeb36328c8d6ec0b}} 
+uint64 \textbf{ get\+Edc\+Writes} ()
+\begin{DoxyCompactList}\small\item\em Get the number of cache lines written by E\+DC (embedded D\+R\+AM controller) \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+Incoming\+Data\+Flits} (uint32 port)
+\begin{DoxyCompactList}\small\item\em Get the number of incoming data flits to the socket through a port. \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+Outgoing\+Flits} (uint32 port)
+\begin{DoxyCompactList}\small\item\em Get the number of outgoing data and non-\/data or idle flits (depending on the architecture) from the socket through a port. \end{DoxyCompactList}\item 
+void \textbf{ program\+\_\+power\+\_\+metrics} (int mc\+\_\+profile)
+\begin{DoxyCompactList}\small\item\em Program power counters (disables programming performance counters) \end{DoxyCompactList}\item 
+void \textbf{ program\+Server\+Uncore\+Memory\+Metrics} (const int rankA=-\/1, const int rankB=-\/1, const bool P\+MM=false, const bool P\+M\+M\+Mixed\+Mode=false)
+\begin{DoxyCompactList}\small\item\em Program memory counters (disables programming performance counters) \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+Q\+P\+I\+Clocks} (uint32 port)
+\begin{DoxyCompactList}\small\item\em Get number of Q\+PI LL clocks on a Q\+PI port. \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+Q\+P\+I\+L0p\+Tx\+Cycles} (uint32 port)
+\begin{DoxyCompactList}\small\item\em Get number cycles on a Q\+PI port when the link was in a power saving half-\/lane mode. \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+U\+P\+I\+L0\+Tx\+Cycles} (uint32 port)
+\begin{DoxyCompactList}\small\item\em Get number cycles on a U\+PI port when the link was in a L0 mode (fully active) \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+Q\+P\+I\+L1\+Cycles} (uint32 port)
+\begin{DoxyCompactList}\small\item\em Get number cycles on a Q\+PI port when the link was in a power saving shutdown mode. \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+D\+R\+A\+M\+Clocks} (uint32 channel)
+\begin{DoxyCompactList}\small\item\em Get number D\+R\+AM channel cycles. \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+M\+C\+D\+R\+A\+M\+Clocks} (uint32 channel)
+\begin{DoxyCompactList}\small\item\em Get number M\+C\+D\+R\+AM channel cycles. \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+M\+C\+Counter} (uint32 channel, uint32 \textbf{ counter})
+\begin{DoxyCompactList}\small\item\em Direct read of memory controller P\+MU counter (counter meaning depends on the programming\+: power/performance/etc) \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+E\+D\+C\+Counter} (uint32 channel, uint32 \textbf{ counter})
+\begin{DoxyCompactList}\small\item\em Direct read of embedded D\+R\+AM memory controller P\+MU counter (counter meaning depends on the programming\+: power/performance/etc) \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+Q\+P\+I\+L\+L\+Counter} (uint32 port, uint32 \textbf{ counter})
+\begin{DoxyCompactList}\small\item\em Direct read of Q\+PI LL P\+MU counter (counter meaning depends on the programming\+: power/performance/etc) \end{DoxyCompactList}\item 
+uint64 \textbf{ get\+M2\+M\+Counter} (uint32 box, uint32 \textbf{ counter})
+\begin{DoxyCompactList}\small\item\em Direct read of M2M counter. \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_ad4bda64cc17432d44ee8e380a735b795}} 
+void \textbf{ freeze\+Counters} ()
+\begin{DoxyCompactList}\small\item\em Freezes event counting. \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_a379962b379f637f3b752f7fb4666c7e7}} 
+void \textbf{ unfreeze\+Counters} ()
+\begin{DoxyCompactList}\small\item\em Unfreezes event counting. \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_a42a0e1343ab38371279bf9def8123419}} 
+uint64 \textbf{ compute\+Q\+P\+I\+Speed} (const uint32 ref\+\_\+core, const int cpumodel)
+\begin{DoxyCompactList}\small\item\em Measures/computes the maximum theoretical Q\+PI link bandwidth speed in G\+Byte/seconds. \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_a91352764d2ab70889388f61d48852694}} 
+void \textbf{ enable\+J\+K\+T\+Workaround} (bool enable)
+\begin{DoxyCompactList}\small\item\em Enable correct counting of various L\+LC events (with memory access perf penalty) \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_a5dc6e057441bbbbc3d396fe8e5d7cc2f}} 
+size\+\_\+t \textbf{ get\+Num\+Q\+P\+I\+Ports} () const
+\begin{DoxyCompactList}\small\item\em Returns the number of detected Q\+PI ports. \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_ae3421871d5942f1835af1fe4c282950b}} 
+uint64 \textbf{ get\+Q\+P\+I\+Link\+Speed} (const uint32 link\+Nr) const
+\begin{DoxyCompactList}\small\item\em Returns the speed of the Q\+PI link. \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_ab41eec236180d9d451fc1edc823dcc84}} 
+void \textbf{ report\+Q\+P\+I\+Speed} () const
+\begin{DoxyCompactList}\small\item\em Print Q\+PI Speeds. \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_a70765cb7dc2f54fae3528e6f15c57f45}} 
+uint32 \textbf{ get\+Num\+MC} () const
+\begin{DoxyCompactList}\small\item\em Returns the number of detected integrated memory controllers. \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_ab59fb235a87be897547b1c32534d1a5f}} 
+size\+\_\+t \textbf{ get\+Num\+M\+C\+Channels} () const
+\begin{DoxyCompactList}\small\item\em Returns the total number of detected memory channels on all integrated memory controllers. \end{DoxyCompactList}\item 
+size\+\_\+t \textbf{ get\+Num\+M\+C\+Channels} (const uint32 controller) const
+\begin{DoxyCompactList}\small\item\em Returns the total number of detected memory channels on given integrated memory controller. \end{DoxyCompactList}\item 
+\mbox{\label{classServerPCICFGUncore_abc8b36bca06eaa243b1013ae19374c2c}} 
+size\+\_\+t \textbf{ get\+Num\+E\+D\+C\+Channels} () const
+\begin{DoxyCompactList}\small\item\em Returns the total number of detected memory channels on all embedded D\+R\+AM controllers (E\+DC) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classServerPCICFGUncore_ab5f56d2e95ba3daf52c17b8a1d356d64}} 
+class {\bfseries P\+CM}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Object to access uncore counters in a socket/processor with microarchitecture codename Sandy\+Bridge-\/\+EP (Jaketown) or Ivytown-\/\+EP or Ivytown-\/\+EX. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classServerPCICFGUncore_a4e4176c31a041902805e16cc452016d3}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{Server\+P\+C\+I\+C\+F\+G\+Uncore()}
+{\footnotesize\ttfamily Server\+P\+C\+I\+C\+F\+G\+Uncore\+::\+Server\+P\+C\+I\+C\+F\+G\+Uncore (\begin{DoxyParamCaption}\item[{uint32}]{socket\+\_\+,  }\item[{const \textbf{ P\+CM} $\ast$}]{pcm }\end{DoxyParamCaption})}
+
+
+
+Initialize access data structures. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+\_\+} & socket id \\
+\hline
+{\em pcm} & pointer to \doxyref{P\+CM}{p.}{classPCM} instance \\
+\hline
+\end{DoxyParams}
+
+
+References get\+Num\+M\+C(), get\+Num\+M\+C\+Channels(), get\+Num\+Q\+P\+I\+Ports(), and P\+C\+M\+::use\+Linux\+Perf\+For\+Uncore().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classServerPCICFGUncore_a3b218ad26a3c6411754ed177427b2a80}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+D\+R\+A\+M\+Clocks@{get\+D\+R\+A\+M\+Clocks}}
+\index{get\+D\+R\+A\+M\+Clocks@{get\+D\+R\+A\+M\+Clocks}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+D\+R\+A\+M\+Clocks()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+D\+R\+A\+M\+Clocks (\begin{DoxyParamCaption}\item[{uint32}]{channel }\end{DoxyParamCaption})}
+
+
+
+Get number D\+R\+AM channel cycles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & channel number \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classServerPCICFGUncore_aa48e2113a37b0727b1dbe27c391ccd04}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+E\+D\+C\+Counter@{get\+E\+D\+C\+Counter}}
+\index{get\+E\+D\+C\+Counter@{get\+E\+D\+C\+Counter}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+E\+D\+C\+Counter()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+E\+D\+C\+Counter (\begin{DoxyParamCaption}\item[{uint32}]{channel,  }\item[{uint32}]{counter }\end{DoxyParamCaption})}
+
+
+
+Direct read of embedded D\+R\+AM memory controller P\+MU counter (counter meaning depends on the programming\+: power/performance/etc) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & channel number \\
+\hline
+{\em counter} & counter number \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classServerPCICFGUncore_ab24a70f2e485dc609c497a01be88a13c}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+Imc\+Reads\+For\+Channels@{get\+Imc\+Reads\+For\+Channels}}
+\index{get\+Imc\+Reads\+For\+Channels@{get\+Imc\+Reads\+For\+Channels}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+Imc\+Reads\+For\+Channels()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+Imc\+Reads\+For\+Channels (\begin{DoxyParamCaption}\item[{uint32}]{begin\+Channel,  }\item[{uint32}]{end\+Channel }\end{DoxyParamCaption})}
+
+
+
+Get the number of integrated controller reads for given channels (in cache lines) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em begin\+Channel} & first channel in the range \\
+\hline
+{\em end\+Channel} & last channel + 1\+: the range is [begin\+Channel, end\+Channel). end\+Channel is not included. \\
+\hline
+\end{DoxyParams}
+
+
+References get\+M\+C\+Counter().
+
+
+
+Referenced by get\+Imc\+Reads(), and get\+Imc\+Reads\+For\+Controller().
+
+\mbox{\label{classServerPCICFGUncore_a2c9bfa75855bdf0820ee193061356eff}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+Imc\+Reads\+For\+Controller@{get\+Imc\+Reads\+For\+Controller}}
+\index{get\+Imc\+Reads\+For\+Controller@{get\+Imc\+Reads\+For\+Controller}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+Imc\+Reads\+For\+Controller()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+Imc\+Reads\+For\+Controller (\begin{DoxyParamCaption}\item[{uint32}]{controller }\end{DoxyParamCaption})}
+
+
+
+Get the number of integrated controller reads for given controller (in cache lines) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em controller} & controller I\+D/number \\
+\hline
+\end{DoxyParams}
+
+
+References get\+Imc\+Reads\+For\+Channels().
+
+\mbox{\label{classServerPCICFGUncore_abaeb0a56fa35ecbd0c092b733a1f923b}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+Incoming\+Data\+Flits@{get\+Incoming\+Data\+Flits}}
+\index{get\+Incoming\+Data\+Flits@{get\+Incoming\+Data\+Flits}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+Incoming\+Data\+Flits()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+Incoming\+Data\+Flits (\begin{DoxyParamCaption}\item[{uint32}]{port }\end{DoxyParamCaption})}
+
+
+
+Get the number of incoming data flits to the socket through a port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Q\+PI port id \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classServerPCICFGUncore_abb0467de674c42290939dcfea180a6de}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+M2\+M\+Counter@{get\+M2\+M\+Counter}}
+\index{get\+M2\+M\+Counter@{get\+M2\+M\+Counter}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+M2\+M\+Counter()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+M2\+M\+Counter (\begin{DoxyParamCaption}\item[{uint32}]{box,  }\item[{uint32}]{counter }\end{DoxyParamCaption})}
+
+
+
+Direct read of M2M counter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em box} & box I\+D/number \\
+\hline
+{\em counter} & counter number \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classServerPCICFGUncore_ad66687e98d1b74c145b79fedefc07d15}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+M\+C\+Counter@{get\+M\+C\+Counter}}
+\index{get\+M\+C\+Counter@{get\+M\+C\+Counter}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+M\+C\+Counter()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+M\+C\+Counter (\begin{DoxyParamCaption}\item[{uint32}]{channel,  }\item[{uint32}]{counter }\end{DoxyParamCaption})}
+
+
+
+Direct read of memory controller P\+MU counter (counter meaning depends on the programming\+: power/performance/etc) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & channel number \\
+\hline
+{\em counter} & counter number \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by get\+Imc\+Reads\+For\+Channels().
+
+\mbox{\label{classServerPCICFGUncore_ad0138169a52467871058a4f810482e0e}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+M\+C\+D\+R\+A\+M\+Clocks@{get\+M\+C\+D\+R\+A\+M\+Clocks}}
+\index{get\+M\+C\+D\+R\+A\+M\+Clocks@{get\+M\+C\+D\+R\+A\+M\+Clocks}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+M\+C\+D\+R\+A\+M\+Clocks()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+M\+C\+D\+R\+A\+M\+Clocks (\begin{DoxyParamCaption}\item[{uint32}]{channel }\end{DoxyParamCaption})}
+
+
+
+Get number M\+C\+D\+R\+AM channel cycles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & channel number \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classServerPCICFGUncore_a0f640cf2278108e6d77bf375443db7d4}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+Num\+M\+C\+Channels@{get\+Num\+M\+C\+Channels}}
+\index{get\+Num\+M\+C\+Channels@{get\+Num\+M\+C\+Channels}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+Num\+M\+C\+Channels()}
+{\footnotesize\ttfamily size\+\_\+t Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+Num\+M\+C\+Channels (\begin{DoxyParamCaption}\item[{const uint32}]{controller }\end{DoxyParamCaption}) const}
+
+
+
+Returns the total number of detected memory channels on given integrated memory controller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em controller} & controller number \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classServerPCICFGUncore_ac318caa49f90d9cf3ee335656aa1f623}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+Outgoing\+Flits@{get\+Outgoing\+Flits}}
+\index{get\+Outgoing\+Flits@{get\+Outgoing\+Flits}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+Outgoing\+Flits()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+Outgoing\+Flits (\begin{DoxyParamCaption}\item[{uint32}]{port }\end{DoxyParamCaption})}
+
+
+
+Get the number of outgoing data and non-\/data or idle flits (depending on the architecture) from the socket through a port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Q\+PI port id \\
+\hline
+\end{DoxyParams}
+
+
+References get\+Q\+P\+I\+L\+L\+Counter().
+
+\mbox{\label{classServerPCICFGUncore_ae5bc4e8e1003ed74fdd3c641e6ac78a5}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+Q\+P\+I\+Clocks@{get\+Q\+P\+I\+Clocks}}
+\index{get\+Q\+P\+I\+Clocks@{get\+Q\+P\+I\+Clocks}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+Q\+P\+I\+Clocks()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+Q\+P\+I\+Clocks (\begin{DoxyParamCaption}\item[{uint32}]{port }\end{DoxyParamCaption})}
+
+
+
+Get number of Q\+PI LL clocks on a Q\+PI port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Q\+PI port number \\
+\hline
+\end{DoxyParams}
+
+
+References get\+Q\+P\+I\+L\+L\+Counter().
+
+\mbox{\label{classServerPCICFGUncore_a7aaff7ae03c8189de550215cef3b39f7}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+Q\+P\+I\+L0p\+Tx\+Cycles@{get\+Q\+P\+I\+L0p\+Tx\+Cycles}}
+\index{get\+Q\+P\+I\+L0p\+Tx\+Cycles@{get\+Q\+P\+I\+L0p\+Tx\+Cycles}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+Q\+P\+I\+L0p\+Tx\+Cycles()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+Q\+P\+I\+L0p\+Tx\+Cycles (\begin{DoxyParamCaption}\item[{uint32}]{port }\end{DoxyParamCaption})}
+
+
+
+Get number cycles on a Q\+PI port when the link was in a power saving half-\/lane mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Q\+PI port number \\
+\hline
+\end{DoxyParams}
+
+
+References get\+Q\+P\+I\+L\+L\+Counter().
+
+\mbox{\label{classServerPCICFGUncore_aa0ac63963af6105dd066f09beb923d17}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+Q\+P\+I\+L1\+Cycles@{get\+Q\+P\+I\+L1\+Cycles}}
+\index{get\+Q\+P\+I\+L1\+Cycles@{get\+Q\+P\+I\+L1\+Cycles}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+Q\+P\+I\+L1\+Cycles()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+Q\+P\+I\+L1\+Cycles (\begin{DoxyParamCaption}\item[{uint32}]{port }\end{DoxyParamCaption})}
+
+
+
+Get number cycles on a Q\+PI port when the link was in a power saving shutdown mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Q\+PI port number \\
+\hline
+\end{DoxyParams}
+
+
+References get\+Q\+P\+I\+L\+L\+Counter().
+
+\mbox{\label{classServerPCICFGUncore_abcd9990a39fb245bb552e6cae4922305}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+Q\+P\+I\+L\+L\+Counter@{get\+Q\+P\+I\+L\+L\+Counter}}
+\index{get\+Q\+P\+I\+L\+L\+Counter@{get\+Q\+P\+I\+L\+L\+Counter}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+Q\+P\+I\+L\+L\+Counter()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+Q\+P\+I\+L\+L\+Counter (\begin{DoxyParamCaption}\item[{uint32}]{port,  }\item[{uint32}]{counter }\end{DoxyParamCaption})}
+
+
+
+Direct read of Q\+PI LL P\+MU counter (counter meaning depends on the programming\+: power/performance/etc) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & port number \\
+\hline
+{\em counter} & counter number \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by get\+Outgoing\+Flits(), get\+Q\+P\+I\+Clocks(), get\+Q\+P\+I\+L0p\+Tx\+Cycles(), get\+Q\+P\+I\+L1\+Cycles(), and get\+U\+P\+I\+L0\+Tx\+Cycles().
+
+\mbox{\label{classServerPCICFGUncore_aa7938ac7c048915bd256a3c5a5538701}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!get\+U\+P\+I\+L0\+Tx\+Cycles@{get\+U\+P\+I\+L0\+Tx\+Cycles}}
+\index{get\+U\+P\+I\+L0\+Tx\+Cycles@{get\+U\+P\+I\+L0\+Tx\+Cycles}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{get\+U\+P\+I\+L0\+Tx\+Cycles()}
+{\footnotesize\ttfamily uint64 Server\+P\+C\+I\+C\+F\+G\+Uncore\+::get\+U\+P\+I\+L0\+Tx\+Cycles (\begin{DoxyParamCaption}\item[{uint32}]{port }\end{DoxyParamCaption})}
+
+
+
+Get number cycles on a U\+PI port when the link was in a L0 mode (fully active) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & U\+PI port number \\
+\hline
+\end{DoxyParams}
+
+
+References get\+Q\+P\+I\+L\+L\+Counter().
+
+\mbox{\label{classServerPCICFGUncore_af53af91d9172cd124e455e500d6c5622}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!program\+\_\+power\+\_\+metrics@{program\+\_\+power\+\_\+metrics}}
+\index{program\+\_\+power\+\_\+metrics@{program\+\_\+power\+\_\+metrics}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{program\+\_\+power\+\_\+metrics()}
+{\footnotesize\ttfamily void Server\+P\+C\+I\+C\+F\+G\+Uncore\+::program\+\_\+power\+\_\+metrics (\begin{DoxyParamCaption}\item[{int}]{mc\+\_\+profile }\end{DoxyParamCaption})}
+
+
+
+Program power counters (disables programming performance counters) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mc\+\_\+profile} & memory controller measurement profile. See description of profiles in pcm-\/power.\+cpp \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classServerPCICFGUncore_a0380e4ee6c10b5a7c76517a119a20b92}} 
+\index{Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}!program\+Server\+Uncore\+Memory\+Metrics@{program\+Server\+Uncore\+Memory\+Metrics}}
+\index{program\+Server\+Uncore\+Memory\+Metrics@{program\+Server\+Uncore\+Memory\+Metrics}!Server\+P\+C\+I\+C\+F\+G\+Uncore@{Server\+P\+C\+I\+C\+F\+G\+Uncore}}
+\subsubsection{program\+Server\+Uncore\+Memory\+Metrics()}
+{\footnotesize\ttfamily void Server\+P\+C\+I\+C\+F\+G\+Uncore\+::program\+Server\+Uncore\+Memory\+Metrics (\begin{DoxyParamCaption}\item[{const int}]{rankA = {\ttfamily -\/1},  }\item[{const int}]{rankB = {\ttfamily -\/1},  }\item[{const bool}]{P\+MM = {\ttfamily false},  }\item[{const bool}]{P\+M\+M\+Mixed\+Mode = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Program memory counters (disables programming performance counters) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rankA} & count D\+I\+MM rank1 statistics (disables memory channel monitoring) \\
+\hline
+{\em rankB} & count D\+I\+MM rank2 statistics (disables memory channel monitoring) \\
+\hline
+{\em P\+MM} & monitor P\+MM bandwidth instead of partial writes \\
+\hline
+{\em Program} & events for P\+MM mixed mode (App\+Direct + Memory\+Mode) \\
+\hline
+\end{DoxyParams}
+
+
+References P\+C\+M\+::get\+Instance().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ cpucounters.\+h}\item 
+\textbf{ cpucounters.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,93 @@
+\section{H\+T\+T\+P\+Message Class Reference}
+\label{classHTTPMessage}\index{H\+T\+T\+P\+Message@{H\+T\+T\+P\+Message}}
+Inheritance diagram for H\+T\+T\+P\+Message\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classHTTPMessage}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classHTTPMessage_a53347217afcc62b726e6c9fa1c35fe4e}} 
+std\+::string const  \& {\bfseries body} () const
+\item 
+\mbox{\label{classHTTPMessage_acfeefc663e9baf9a7699f685a8096247}} 
+void {\bfseries add\+Body} (std\+::string const \&body)
+\item 
+\mbox{\label{classHTTPMessage_ac7cd67b181d03c67e30b76a6e5b05951}} 
+void {\bfseries add\+Header} (std\+::string const \&name, std\+::string const \&value)
+\item 
+\mbox{\label{classHTTPMessage_a066ff4ba3f7a43b44c06df2c5033b18b}} 
+void {\bfseries add\+Header} (\textbf{ H\+T\+T\+P\+Header} hh)
+\item 
+\mbox{\label{classHTTPMessage_a77cb91c90993a39e52d8400696fcde0d}} 
+bool {\bfseries has\+Header} (std\+::string const \&header) const
+\item 
+\mbox{\label{classHTTPMessage_a0ef37febc49cacd1ffbf6a18b5ba2e56}} 
+\textbf{ H\+T\+T\+P\+Header} const  \& {\bfseries get\+Header} (std\+::string const \&header) const
+\item 
+\mbox{\label{classHTTPMessage_ae1b96f87223f445c27421d9b603773a4}} 
+std\+::string const  \& {\bfseries protocol\+As\+String} () const
+\item 
+\mbox{\label{classHTTPMessage_a3af96c2eec3afb578d6f58fe275a3451}} 
+enum H\+T\+T\+P\+Protocol {\bfseries protocol} () const
+\item 
+\mbox{\label{classHTTPMessage_a585a4b59c6964476584a732870187f3b}} 
+void {\bfseries set\+Protocol} (enum H\+T\+T\+P\+Protocol protocol)
+\item 
+\mbox{\label{classHTTPMessage_a74ed0085f8a39553ce630e6e2589b7b0}} 
+void {\bfseries set\+Protocol} (std\+::string const \&protocol\+String)
+\item 
+\mbox{\label{classHTTPMessage_ac91b49e73264e0abcc0d53f3cb14cb33}} 
+std\+::string const {\bfseries host} () const
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classHTTPMessage_a88e7a8be4c066a7b176b1056e1c7f1c3}} 
+{\bfseries H\+T\+T\+P\+Message} (\textbf{ H\+T\+T\+P\+Message} const \&)=default
+\item 
+\mbox{\label{classHTTPMessage_ab9893f4c8d1dcf73c501b517c72c0580}} 
+std\+::string {\bfseries read\+Data} (\textbf{ socketstream} \&in, size\+\_\+t length)
+\item 
+\mbox{\label{classHTTPMessage_ae4f101be9ad006073841dd061cda96d5}} 
+std\+::string {\bfseries read\+Chunked\+Data} (\textbf{ socketstream} \&in)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classHTTPMessage_a7976830c61450260e2c99f0085452ea9}} 
+enum H\+T\+T\+P\+Protocol {\bfseries protocol\+\_\+}
+\item 
+\mbox{\label{classHTTPMessage_ab7cf254080ed6016e48ce35f0e7b4823}} 
+std\+::unordered\+\_\+map$<$ std\+::string, \textbf{ H\+T\+T\+P\+Header} $>$ {\bfseries headers\+\_\+}
+\item 
+\mbox{\label{classHTTPMessage_a2b896c9db5817be3c6e3241098a10c90}} 
+std\+::string {\bfseries body\+\_\+}
+\item 
+std\+::unordered\+\_\+map$<$ enum H\+T\+T\+P\+Protocol, std\+::string, std\+::hash$<$ int $>$ $>$ {\bfseries protocol\+\_\+map\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classHTTPMessage_aedb87040c568ae7cd3dcc106af8dc7f9}} 
+\index{H\+T\+T\+P\+Message@{H\+T\+T\+P\+Message}!protocol\+\_\+map\+\_\+@{protocol\+\_\+map\+\_\+}}
+\index{protocol\+\_\+map\+\_\+@{protocol\+\_\+map\+\_\+}!H\+T\+T\+P\+Message@{H\+T\+T\+P\+Message}}
+\subsubsection{protocol\+\_\+map\+\_\+}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$enum H\+T\+T\+P\+Protocol, std\+::string, std\+::hash$<$int$>$ $>$ H\+T\+T\+P\+Message\+::protocol\+\_\+map\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+        \{ HTTPProtocol::HTTP\_0\_9, \textcolor{stringliteral}{"HTTP/0.9"} \},
+        \{ HTTPProtocol::HTTP\_1\_0, \textcolor{stringliteral}{"HTTP/1.0"} \},
+        \{ HTTPProtocol::HTTP\_1\_1, \textcolor{stringliteral}{"HTTP/1.1"} \},
+        \{ HTTPProtocol::HTTP\_2\_0, \textcolor{stringliteral}{"HTTP/2.0"} \}
+    \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+pcm-\/sensor-\/server.\+cpp\end{DoxyCompactItemize}

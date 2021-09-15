@@ -1,0 +1,55 @@
+\section{H\+T\+T\+P\+Server Class Reference}
+\label{classHTTPServer}\index{H\+T\+T\+P\+Server@{H\+T\+T\+P\+Server}}
+Inheritance diagram for H\+T\+T\+P\+Server\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classHTTPServer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classHTTPServer_a530d7b707c153ba00fb3d4a2d5459902}} 
+{\bfseries H\+T\+T\+P\+Server} (std\+::string const \&ip, uint16\+\_\+t port)
+\item 
+\mbox{\label{classHTTPServer_abb6bf7244a484a6c42655cc81c81a849}} 
+{\bfseries H\+T\+T\+P\+Server} (\textbf{ H\+T\+T\+P\+Server} const \&)=delete
+\item 
+\mbox{\label{classHTTPServer_a54f4a0dfd8aef21f1e199895a943cf47}} 
+virtual void {\bfseries run} () override
+\item 
+\mbox{\label{classHTTPServer_a77d828f4aedcc8d447c07a32d2751ad0}} 
+virtual void {\bfseries stop} ()
+\item 
+\mbox{\label{classHTTPServer_af60f462e8528166d8fda1cdca0d25d74}} 
+void {\bfseries register\+Callback} (H\+T\+T\+P\+Request\+Method rm, http\+\_\+callback hc)
+\item 
+\mbox{\label{classHTTPServer_a2a80b1a0a8cf26626d2ac60ad2b3d2ac}} 
+void {\bfseries unregister\+Callback} (H\+T\+T\+P\+Request\+Method rm)
+\item 
+\mbox{\label{classHTTPServer_ae23025f4d2611a100d34ef521598360f}} 
+void {\bfseries add\+Aggregator} (std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$ agp)
+\item 
+\mbox{\label{classHTTPServer_a59dcc2e7f22cc446e5e75217fb319c19}} 
+std\+::pair$<$ std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$, std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$ $>$ {\bfseries get\+Aggregators} (size\+\_\+t index, size\+\_\+t index2)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classHTTPServer_a4bdca9e2d616864b30b5f5f39baada1b}} 
+std\+::vector$<$ http\+\_\+callback $>$ {\bfseries callback\+List\+\_\+}
+\item 
+\mbox{\label{classHTTPServer_af9f43f3a70dfed348a1d4120fe6da16e}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$ $>$ {\bfseries ag\+Vector\+\_\+}
+\item 
+\mbox{\label{classHTTPServer_ab8b358aebb638d88e2080158a5aad914}} 
+std\+::mutex {\bfseries ag\+Vector\+Mutex\+\_\+}
+\item 
+\mbox{\label{classHTTPServer_a417da5be7b14ecfeb214ea1cbd3eae20}} 
+\textbf{ Periodic\+Counter\+Fetcher} $\ast$ {\bfseries pcf\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+pcm-\/sensor-\/server.\+cpp\end{DoxyCompactItemize}

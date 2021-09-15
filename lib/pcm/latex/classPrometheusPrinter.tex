@@ -1,0 +1,52 @@
+\section{Prometheus\+Printer Class Reference}
+\label{classPrometheusPrinter}\index{Prometheus\+Printer@{Prometheus\+Printer}}
+Inheritance diagram for Prometheus\+Printer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPrometheusPrinter}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classPrometheusPrinter_a85eb3356b67193c9714c1bd1f4bc4ad2}} 
+{\bfseries Prometheus\+Printer} (std\+::pair$<$ std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$, std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$$>$ aggregator\+Pair)
+\item 
+\mbox{\label{classPrometheusPrinter_a86806f1980b42bd57d908df77924b6ec}} 
+{\bfseries Prometheus\+Printer} (\textbf{ Prometheus\+Printer} const \&)=delete
+\item 
+\mbox{\label{classPrometheusPrinter_a5cb2e0139b2af4a0e91a0a5801700f86}} 
+\textbf{ Core\+Counter\+State} const {\bfseries get\+Core\+Counter} (std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$ ag, uint32 tid) const
+\item 
+\mbox{\label{classPrometheusPrinter_a0f34e07c9a80072007692374ef9685d5}} 
+\textbf{ Socket\+Counter\+State} const {\bfseries get\+Socket\+Counter} (std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$ ag, uint32 sid) const
+\item 
+\mbox{\label{classPrometheusPrinter_a2a816b35e66608bb0b070d65779ba95d}} 
+\textbf{ System\+Counter\+State} {\bfseries get\+System\+Counter} (std\+::shared\+\_\+ptr$<$ \textbf{ Aggregator} $>$ ag) const
+\item 
+\mbox{\label{classPrometheusPrinter_a308802af34c359bbabcc49e1a0b4437c}} 
+virtual void {\bfseries dispatch} (\textbf{ Hyper\+Thread} $\ast$ht) override
+\item 
+\mbox{\label{classPrometheusPrinter_a0b1a6a92c5563dcf178f5b14f22a8471}} 
+virtual void {\bfseries dispatch} (\textbf{ Server\+Uncore} $\ast$su) override
+\item 
+\mbox{\label{classPrometheusPrinter_ab83e697dbcec6f5694a86895052e99fc}} 
+virtual void {\bfseries dispatch} (\textbf{ Client\+Uncore} $\ast$) override
+\item 
+\mbox{\label{classPrometheusPrinter_a49efcb7a91b8cd0e20d2b33e16fa3297}} 
+virtual void {\bfseries dispatch} (\textbf{ Core} $\ast$c) override
+\item 
+\mbox{\label{classPrometheusPrinter_af6d1d73077dc085ab9f88b1dc0504737}} 
+virtual void {\bfseries dispatch} (\textbf{ System\+Root} const \&s) override
+\item 
+\mbox{\label{classPrometheusPrinter_af304300a3c0be16d89df4c3597334cff}} 
+virtual void {\bfseries dispatch} (\textbf{ Socket} $\ast$s) override
+\item 
+\mbox{\label{classPrometheusPrinter_ab791e0389bdea71bf0be5fae84906d85}} 
+std\+::string {\bfseries str} (void)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+pcm-\/sensor-\/server.\+cpp\end{DoxyCompactItemize}

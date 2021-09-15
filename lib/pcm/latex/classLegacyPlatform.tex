@@ -1,0 +1,44 @@
+\section{Legacy\+Platform Class Reference}
+\label{classLegacyPlatform}\index{Legacy\+Platform@{Legacy\+Platform}}
+Inheritance diagram for Legacy\+Platform\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classLegacyPlatform}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classLegacyPlatform_a88e8b4dea31f9b7654fdf3b17e418e11}} 
+{\bfseries Legacy\+Platform} (initializer\+\_\+list$<$ string $>$ events, initializer\+\_\+list$<$ event\+Group\+\_\+t $>$ event\+Codes, \textbf{ P\+CM} $\ast$m, bool csv, bool bandwidth, bool verbose, uint32 delay)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classLegacyPlatform_a67c7d2a2a6bc319a914732ad89a13476}} 
+virtual uint64 {\bfseries get\+Read\+Bw} (uint socket, event\+Filter filter)=0
+\item 
+\mbox{\label{classLegacyPlatform_afa6b156e541142777f5bb96dbfae4b63}} 
+virtual uint64 {\bfseries get\+Write\+Bw} (uint socket, event\+Filter filter)=0
+\item 
+\mbox{\label{classLegacyPlatform_ad2ffc666c99dc04a66dc34fab59c759e}} 
+virtual uint64 {\bfseries get\+Read\+Bw} ()=0
+\item 
+\mbox{\label{classLegacyPlatform_ac211df0ad55b4345ef5bcc46929cf16a}} 
+virtual uint64 {\bfseries get\+Write\+Bw} ()=0
+\item 
+\mbox{\label{classLegacyPlatform_a3c80d78f33c4cdb67216c6758d948123}} 
+virtual uint64 {\bfseries event} (uint socket, event\+Filter filter, uint idx)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classLegacyPlatform_a6e50a92635370fa58ff28ab614b11cb2}} 
+vector$<$ vector$<$ uint64 $>$ $>$ {\bfseries event\+Sample}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+pcm-\/pcie.\+h\end{DoxyCompactItemize}

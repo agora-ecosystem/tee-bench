@@ -1,0 +1,40 @@
+\section{P\+CM\+:\+:Extended\+Custom\+Core\+Event\+Description Struct Reference}
+\label{structPCM_1_1ExtendedCustomCoreEventDescription}\index{P\+C\+M\+::\+Extended\+Custom\+Core\+Event\+Description@{P\+C\+M\+::\+Extended\+Custom\+Core\+Event\+Description}}
+
+
+Extended custom core event description.  
+
+
+
+
+{\ttfamily \#include $<$cpucounters.\+h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{structPCM_1_1ExtendedCustomCoreEventDescription_a793e3dbd33a6bc37f800bb990777a543}} 
+\textbf{ Fixed\+Event\+Control\+Register} $\ast$ {\bfseries fixed\+Cfg}
+\item 
+\mbox{\label{structPCM_1_1ExtendedCustomCoreEventDescription_ae66c1ea4e0b4ef493ee7d8c1f3245945}} 
+uint32 {\bfseries n\+G\+P\+Counters}
+\item 
+\mbox{\label{structPCM_1_1ExtendedCustomCoreEventDescription_aa8f24e6871fe123345fd0141828374a1}} 
+\textbf{ Event\+Select\+Register} $\ast$ {\bfseries gp\+Counter\+Cfg}
+\item 
+\mbox{\label{structPCM_1_1ExtendedCustomCoreEventDescription_a2a1a8771723138bddbeae034c7710934}} 
+uint64 {\bfseries Offcore\+Response\+Msr\+Value} [2]
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Extended custom core event description. 
+
+In contrast to \doxyref{Custom\+Core\+Event\+Description}{p.}{structPCM_1_1CustomCoreEventDescription} supports configuration of all fields.
+
+See \char`\"{}\+Intel 64 and I\+A-\/32 Architectures Software Developers Manual Volume 3\+B\+:
+\+System Programming Guide, Part 2\char`\"{} for the concrete values of the data structure fields, e.\+g. Appendix A.\+2 \char`\"{}\+Performance Monitoring Events for Intel(r) Core(tm) Processor Family
+and Xeon Processor Family\char`\"{} 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ cpucounters.\+h}\end{DoxyCompactItemize}

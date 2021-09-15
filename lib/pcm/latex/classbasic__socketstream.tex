@@ -1,0 +1,49 @@
+\section{basic\+\_\+socketstream$<$ CharT, Traits $>$ Class Template Reference}
+\label{classbasic__socketstream}\index{basic\+\_\+socketstream$<$ Char\+T, Traits $>$@{basic\+\_\+socketstream$<$ Char\+T, Traits $>$}}
+Inheritance diagram for basic\+\_\+socketstream$<$ CharT, Traits $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbasic__socketstream}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classbasic__socketstream_adb5582d64499000675dcf740d2216cf8}} 
+using {\bfseries Base} = std\+::basic\+\_\+iostream$<$ CharT, Traits $>$
+\item 
+\mbox{\label{classbasic__socketstream_a575a4a139b37915fd4125d43aa99f7f4}} 
+using {\bfseries stream\+\_\+type} = typename std\+::basic\+\_\+iostream$<$ CharT, Traits $>$
+\item 
+\mbox{\label{classbasic__socketstream_ab428099dffca113eea3696698bc51995}} 
+using {\bfseries buf\+\_\+type} = \textbf{ basic\+\_\+socketbuf}$<$ 16385, CharT, Traits $>$
+\item 
+\mbox{\label{classbasic__socketstream_a1af704e520f5d74d38c2ad9a329108fe}} 
+using {\bfseries traits\+\_\+type} = typename Base\+::traits\+\_\+type
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classbasic__socketstream_af9b6960e4f1097496c010aa055ded213}} 
+{\bfseries basic\+\_\+socketstream} (int socket\+FD)
+\item 
+\mbox{\label{classbasic__socketstream_a1548cb11bd58c94221c761aacb241c12}} 
+int {\bfseries open} (std\+::string \&hostname, uint16\+\_\+t port)
+\item 
+\mbox{\label{classbasic__socketstream_a5dd63464ac3c17b2e9231bbd8f23e8f2}} 
+void {\bfseries put\+Line} (std\+::string \&line)
+\item 
+\mbox{\label{classbasic__socketstream_aff3c8932400a50d393f0acb95ff0f38f}} 
+void {\bfseries close} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classbasic__socketstream_a404ff48f3ad5e5d508f8af6252d7449d}} 
+\textbf{ buf\+\_\+type} {\bfseries socket\+Buffer\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+pcm-\/sensor-\/server.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,69 @@
+\section{realtime.\+cpp File Reference}
+\label{realtime_8cpp}\index{realtime.\+cpp@{realtime.\+cpp}}
+
+
+Two use-\/cases\+: realtime data structure performance analysis and memory-\/bandwidth aware scheduling.  
+
+
+{\ttfamily \#include \char`\"{}cpucounters.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpuasynchcounter.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$list$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ T}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{realtime_8cpp_ab6b2adca133c5e31dca366cdc686edbe}} 
+double {\bfseries my\+\_\+timestamp} ()
+\item 
+\mbox{\label{realtime_8cpp_a26067fd04774b9351f8ad25314b01077}} 
+long long int {\bfseries fib} (long long int num)
+\item 
+\mbox{\label{realtime_8cpp_ae78e322a91d8697aeb883161ad21e77b}} 
+void {\bfseries C\+P\+U\+\_\+intensive\+\_\+task} ()
+\item 
+\mbox{\label{realtime_8cpp_a722f2b5a21f9cb12dae7790963a0cdba}} 
+{\footnotesize template$<$class DS $>$ }\\void {\bfseries Memory\+\_\+intensive\+\_\+task} (DS \&ds)
+\item 
+\mbox{\label{realtime_8cpp_a48c3e8e5a58ab1456c875c332a2df4b9}} 
+double {\bfseries current\+Memory\+Bandwidth} ()
+\item 
+\mbox{\label{realtime_8cpp_a6e4dd9241429371cfcb1d2b3127ea7a8}} 
+{\footnotesize template$<$class DS $>$ }\\void {\bfseries measure} (DS \&ds, size\+\_\+t repeat, size\+\_\+t nelements)
+\item 
+\mbox{\label{realtime_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+int {\bfseries main} (int argc, char $\ast$argv[$\,$])
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{realtime_8cpp_ad0d469a9c20fe7016b9be95e443f5cbd}} 
+\textbf{ System\+Counter\+State} {\bfseries before\+\_\+sstate}
+\item 
+\mbox{\label{realtime_8cpp_a3684fa4dfac013348b5abe2b3a602105}} 
+\textbf{ System\+Counter\+State} {\bfseries after\+\_\+sstate}
+\item 
+\mbox{\label{realtime_8cpp_a85f10f39fe8cc10213c0bc87ee07187b}} 
+double {\bfseries before\+\_\+time}
+\item 
+\mbox{\label{realtime_8cpp_a7790f27845e8d48f4f04a0f7c61d93fc}} 
+double {\bfseries after\+\_\+time}
+\item 
+\mbox{\label{realtime_8cpp_a17adfa64106f41a0a9a2a0b65ad301ab}} 
+\textbf{ Asynchron\+Counter\+State} {\bfseries counters}
+\item 
+\mbox{\label{realtime_8cpp_a3fc505aa811b2808316ed55b8466522a}} 
+long long int {\bfseries all\+\_\+fib} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Two use-\/cases\+: realtime data structure performance analysis and memory-\/bandwidth aware scheduling. 
+

@@ -1,0 +1,75 @@
+\section{I\+Platform Class Reference}
+\label{classIPlatform}\index{I\+Platform@{I\+Platform}}
+Inheritance diagram for I\+Platform\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classIPlatform}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classIPlatform_a05ced2ea65c4f41302f2c6108ea481fa}} 
+{\bfseries I\+Platform} (\textbf{ P\+CM} $\ast$m, bool csv, bool bandwidth, bool verbose)
+\item 
+\mbox{\label{classIPlatform_a7a7988b4d1acb07d3895ebcb3ea82f3c}} 
+virtual void {\bfseries get\+Events} ()=0
+\item 
+\mbox{\label{classIPlatform_ab20ee48d4788a4b79b0cb4a0ea2e1861}} 
+virtual void {\bfseries print\+Header} ()=0
+\item 
+\mbox{\label{classIPlatform_a8a01597bf0edb879174764d6d0781061}} 
+virtual void {\bfseries print\+Events} ()=0
+\item 
+\mbox{\label{classIPlatform_a996b80ebda6bc1f1595abc546f2d3c51}} 
+virtual void {\bfseries print\+Aggregated\+Events} ()=0
+\item 
+\mbox{\label{classIPlatform_a81474d4b6fc1d47881050f0c97564c04}} 
+virtual void {\bfseries cleanup} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classIPlatform_a159a2798ac215f794b8f6aec3721d873}} 
+static \textbf{ I\+Platform} $\ast$ {\bfseries get\+Platform} (\textbf{ P\+CM} $\ast$m, bool csv, bool bandwidth, bool verbose, uint32 delay)
+\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classIPlatform_a9b1e2a11263356b178d54de93ef16a9e}} 
+enum {\bfseries event\+Filter} \{ {\bfseries T\+O\+T\+AL}, 
+{\bfseries M\+I\+SS}, 
+{\bfseries H\+IT}, 
+{\bfseries flt\+Last}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classIPlatform_afdbbf97f1c56f8ae52c7cf9f16c146b4}} 
+\textbf{ P\+CM} $\ast$ {\bfseries m\+\_\+pcm}
+\item 
+\mbox{\label{classIPlatform_ac902bad50bba120c775c6318ac6c9a55}} 
+bool {\bfseries m\+\_\+csv}
+\item 
+\mbox{\label{classIPlatform_a010b0e35973e9d8e09340f238d23f98a}} 
+bool {\bfseries m\+\_\+bandwidth}
+\item 
+\mbox{\label{classIPlatform_a9f115a7dcb206b31c32ff9a298897900}} 
+bool {\bfseries m\+\_\+verbose}
+\item 
+\mbox{\label{classIPlatform_af08e023a7dd671adf3427a7e234869e1}} 
+uint {\bfseries m\+\_\+socket\+Count}
+\item 
+\mbox{\label{classIPlatform_a3fada52527a9baf452538232058ecbb9}} 
+vector$<$ string $>$ {\bfseries filter\+Names}
+\item 
+\mbox{\label{classIPlatform_a036e2dbbe5d138ede627a168cba0ca2e}} 
+vector$<$ string $>$ {\bfseries bw\+Names}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+pcm-\/pcie.\+h\item 
+\textbf{ pcm-\/pcie.\+cpp}\end{DoxyCompactItemize}

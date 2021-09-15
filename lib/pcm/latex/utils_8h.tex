@@ -1,0 +1,126 @@
+\section{utils.\+h File Reference}
+\label{utils_8h}\index{utils.\+h@{utils.\+h}}
+
+
+Some common utility routines.  
+
+
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$csignal$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ null\+\_\+stream}
+\item 
+class \textbf{ s\+\_\+expect}
+\item 
+struct \textbf{ Stacked\+Bar\+Item}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{utils_8h_ab31bf3c650c18b5feb1a583596241964}} 
+\#define {\bfseries P\+C\+M\+\_\+\+U\+N\+U\+S\+ED}(x)~(void)(x)
+\item 
+\#define {\bfseries P\+C\+M\+\_\+\+C\+O\+M\+P\+I\+L\+E\+\_\+\+A\+S\+S\+E\+RT}(condition)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{utils_8h_a47a9fe6f13b2f3d3959627d7551307cd}} 
+typedef std\+::istringstream {\bfseries pcm\+\_\+sscanf}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{utils_8h_ad7f085309ae89de98d2f3755d6b00d6a}} 
+void \textbf{ exit\+\_\+cleanup} (void)
+\begin{DoxyCompactList}\small\item\em handler of exit() call \end{DoxyCompactList}\item 
+\mbox{\label{utils_8h_a1d883de13538e72a0f69118e5ae55785}} 
+void \textbf{ set\+\_\+signal\+\_\+handlers} (void)
+\begin{DoxyCompactList}\small\item\em install various handlers for system signals \end{DoxyCompactList}\item 
+\mbox{\label{utils_8h_a3200cdd5e1d5f53a4dbecaaf4f01f71d}} 
+void \textbf{ restore\+\_\+signal\+\_\+handlers} (void)
+\begin{DoxyCompactList}\small\item\em Restores default signal handlers under Linux/\+U\+N\+IX. \end{DoxyCompactList}\item 
+\mbox{\label{utils_8h_afc1a4d527493068f7670f237fc448bb8}} 
+void \textbf{ sig\+I\+N\+T\+\_\+handler} (int signum)
+\begin{DoxyCompactList}\small\item\em handles signals that lead to termination of the program such as S\+I\+G\+I\+NT, S\+I\+G\+Q\+U\+IT, S\+I\+G\+A\+B\+RT, S\+I\+G\+S\+E\+GV, S\+I\+G\+T\+E\+RM, S\+I\+G\+C\+H\+LD this function specifically works when the client aplication launched by pcm -- terminates \end{DoxyCompactList}\item 
+\mbox{\label{utils_8h_a7d1a3c6ec6cd83bf6b08c7d2d085b165}} 
+void \textbf{ sig\+H\+U\+P\+\_\+handler} (int signum)
+\begin{DoxyCompactList}\small\item\em handles signals that lead to restart the application such as S\+I\+G\+H\+UP. for example to re-\/read environment variables controlling \doxyref{P\+CM}{p.}{classPCM} execution \end{DoxyCompactList}\item 
+\mbox{\label{utils_8h_a067c6080c8b6b276419933d8fc8990be}} 
+void \textbf{ sig\+U\+S\+R\+\_\+handler} (int signum)
+\begin{DoxyCompactList}\small\item\em handles signals that lead to update of configuration such as S\+I\+G\+U\+S\+R1 and S\+I\+G\+U\+S\+R2. for the future extensions \end{DoxyCompactList}\item 
+\mbox{\label{utils_8h_a31614f993e86b671fc8775249db1f178}} 
+void \textbf{ sig\+S\+T\+O\+P\+\_\+handler} (int signum)
+\begin{DoxyCompactList}\small\item\em handles signals that lead to update of configuration such as S\+I\+G\+S\+T\+OP, S\+I\+G\+T\+S\+TP, S\+I\+G\+T\+T\+IN, S\+I\+G\+T\+T\+OU \end{DoxyCompactList}\item 
+\mbox{\label{utils_8h_ad5a1c533ebe0b5dbb843c32300f1df5f}} 
+void \textbf{ sig\+C\+O\+N\+T\+\_\+handler} (int signum)
+\begin{DoxyCompactList}\small\item\em handles signals that lead to update of configuration such as S\+I\+G\+C\+O\+NT \end{DoxyCompactList}\item 
+\mbox{\label{utils_8h_aa9ae7f026f01657b9d6deb0976a51cae}} 
+void {\bfseries set\+\_\+post\+\_\+cleanup\+\_\+callback} (void($\ast$cb)(void))
+\item 
+\mbox{\label{utils_8h_a9676f5a7c7b26e3a05f1da74b9f7446b}} 
+void {\bfseries My\+Sleep} (int delay)
+\item 
+\mbox{\label{utils_8h_a2e28907cbb9ee62d131740fc2a2ce343}} 
+void {\bfseries My\+Sleep\+Ms} (int delay\+\_\+ms)
+\item 
+\mbox{\label{utils_8h_a7554cbdafa9da0f374648381a31e2522}} 
+void \textbf{ My\+System} (char $\ast$sys\+Cmd, char $\ast$$\ast$argc)
+\begin{DoxyCompactList}\small\item\em launches external program in a separate process \end{DoxyCompactList}\item 
+\mbox{\label{utils_8h_ac9e4fa3f602d7b1c3fc6c84db398d30d}} 
+{\footnotesize template$<$class Int\+Type $>$ }\\std\+::string {\bfseries unit\+\_\+format} (Int\+Type n)
+\item 
+\mbox{\label{utils_8h_a35c5bac18ffd9b8ce81fdaaf272a4c70}} 
+void {\bfseries print\+\_\+cpu\+\_\+details} ()
+\item 
+\mbox{\label{utils_8h_a4e0badbf124b3afd55ab2f134555d00e}} 
+std\+::istream \& {\bfseries operator$>$$>$} (std\+::istream \&istr, \textbf{ s\+\_\+expect} \&\&s)
+\item 
+\mbox{\label{utils_8h_a3fdcbe10442082a6e476d40576a80994}} 
+std\+::istream \& {\bfseries operator$>$$>$} (std\+::istream \&\&istr, \textbf{ s\+\_\+expect} \&\&s)
+\item 
+\mbox{\label{utils_8h_aa2ef70516678b9d9096a918ee2d89c86}} 
+tm {\bfseries pcm\+\_\+localtime} ()
+\item 
+\mbox{\label{utils_8h_adcfac52e096ad7538d0ba2ca293d3088}} 
+bool {\bfseries Check\+And\+Force\+R\+T\+M\+Abort\+Mode} (const char $\ast$argv, \textbf{ P\+CM} $\ast$m)
+\item 
+\mbox{\label{utils_8h_a3910a540e197ece18c4da7a3cd33e85a}} 
+void {\bfseries print\+\_\+help\+\_\+force\+\_\+rtm\+\_\+abort\+\_\+mode} (const int alignment)
+\item 
+\mbox{\label{utils_8h_ae69a5821db21d57a715e4a7ba05d7dac}} 
+void {\bfseries draw\+Stacked\+Bar} (const std\+::string \&label, std\+::vector$<$ \textbf{ Stacked\+Bar\+Item} $>$ \&h, const int width=80)
+\item 
+\mbox{\label{utils_8h_a7e9fd78aa1857d78a50e9313f9cfc846}} 
+uint64 {\bfseries read\+\_\+number} (char $\ast$str)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Some common utility routines. 
+
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\label{utils_8h_a0ce57e0df045ade600cc32dc72cdd2e2}} 
+\index{utils.\+h@{utils.\+h}!P\+C\+M\+\_\+\+C\+O\+M\+P\+I\+L\+E\+\_\+\+A\+S\+S\+E\+RT@{P\+C\+M\+\_\+\+C\+O\+M\+P\+I\+L\+E\+\_\+\+A\+S\+S\+E\+RT}}
+\index{P\+C\+M\+\_\+\+C\+O\+M\+P\+I\+L\+E\+\_\+\+A\+S\+S\+E\+RT@{P\+C\+M\+\_\+\+C\+O\+M\+P\+I\+L\+E\+\_\+\+A\+S\+S\+E\+RT}!utils.\+h@{utils.\+h}}
+\subsubsection{P\+C\+M\+\_\+\+C\+O\+M\+P\+I\+L\+E\+\_\+\+A\+S\+S\+E\+RT}
+{\footnotesize\ttfamily \#define P\+C\+M\+\_\+\+C\+O\+M\+P\+I\+L\+E\+\_\+\+A\+S\+S\+E\+RT(\begin{DoxyParamCaption}\item[{}]{condition }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{typedef} \textcolor{keywordtype}{char} pcm\_compile\_assert\_failed[(condition) ? 1 : -1]; \(\backslash\)
+    pcm\_compile\_assert\_failed pcm\_compile\_assert\_failed\_; \(\backslash\)
+    PCM\_UNUSED(pcm\_compile\_assert\_failed\_);
+\end{DoxyCode}

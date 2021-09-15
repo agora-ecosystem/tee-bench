@@ -1,0 +1,44 @@
+\section{Pci\+Handle Class Reference}
+\label{classPciHandle}\index{Pci\+Handle@{Pci\+Handle}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classPciHandle_a95e2bf928bd4438831c5a3b5b516efe6}} 
+{\bfseries Pci\+Handle} (uint32 groupnr\+\_\+, uint32 bus\+\_\+, uint32 device\+\_\+, uint32 function\+\_\+)
+\item 
+\mbox{\label{classPciHandle_a76d15c7331d5fddd98d42e8a2316fb7c}} 
+int32 {\bfseries read32} (uint64 offset, uint32 $\ast$value)
+\item 
+\mbox{\label{classPciHandle_a1975782af9943f65ba1312ff56fb30b1}} 
+int32 {\bfseries write32} (uint64 offset, uint32 value)
+\item 
+\mbox{\label{classPciHandle_a2f965ad969df3add9c955eaaeb43e715}} 
+int32 {\bfseries read64} (uint64 offset, uint64 $\ast$value)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classPciHandle_ac7eb1a7d50b8e345f75bdc8205592a92}} 
+static bool {\bfseries exists} (uint32 groupnr\+\_\+, uint32 bus\+\_\+, uint32 device\+\_\+, uint32 function\+\_\+)
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classPciHandle_a9b5105f02947177df61ffe78ee81f022}} 
+static int {\bfseries open\+Mcfg\+Table} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{classPciHandle_ab4094f771b56aa375bccb1397e1a18bc}} 
+class {\bfseries Pci\+HandleM}
+\item 
+\mbox{\label{classPciHandle_ad697cfb775e6784b97bf84b9f2a3938a}} 
+class {\bfseries Pci\+Handle\+MM}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ pci.\+h}\item 
+pci.\+cpp\end{DoxyCompactItemize}

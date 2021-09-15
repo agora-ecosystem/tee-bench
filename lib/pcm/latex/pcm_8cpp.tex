@@ -1,0 +1,93 @@
+\section{pcm.\+cpp File Reference}
+\label{pcm_8cpp}\index{pcm.\+cpp@{pcm.\+cpp}}
+
+
+Example of using C\+PU counters\+: implements a simple performance counter monitoring utility.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$bitset$>$}\newline
+{\ttfamily \#include \char`\"{}cpucounters.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pcm_8cpp_ac4eeb11d89b0f517835a12a04443ebe4}} 
+\#define {\bfseries H\+A\+C\+K\+\_\+\+T\+O\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+D\+U\+P\+L\+I\+C\+A\+T\+E\+\_\+\+E\+R\+R\+OR}
+\item 
+\mbox{\label{pcm_8cpp_a70ed59adcb4159ac551058053e649640}} 
+\#define {\bfseries S\+I\+ZE}~(10000000)
+\item 
+\mbox{\label{pcm_8cpp_aa9ecc55c90c7a69729babc4f5f91ed96}} 
+\#define {\bfseries P\+C\+M\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+D\+E\+F\+A\+U\+LT}~1.\+0
+\item 
+\mbox{\label{pcm_8cpp_acccbe8441d6dd75bdc949f5f0ee126c5}} 
+\#define {\bfseries P\+C\+M\+\_\+\+D\+E\+L\+A\+Y\+\_\+\+M\+IN}~0.\+015
+\item 
+\mbox{\label{pcm_8cpp_a433dde946b6713059756318598c9a6fe}} 
+\#define {\bfseries P\+C\+M\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+R\+V\+AL}~50
+\item 
+\mbox{\label{pcm_8cpp_a009855593b59738d24dbfc236edb3b14}} 
+\#define {\bfseries M\+A\+X\+\_\+\+C\+O\+R\+ES}~4096
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pcm_8cpp_afb78946f84b894fb4284e7b672cda23c}} 
+{\footnotesize template$<$class Int\+Type $>$ }\\double {\bfseries float\+\_\+format} (Int\+Type n)
+\item 
+\mbox{\label{pcm_8cpp_aeebeb8e745c5a040d4be7740061e1f76}} 
+std\+::string {\bfseries temp\+\_\+format} (int32 t)
+\item 
+\mbox{\label{pcm_8cpp_a72b1e8c5ff6ef33763687c1b3d0d5409}} 
+std\+::string {\bfseries l3cache\+\_\+occ\+\_\+format} (uint64 o)
+\item 
+\mbox{\label{pcm_8cpp_aed15bac2c898efcc1f005764539f7970}} 
+void {\bfseries print\+\_\+help} (const string prog\+\_\+name)
+\item 
+\mbox{\label{pcm_8cpp_a795b4dc0ba2bf103da3c14f6b77dd6a2}} 
+{\footnotesize template$<$class State $>$ }\\void {\bfseries print\+\_\+basic\+\_\+metrics} (const \textbf{ P\+CM} $\ast$m, const State \&state1, const State \&state2)
+\item 
+\mbox{\label{pcm_8cpp_af757cd04841b07df5dabd064f9a0c371}} 
+{\footnotesize template$<$class State $>$ }\\void {\bfseries print\+\_\+other\+\_\+metrics} (const \textbf{ P\+CM} $\ast$m, const State \&state1, const State \&state2)
+\item 
+\mbox{\label{pcm_8cpp_ad9c5ac2e5d822d7a58087aa93a6ddf12}} 
+void {\bfseries print\+\_\+output} (\textbf{ P\+CM} $\ast$m, const std\+::vector$<$ \textbf{ Core\+Counter\+State} $>$ \&cstates1, const std\+::vector$<$ \textbf{ Core\+Counter\+State} $>$ \&cstates2, const std\+::vector$<$ \textbf{ Socket\+Counter\+State} $>$ \&sktstate1, const std\+::vector$<$ \textbf{ Socket\+Counter\+State} $>$ \&sktstate2, const std\+::bitset$<$ M\+A\+X\+\_\+\+C\+O\+R\+ES $>$ \&ycores, const \textbf{ System\+Counter\+State} \&sstate1, const \textbf{ System\+Counter\+State} \&sstate2, const int cpu\+\_\+model, const bool show\+\_\+core\+\_\+output, const bool show\+\_\+partial\+\_\+core\+\_\+output, const bool show\+\_\+socket\+\_\+output, const bool show\+\_\+system\+\_\+output)
+\item 
+\mbox{\label{pcm_8cpp_a84eb5866e9bc36d32e306f46d8c73955}} 
+void {\bfseries print\+\_\+basic\+\_\+metrics\+\_\+csv\+\_\+header} (const \textbf{ P\+CM} $\ast$m)
+\item 
+\mbox{\label{pcm_8cpp_a9d07d90bb2ddedc67ca509a36532aa9f}} 
+void {\bfseries print\+\_\+basic\+\_\+metrics\+\_\+csv\+\_\+semicolons} (const \textbf{ P\+CM} $\ast$m)
+\item 
+\mbox{\label{pcm_8cpp_ab8edf48a6781e03c80be36484dc4b3e7}} 
+void {\bfseries print\+\_\+csv\+\_\+header} (\textbf{ P\+CM} $\ast$m, const std\+::bitset$<$ M\+A\+X\+\_\+\+C\+O\+R\+ES $>$ \&ycores, const int, const bool show\+\_\+core\+\_\+output, const bool show\+\_\+partial\+\_\+core\+\_\+output, const bool show\+\_\+socket\+\_\+output, const bool show\+\_\+system\+\_\+output)
+\item 
+\mbox{\label{pcm_8cpp_a85ee4b0f33d06783d58aad6e632a874c}} 
+{\footnotesize template$<$class State $>$ }\\void {\bfseries print\+\_\+basic\+\_\+metrics\+\_\+csv} (const \textbf{ P\+CM} $\ast$m, const State \&state1, const State \&state2, const bool print\+\_\+last\+\_\+semicolon=true)
+\item 
+\mbox{\label{pcm_8cpp_abbee0b7c7fe76bdd2bebfe112318fbed}} 
+{\footnotesize template$<$class State $>$ }\\void {\bfseries print\+\_\+other\+\_\+metrics\+\_\+csv} (const \textbf{ P\+CM} $\ast$m, const State \&state1, const State \&state2)
+\item 
+\mbox{\label{pcm_8cpp_a55e478c8be8eefaad2fa6e87982c9ce9}} 
+void {\bfseries print\+\_\+csv} (\textbf{ P\+CM} $\ast$m, const std\+::vector$<$ \textbf{ Core\+Counter\+State} $>$ \&cstates1, const std\+::vector$<$ \textbf{ Core\+Counter\+State} $>$ \&cstates2, const std\+::vector$<$ \textbf{ Socket\+Counter\+State} $>$ \&sktstate1, const std\+::vector$<$ \textbf{ Socket\+Counter\+State} $>$ \&sktstate2, const std\+::bitset$<$ M\+A\+X\+\_\+\+C\+O\+R\+ES $>$ \&ycores, const \textbf{ System\+Counter\+State} \&sstate1, const \textbf{ System\+Counter\+State} \&sstate2, const int, const bool show\+\_\+core\+\_\+output, const bool show\+\_\+partial\+\_\+core\+\_\+output, const bool show\+\_\+socket\+\_\+output, const bool show\+\_\+system\+\_\+output)
+\item 
+\mbox{\label{pcm_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+int {\bfseries main} (int argc, char $\ast$argv[$\,$])
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Example of using C\+PU counters\+: implements a simple performance counter monitoring utility. 
+
