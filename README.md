@@ -1,5 +1,26 @@
 # TeeBench
 
+TeeBench was first published in [Proceedings of the VLDB Endowment, Volume 15, 2021-2022](https://vldb.org/pvldb/vol15-volume-info/).
+
+### Abstract
+Protection of personal data has been raised to be among the top requirements of modern systems. At the same time, it is now frequent that the owner of the data and the owner of the computing infrastructure are two entities with limited trust between them (e. g., volunteer computing or the hybrid-cloud). Recently, trusted execution environments (TEEs) became a viable solution to ensure the security of systems in such environments. However, the performance of relational operators in TEEs remains an open problem. We conduct a comprehensive experimental study to identify the main bottlenecks and challenges when executing relational equi-joins in TEEs. For this, we introduce TEEbench, a framework for unified benchmarking of relational operators in TEEs, and use it for conducting our experimental evaluation. In a nutshell, we perform the following experimental analysis for eight core join algorithms: off-the-shelf performance; the performance implications of data sealing and obliviousness; sensitivity and scalability. The results show that all eight join algorithms significantly suffer from different performance bottlenecks in TEEs. They can be up to three orders of magnitude slower in TEEs than on plain CPUs. Our study also indicates that existing join algorithms need a complete, hardware-aware redesign to be efficient in TEEs, and that, in secure query plans, managing TEE features is equally important to join selection.
+
+### Paper
+[What Is the Price for Joining Securely? Benchmarking Equi-Joins in Trusted Execution Environments](https://github.com/agora-ecosystem/tee-bench/blob/master/paper/What_Is_the_Price_for_Joining_Securely_Benchmarking_Equi-Joins_in_Trusted_Execution_Environments.pdf)
+### BibTeX citation
+```
+@article{maliszewski2021price,
+  title={What is the price for joining securely? benchmarking equi-joins in trusted execution environments},
+  author={Maliszewski, Kajetan and Quian{\'e}-Ruiz, Jorge-Arnulfo and Traub, Jonas and Markl, Volker},
+  journal={Proceedings of the VLDB Endowment},
+  volume={15},
+  number={3},
+  pages={659--672},
+  year={2021},
+  publisher={VLDB Endowment}
+}
+
+```
 ## Prerequisites 
 * Intel SGX v2.11 
 * Ubuntu 18.04 LTS
