@@ -6,8 +6,14 @@
 #include <pthread.h>
 #include "task_queue_atomic.hpp"
 #include "util.h"
+#ifdef NATIVE_COMPILATION
+#include "Logger.h"
+#include "native_ocalls.h"
+#include "malloc.h"
+#else
 #include "Enclave.h"
 #include "Enclave_t.h"
+#endif
 
 #define HASH_BIT_MODULO(K, MASK, NBITS) (((K) & MASK) >> NBITS)
 #define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))

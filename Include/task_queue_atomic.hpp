@@ -7,6 +7,7 @@
 #include <atomic>
 #ifdef NATIVE_COMPILATION
 #include "Logger.h"
+#include "native_ocalls.h"
 #else
 #include "Enclave.h"
 #include "Enclave_t.h"

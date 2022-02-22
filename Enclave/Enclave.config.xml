@@ -3,7 +3,7 @@
   <ISVSVN>0</ISVSVN>
   <StackMaxSize>0x20000</StackMaxSize>
 <!--   600 MB-->
-<!--   <HeapMaxSize>0x25800000</HeapMaxSize>-->
+  <HeapMaxSize>0x25800000</HeapMaxSize>
   <!--   2 GB-->
 <!--   <HeapMaxSize>0x80000000</HeapMaxSize>-->
 <!--4.5 GB-->
@@ -17,7 +17,7 @@
   <!--   25 GB-->
 <!--      <HeapMaxSize>0x640000000</HeapMaxSize>-->
   <!--   27 GB-->
-  <HeapMaxSize>0x6C0000000</HeapMaxSize>
+  <!-- <HeapMaxSize>0x6C0000000</HeapMaxSize> -->
   <!--  32 GB-->
 <!--  <HeapMaxSize>0x800000000</HeapMaxSize>-->
   <TCSNum>9</TCSNum>

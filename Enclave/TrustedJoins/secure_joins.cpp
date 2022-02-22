@@ -17,8 +17,6 @@
 #include "parallel_sortmerge_join.h"
 #include "util.h"
 #include "MCJoin.h"
-//#include "StitchJoin.h"
-#include "partitioning.h"
 #include "rho_atomic/radix_join_atomic.h"
 
 extern char aad_mac_text[256];
@@ -32,82 +30,6 @@ void print_relation(relation_t *rel, uint32_t num, uint32_t offset)
         logger(DBG, "%u -> %u", rel->tuples[i].key, rel->tuples[i].payload);
     }
     logger(DBG, "******************************************************");
-}
-void *
-part_thread(void * param) {
-    arg_t_partition *args = (arg_t_partition *) param;
-
-    int radix_bits = 2;
-    uint32_t num_partitions = 1 << radix_bits;
-    uint32_t result = 0;
-    uint32_t offsetR = 0, offsetS = 0;
-
-    auto * histR = (int32_t*) calloc(num_partitions, sizeof(int32_t));
-    auto * histS = (int32_t*) calloc(num_partitions, sizeof(int32_t));
-
-    relation_t * partRelR = partition_non_in_place_in_cache(args->relR, radix_bits, histR);
-    relation_t * partRelS = partition_non_in_place_in_cache(args->relS, radix_bits, histS);
-
-//    char buf[256], *pos = buf;
-//    for (int i = 0; i < num_partitions; i++) {
-//        pos += sprintf_s(pos, 256, "%d ", histR[i]);
-//    }
-//    logger(DEBUG, "histR = %s", buf);
-
-    if (args->tid == 0) {
-        ocall_get_system_micros(&args->start);
-    }
-    /* bucket chaining join */
-    for (int i = 0; i < num_partitions; i++)
-    {
-        result += bucket_chaining_join(partRelR->tuples+offsetR,
-                                       histR[i],
-                                       partRelS->tuples+offsetS,
-                                       histS[i],
-                                       radix_bits);
-        offsetR += histR[i];
-        offsetS += histS[i];
-    }
-
-    if (args->tid == 0) {
-        ocall_get_system_micros(&args->end);
-    }
-
-    args->result = result;
-
-    free(histR);
-    free(histS);
-    free(partRelR);
-    free(partRelS);
-}
-
-result_t*
-partitioning_test(struct table_t * relR, struct table_t * relS, int nthreads) {
-    uint32_t result = 0;
-
-    arg_t_partition args[nthreads];
-    pthread_t tid [nthreads];
-
-    args[0].tid = 0;
-    args[0].relR = relR;
-    args[0].relS = relS;
-
-    int rv = pthread_create(&tid[0], nullptr, part_thread, (void*)&args[0]);
-
-    if (rv){
-        logger(ERROR, "return code from pthread_create() is %d\n", rv);
-        ocall_exit(-1);
-    }
-
-    /* wait for threads to finish */
-    for(int i = 0; i < 1; i++){
-        pthread_join(tid[i], nullptr);
-        result += args[i].result;
-    }
-
-    logger(DBG, "Found %d matches", result);
-    logger(DBG, "Join timer: %lu us", (args[0].end - args[0].start));
-    return nullptr;
 }
 
 result_t*
@@ -194,8 +116,6 @@ static struct algorithm_t sgx_algorithms[] = {
         {"OJ", OJ_wrapper},
         {"RHOBLI", rhobli_join},
         {"MCJ", MCJ},
-        {"STJ", STJ},
-        {"TEST", partitioning_test},
         {"GHT", GHT},
         {"MWAY", MWAY},
         {"RHO_seal_buffer", RHO_seal_buffer},
