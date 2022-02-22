@@ -30,9 +30,9 @@ Protection of personal data has been raised to be among the top requirements of 
   $ sudo apt install make gcc g++ libssl-dev python3-pip git-lfs  
   $ pip3 install matplotlib numpy pyyaml
 ```  
-* Clone the repository usig `git-lfs`:
+* Clone the repository usig `git`:
 ```
-$ git lfs clone https://github.com/agora-ecosystem/tee-bench-dev.git
+$ git clone https://github.com/agora-ecosystem/tee-bench.git
 ```
 
 ## How to run the experiments?
