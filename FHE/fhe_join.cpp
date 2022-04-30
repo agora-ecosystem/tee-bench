@@ -306,9 +306,7 @@ int main()
     {
         Stopwatch sw("Join encrypted relations");
         auto clock = chrono::high_resolution_clock::now();
-        int i =0;
         for (auto r_enc : r_ct) {
-            cout << "i = " << i << endl;
             for (auto s_enc : s_ct) {
                 Ciphertext tmp;
                 evaluator.sub(r_enc, s_enc, encrypted_equality);
@@ -316,8 +314,10 @@ int main()
                 evaluator.sub(one_encrypted, encrypted_equality, tmp);
                 evaluator.add_inplace(matches_encrypted, tmp);
             }
-            i++;
+            cout << ".";
+            cout.flush();
         }
+        cout << endl;
         duration = chrono::duration_cast<chrono::milliseconds>(
                 chrono::high_resolution_clock::now() - clock);
     }
@@ -327,7 +327,7 @@ int main()
 
     cout << "Matches = " + matches_plain.to_string() << endl;
     cout << "Input tuples: " << r_size + s_size << endl;
-    cout << "Throughput: " << (double) (r_size+s_size) / duration.count() / 1000<< " [M rec/s]" << endl;
+    cout << setprecision(9) << fixed << "Throughput: " << (double) (r_size+s_size) / duration.count() / 1000<< " [M rec/s]" << endl;
 
     return 0;
 }

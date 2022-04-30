@@ -145,7 +145,7 @@ print_timing(struct timers_t timers, uint64_t numtuples, int64_t result)
 {
     double cyclestuple = (double) (timers.total) / (double) numtuples;
     uint64_t time_usec = timers.end - timers.start;
-    double throughput = 1000000.0*(double)numtuples  / (double)time_usec;
+    double throughput = (double)(1000*numtuples)  / (double)time_usec;
     logger(ENCLAVE, "Total input tuples : %lu", numtuples);
     logger(ENCLAVE, "Result tuples : %lu", result);
     logger(ENCLAVE, "Phase Total [cycles] : %lu", timers.total);

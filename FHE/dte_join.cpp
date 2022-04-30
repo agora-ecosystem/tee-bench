@@ -154,7 +154,6 @@ int main() {
         duration = chrono::duration_cast<chrono::milliseconds>(
                 chrono::high_resolution_clock::now() - clock);
     }
-    cout << "Matches: " << result->totalresults << endl;
     cout << "Throughput: " << (double) (r_size+s_size) / duration.count() / 1000<< " [M rec/s]" << endl;
 
 

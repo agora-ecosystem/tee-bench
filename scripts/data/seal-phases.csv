@@ -47,9 +47,9 @@ native-materialize,RHO,cache-exceed,50,join,1488924197.0
 native-materialize,RHO,cache-exceed,50,seal,0
 native-materialize,RHO,cache-exceed,100,join,2198050500.0
 native-materialize,RHO,cache-exceed,100,seal,0
-seal-chunk-buffer,RHO_seal_buffer,cache-fit,1,seal-join,1759833569
-seal-chunk-buffer,RHO_seal_buffer,cache-fit,50,seal-join,1715710565
-seal-chunk-buffer,RHO_seal_buffer,cache-fit,100,seal-join,1722918184
-seal-chunk-buffer,RHO_seal_buffer,cache-exceed,1,seal-join,21373716126.66
-seal-chunk-buffer,RHO_seal_buffer,cache-exceed,50,seal-join,19623016776.66
-seal-chunk-buffer,RHO_seal_buffer,cache-exceed,100,seal-join,20152440926.33
+sgx-seal-chunk-buffer,RHO_seal_buffer,cache-fit,1,seal-join,1759833569
+sgx-seal-chunk-buffer,RHO_seal_buffer,cache-fit,50,seal-join,1715710565
+sgx-seal-chunk-buffer,RHO_seal_buffer,cache-fit,100,seal-join,1722918184
+sgx-seal-chunk-buffer,RHO_seal_buffer,cache-exceed,1,seal-join,21373716126.66
+sgx-seal-chunk-buffer,RHO_seal_buffer,cache-exceed,50,seal-join,19623016776.66
+sgx-seal-chunk-buffer,RHO_seal_buffer,cache-exceed,100,seal-join,20152440926.33

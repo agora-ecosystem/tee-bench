@@ -1,3 +1,4 @@
+data/
 cmake-build-debug/
 .idea/
 *.so
@@ -9,6 +10,7 @@ Enclave/ThreadLib/
 scripts/.ipynb_checkpoints/
 native
 scripts/__pycache__/
+scripts/helpers/__pycache__/
 App/Enclave_u.*
 Enclave/Enclave_t.*
 .config_HW_PRERELEASE_x64
@@ -24,3 +26,4 @@ FHE/install_manifest.txt
 FHE/compile_commands.json
 FHE/CTestTestfile.cmake
 FHE/_deps
+FHE/build

@@ -2,8 +2,8 @@
   <ProdID>0</ProdID>
   <ISVSVN>0</ISVSVN>
   <StackMaxSize>0x20000</StackMaxSize>
-   <!--   600 MB-->
-   <HeapMaxSize>0x25800000</HeapMaxSize>
+  <!--   32 GB-->
+      <HeapMaxSize>0x800000000</HeapMaxSize>
   <TCSNum>9</TCSNum>
   <TCSMinPool>9</TCSMinPool>
   <TCSPolicy>1</TCSPolicy>

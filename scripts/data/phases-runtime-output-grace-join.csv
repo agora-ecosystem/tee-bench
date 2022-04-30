@@ -1,9 +1,0 @@
-mode,alg,ds,phase,cycles
-sgx,RHO,cache-fit,Partition,86
-sgx,RHO,cache-fit,Join,42
-sgx,RHO,cache-exceed,Partition,153
-sgx,RHO,cache-exceed,Join,5
-sgx,GHJ,cache-fit,Partition,67
-sgx,GHJ,cache-fit,Join,181
-sgx,GHJ,cache-exceed,Partition,72
-sgx,GHJ,cache-exceed,Join,383

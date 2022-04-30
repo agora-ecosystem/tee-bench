@@ -1,0 +1,6 @@
+reps : 5
+threads: 4
+modes:
+  - native
+  - sgx
+experiment: 1

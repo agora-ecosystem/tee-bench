@@ -1,6 +1,6 @@
-mode,alg,ds,threads,throughput,privacy
-native,RHO,cache-exceed,4,210.78,0
-sgx,RHO\n(SGX),cache-exceed,4,15.03,0.75
-sgx,RHOBLI,cache-exceed,1,0.00191,1
-native,NLJ(FHO),cache-exceed,1,0.000000317,1
-native,RHO(DET),cache-exceed,1,8,0.35
+mode,alg,threads,throughput,privacy
+native,RHO,4,210.78,0
+sgx,RHO,4,15.03,0.75
+sgx,RHOBLI,1,0.0019,1
+native,fhejoin,1,0.000000317,1
+native,dtejoin,1,8,0.35

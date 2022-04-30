@@ -38,6 +38,17 @@ else
 	PCM_COUNT=1
 endif
 
+ifeq (,$(findstring ITT_NOTIFS, $(CFLAGS)))
+    # it is not set
+    ITT_NOTIFS_LINK=
+    ITT_NOTIFS_INCLUDE=
+else
+    # it is set
+	ITT_NOTIFS_LINK = -L/opt/intel/oneapi/vtune/latest/lib64 -littnotify
+	ITT_NOTIFS_INCLUDE= -I/opt/intel/oneapi/vtune/latest/include
+	ITT_NOTIFS=1
+endif
+
 #%:;
 
 ######## SGX SDK Settings ########
@@ -45,8 +56,11 @@ endif
 SGX_SDK ?= /opt/intel/sgxsdk
 SGX_MODE ?= HW
 SGX_ARCH ?= x64
-SGX_DEBUG ?= 1
-SGX_PRERELEASE ?= 0
+SGX_DEBUG ?= 0
+SGX_PRERELEASE ?= 1
+
+### Encalve Settings ###
+ENCLAVE_CONFIG_FILE ?= Enclave/Enclave.config.xml
 
 ifeq (,$(findstring NATIVE_COMPILATION, $(CFLAGS)))
     include $(SGX_SDK)/buildenv.mk
@@ -151,11 +165,23 @@ Enclave_C_Files := $(ENCLAVE_SOURCES_C) $(INCLUDE_SOURCES_C) $(JOIN_SOURCES_C)
 Enclave_Include_Paths := -IEnclave -IInclude \
 						 -I$(SGX_SDK)/include -I$(SGX_SDK)/include/tlibc -I$(SGX_SDK)/include/libcxx \
 						 -IEnclave/TrustedJoins -IJoins -IJoins/stitch -IJoins/cht -IJoins/mway \
-						  -IJoins/oblidb -IJoins/psm -IJoins/mcjoin -IEnclave/TrustedJoins/oblidb 
+						  -IJoins/oblidb -IJoins/psm -IJoins/mcjoin -IEnclave/TrustedJoins/oblidb
 
 
 Enclave_C_Flags := $(Enclave_Include_Paths) $(CFLAGS) -nostdinc -fvisibility=hidden -fpie -ffunction-sections \
 					-fdata-sections $(MITIGATION_CFLAGS) -fopenmp -Wno-missing-field-initializers
+# Three configuration modes - Debug, prerelease, release
+#   Debug - Macro DEBUG enabled.
+#   Prerelease - Macro NDEBUG and EDEBUG enabled.
+#   Release - Macro NDEBUG enabled.
+ifeq ($(SGX_DEBUG), 1)
+        Enclave_C_Flags += -DDEBUG -UNDEBUG -UEDEBUG
+else ifeq ($(SGX_PRERELEASE), 1)
+        Enclave_C_Flags += -DNDEBUG -DEDEBUG -UDEBUG
+else
+        Enclave_C_Flags += -DNDEBUG -UEDEBUG -UDEBUG
+endif
+
 CC_BELOW_4_9 := $(shell expr "`$(CC) -dumpversion`" \< "4.9")
 ifeq ($(CC_BELOW_4_9), 1)
 	Enclave_C_Flags += -fstack-protector
@@ -191,7 +217,6 @@ Enclave_Cpp_Objects += $(sort $(Enclave_C_Files:.c=.o))
 
 Enclave_Name := enclave.so
 Signed_Enclave_Name := enclave.signed.so
-Enclave_Config_File := Enclave/Enclave.config.xml
 
 ifeq ($(SGX_MODE), HW)
 ifeq ($(SGX_DEBUG), 1)
@@ -220,7 +245,7 @@ sgx: .config_$(Build_Mode)_$(SGX_ARCH) $(App_Name) $(Enclave_Name)
 	@echo "The project has been built in release hardware mode."
 	@echo "Please sign the $(Enclave_Name) first with your signing key before you run the $(App_Name) to launch and access the enclave."
 	@echo "To sign the enclave use the command:"
-	@echo "   $(SGX_ENCLAVE_SIGNER) sign -key <your key> -enclave $(Enclave_Name) -out <$(Signed_Enclave_Name)> -config $(Enclave_Config_File)"
+	@echo "   $(SGX_ENCLAVE_SIGNER) sign -key <your key> -enclave $(Enclave_Name) -out <$(Signed_Enclave_Name)> -config $(ENCLAVE_CONFIG_FILE)"
 	@echo "You can also sign the enclave using an external signing tool."
 	@echo "To build the project in simulation mode set SGX_MODE=SIM. To build the project in prerelease mode set SGX_PRERELEASE=1 and SGX_MODE=HW."
 
@@ -314,7 +339,7 @@ $(Enclave_Name): Enclave/Enclave_t.o $(Enclave_Cpp_Objects)
 	@echo "LINK =>  $@"
 
 $(Signed_Enclave_Name): $(Enclave_Name)
-	@$(SGX_ENCLAVE_SIGNER) sign -key Enclave/Enclave_private_test.pem -enclave $(Enclave_Name) -out $@ -config $(Enclave_Config_File)
+	@$(SGX_ENCLAVE_SIGNER) sign -key Enclave/Enclave_private_test.pem -enclave $(Enclave_Name) -out $@ -config $(ENCLAVE_CONFIG_FILE)
 	@echo "SIGN =>  $@"
 
 .PHONY: clean

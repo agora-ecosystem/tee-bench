@@ -80,7 +80,7 @@ static void print_state(const char *message, SystemCounterState old, SystemCount
     logger(PCMLOG, "MBytes written from DRAM: %lu", getBytesWrittenToMC(old, tmp)/1024/1024);
     logger(PCMLOG, "LLC read miss latency   : %.4lf", getLLCReadMissLatency(old, tmp));
 #ifdef SGX_COUNTERS
-    logger(PCMLOG, "EWB                     : %lu", get_ewb());
+    logger(PCMLOG, "EWBcnt                  : %lu", get_ewb());
 #endif
     logger(PCMLOG, "end==================================================");
 }

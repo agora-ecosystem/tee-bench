@@ -46,9 +46,9 @@ typedef struct relationpair_t relationpair_t;
 /** Debug msg logging method */
 #ifdef DEBUG
 #define DEBUGMSG(COND, MSG, ...)                                        \
-    if(COND) {                                                          \
-        printf("[DEBUG @ %s:%d] "MSG, __FILE__, __LINE__, ## __VA_ARGS__); \
-    }
+//    if(COND) {                                                          \
+//        printf("[DEBUG @ %s:%d] "MSG, __FILE__, __LINE__, ## __VA_ARGS__); \
+//    }
 #else
 #define DEBUGMSG(COND, MSG, ...)
 #endif

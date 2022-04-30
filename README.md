@@ -21,6 +21,10 @@ Protection of personal data has been raised to be among the top requirements of 
 }
 
 ```
+
+### How to Reproduce the Experimental Results
+A detailed guide to run the code and reproduce all experiments can be found here: [TEE: How to Reproduce the Experimental Results](https://github.com/agora-ecosystem/tee-bench/blob/master/paper/TEEBench_How_to_Reproduce_the_Experimental_Results.pdf)
+
 ## Prerequisites 
 * Intel SGX v2.11 
 * Ubuntu 18.04 LTS
