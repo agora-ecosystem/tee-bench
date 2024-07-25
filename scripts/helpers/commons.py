@@ -219,6 +219,25 @@ def marker_alg(alg):
     }
     return markers[alg]
 
+def color_categorical(i):
+    colors = {
+        3:'#0fb5ae',
+        5:'#4046ca',
+        2:'#f68511',
+        0:'#de3d82',
+        4:'#7e84fa',
+        1:'#72e06a',
+        6:'#147af3',
+        7:'#7326d3',
+        8:'#e8c600',
+        9:'#cb5d00',
+        10:'#008f5d',
+        11:'#bce931',
+
+        90:'#de3d8244',
+        91:'#72e06a44',
+    }
+    return colors[i]
 
 def color_size(i):
     # colors = ["g", "deeppink", "dodgerblue", "orange"]

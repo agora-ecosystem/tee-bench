@@ -89,7 +89,8 @@ def plot_throughput():
 
             label = modes[m]
             algos = list(OrderedDict.fromkeys(list(map(lambda x:x['alg'],to_modes[m]))))
-            colors = list(map(lambda x: commons.color_alg(x), algos))
+            colors = list(map(lambda x: commons.color_categorical(m), algos))
+            colors=[commons.color_categorical(0), commons.color_categorical(1)]
             hatch = '\\' if modes[m] == 'native' else ''
             plt.bar(br, list(map(lambda x: float(x['throughput']), to_modes[m])),
                     width=width, label=label, hatch=hatch, color=colors, edgecolor='black')

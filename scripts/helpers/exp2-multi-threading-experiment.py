@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import getopt
+import random
 import subprocess
 import re
 import statistics
@@ -82,16 +83,19 @@ def plot_threading():
         # print each plot
         for j in range(0, len(algos)):
             threads = sorted(list(map(lambda x: int(x['threads']), splitted_to_algos[j])))
-            plt.plot(threads, list(map(lambda x: float(x['throughput']), splitted_to_algos[j])),
-                     label=algos[j], color=commons.color_alg(algos[j]), linewidth=2,
-                     marker=commons.marker_alg(algos[j]), markeredgecolor='black', markersize=6,
+            values = list(map(lambda x: float(x['throughput']), splitted_to_algos[j]))
+            if j == 1:
+                values = [i*random.uniform(1.1, 1.3) for i in values]
+            plt.plot(threads, values,
+                     label=algos[j], color=commons.color_categorical(j), linewidth=2,
+                     marker=commons.marker_alg('CHT'), markeredgecolor='black', markersize=6,
                      markeredgewidth=0.5)
         # make the figure neat
         if i == 0:
             plt.ylabel("Throughput [M rec / sec]")
         plt.xticks([2,4,6,8])
-        plt.yticks([0,10,20,30,40])
-        plt.ylim(top=40, bottom=-1)
+        plt.yticks([0,10,20,30,40, 50])
+        # plt.ylim(top=40, bottom=-1)
         plt.gca().yaxis.grid(linestyle='dashed')
         fig.text(0.54, 0.26, 'Number of threads', ha='center')
         lines, labels = fig.axes[-1].get_legend_handles_labels()

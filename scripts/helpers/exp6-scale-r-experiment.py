@@ -250,6 +250,6 @@ if __name__ == '__main__':
                 for i in range(8, max_r_size_mb+1, 8):
                     run_join(commons.PROG, alg, i * mb_of_data, s_size, config['threads'], config['reps'], mode)
 
-    plot()
+    # plot()
     plot_with_ewb()
     commons.stop_timer(timer)

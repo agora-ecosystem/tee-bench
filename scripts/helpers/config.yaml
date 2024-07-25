@@ -3,4 +3,4 @@ threads: 4
 modes:
   - native
   - sgx
-experiment: 1
+experiment: 0
